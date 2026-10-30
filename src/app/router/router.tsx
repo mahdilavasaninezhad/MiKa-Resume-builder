@@ -1,6 +1,6 @@
 import {
   Navigate,
-  createBrowserRouter,
+  createHashRouter,
 } from "react-router-dom";
 
 import {
@@ -48,7 +48,7 @@ import {
 } from "../guards/CompleteProfileRoute";
 
 export const router =
-  createBrowserRouter([
+  createHashRouter([
     {
       path: "/login",
 

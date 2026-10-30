@@ -1,13 +1,16 @@
 import {
   LogOut,
   X,
+  type LucideIcon,
 } from "lucide-react";
 
 import {
   useEffect,
 } from "react";
 
-import { createPortal } from "react-dom";
+import {
+  createPortal,
+} from "react-dom";
 
 interface ConfirmModalProps {
   open: boolean;
@@ -15,6 +18,8 @@ interface ConfirmModalProps {
   description: string;
   confirmText?: string;
   cancelText?: string;
+  icon?: LucideIcon;
+  tone?: "danger" | "default";
   loading?: boolean;
   onConfirm: () => void;
   onClose: () => void;
@@ -26,6 +31,8 @@ export function ConfirmModal({
   description,
   confirmText = "Confirm",
   cancelText = "Cancel",
+  icon: Icon = LogOut,
+  tone = "danger",
   loading = false,
   onConfirm,
   onClose,
@@ -38,7 +45,9 @@ export function ConfirmModal({
     function handleEscape(
       event: KeyboardEvent,
     ) {
-      if (event.key === "Escape") {
+      if (
+        event.key === "Escape"
+      ) {
         onClose();
       }
     }
@@ -48,7 +57,8 @@ export function ConfirmModal({
       handleEscape,
     );
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+      "hidden";
 
     return () => {
       document.removeEventListener(
@@ -56,25 +66,48 @@ export function ConfirmModal({
         handleEscape,
       );
 
-      document.body.style.overflow = "";
+      document.body.style.overflow =
+        "";
     };
-  }, [open, onClose]);
+  }, [
+    open,
+    onClose,
+  ]);
 
   if (!open) {
     return null;
   }
 
+  const iconColorClass =
+    tone === "danger"
+      ? "text-[var(--danger)]"
+      : "text-[var(--accent)]";
+
+  const confirmColorClass =
+    tone === "danger"
+      ? "!bg-[var(--danger)]"
+      : "!bg-[var(--accent)]";
+
   return createPortal(
     <div
       className="
-        fixed inset-0 z-[999]
-        flex items-center justify-center
+        fixed
+        inset-0
+        z-[999]
+        flex
+        items-center
+        justify-center
         bg-black/
         p-4
         backdrop-blur-xs
       "
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget) {
+      onMouseDown={(
+        event,
+      ) => {
+        if (
+          event.target ===
+          event.currentTarget
+        ) {
           onClose();
         }
       }}
@@ -86,42 +119,58 @@ export function ConfirmModal({
         className="
           neo-surface
           relative
-          w-full max-w-md
+          w-full
+          max-w-md
           animate-modal-in
           rounded-[32px]
           p-6
-          md:p-7
           text-center
+          md:p-7
         "
       >
         <button
           type="button"
-          onClick={onClose}
+          onClick={
+            onClose
+          }
           aria-label="Close dialog"
           className="
             shadow-button
-            absolute right-8 -top-5
-            flex h-10 w-10
-            items-center justify-center
+            absolute
+            right-8
+            -top-5
+            flex
+            h-10
+            w-10
+            items-center
+            justify-center
             rounded-xl
             text-[var(--text)]
             hover:text-[var(--danger)]
           "
         >
-          <X size={20} />
+          <X
+            size={20}
+          />
         </button>
 
         <div
-          className="
+          className={`
             neo-inset
-            flex h-16 w-16
-            items-center justify-center
-            rounded-[24px]
-            text-[var(--danger)]
             mx-auto
-          "
+            flex
+            h-16
+            w-16
+            items-center
+            justify-center
+            rounded-[24px]
+
+            ${iconColorClass}
+          `}
         >
-          <LogOut size={27} />
+          <Icon
+            size={27}
+          />
         </div>
 
         <h2
@@ -150,24 +199,35 @@ export function ConfirmModal({
 
         <div
           className="
-            grid grid-cols-2
+            absolute
+            -bottom-6
+            left-1/2
+            grid
+            w-full
+            max-w-80
+            -translate-x-1/2
+            grid-cols-2
             gap-3
-            absolute -bottom-6 -translate-x-1/2 left-1/2 max-w-80 w-full
           "
         >
           <button
             type="button"
-            onClick={onClose}
-            disabled={loading}
+            onClick={
+              onClose
+            }
+            disabled={
+              loading
+            }
             className="
               shadow-button
               rounded-2xl
-              px-5 py-3
+              px-5
+              py-3
               text-sm
               font-semibold
-              disabled:opacity-50
               text-[var(--muted)]
               hover:text-[var(--text)]
+              disabled:opacity-50
             "
           >
             {cancelText}
@@ -175,28 +235,38 @@ export function ConfirmModal({
 
           <button
             type="button"
-            onClick={onConfirm}
-            disabled={loading}
-            className="
-              flex items-center
-              justify-center gap-2
+            onClick={
+              onConfirm
+            }
+            disabled={
+              loading
+            }
+            className={`
+              shadow-button
+              flex
+              items-center
+              justify-center
+              gap-2
               rounded-2xl
-              !bg-[var(--danger)]
-              px-5 py-3
+              px-5
+              py-3
               text-sm
               font-semibold
               text-white
-              transition
               opacity-90
+              transition
               hover:opacity-100
               disabled:opacity-50
-              shadow-button
-            "
+
+              ${confirmColorClass}
+            `}
           >
-            <LogOut size={17} />
+            <Icon
+              size={17}
+            />
 
             {loading
-              ? "Logging Out..."
+              ? `${confirmText}...`
               : confirmText}
           </button>
         </div>

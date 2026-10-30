@@ -603,18 +603,18 @@ export function ProfilePage() {
   `;
 
   const passwordPlaceholder =
-    !isEditing
-      ? "••••••••"
+  !isEditing
+    ? "••••••••"
+    : passwordStep ===
+        "current"
+      ? "Enter Your Current Password"
       : passwordStep ===
-          "Current"
-        ? "Enter Your Current Password"
+          "new"
+        ? "Enter Your New Password"
         : passwordStep ===
-            "New"
-          ? "Enter Your New Password"
-          : passwordStep ===
-              "Confirm"
-            ? "Confirm Your New Password"
-            : "Password Change Ready";
+            "confirm"
+          ? "Confirm Your New Password"
+          : "Password Change Ready";
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mx-auto max-w-6xl place-items-center">

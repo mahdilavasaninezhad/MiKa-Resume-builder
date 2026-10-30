@@ -213,20 +213,43 @@ export class LocalResumeRepository
     }
 
     const updated: Resume = {
-      ...existing,
-      ...data,
+  ...existing,
+  ...data,
 
-      personal:
-        data.personal
-          ? {
-              ...existing.personal,
-              ...data.personal,
-            }
-          : existing.personal,
+  personal:
+    data.personal
+      ? {
+          ...existing.personal,
+          ...data.personal,
+        }
+      : existing.personal,
 
-      updatedAt:
-        new Date().toISOString(),
-    };
+  appearance:
+    data.appearance
+      ? {
+          ...existing.appearance,
+          ...data.appearance,
+
+          sectionStyles:
+            data.appearance
+              .sectionStyles
+              ? {
+                  ...existing
+                    .appearance
+                    .sectionStyles,
+
+                  ...data.appearance
+                    .sectionStyles,
+                }
+              : existing
+                  .appearance
+                  .sectionStyles,
+        }
+      : existing.appearance,
+
+  updatedAt:
+    new Date().toISOString(),
+};
 
     const database =
       await openDatabase();
