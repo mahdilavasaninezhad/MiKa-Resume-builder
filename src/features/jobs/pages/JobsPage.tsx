@@ -1789,7 +1789,7 @@ function TabButton({
         transition-colors
         duration-300
         hover:text-[var(--text)]
-
+        group
         ${
           active
             ? "font-semibold text-[var(--text)]"
@@ -1798,15 +1798,18 @@ function TabButton({
       `}
     >
       <Icon
-        size={16}
+        size={18}
         strokeWidth={
-          1.8
+          1.3
         }
         className={`
+          group-hover:!text-[var(--accent)]
+          transition-colors
+          duration-300
         ${
           active
             ? "text-[var(--accent)]"
-            : "text-[var(--muted)]"
+            : "text-[var(--muted)] "
         }
       `}
       />

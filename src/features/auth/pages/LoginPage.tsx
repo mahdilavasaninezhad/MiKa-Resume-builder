@@ -159,7 +159,7 @@ export function LoginPage() {
 
       <div className="glass-panel w-full max-w-md rounded-[32px] p-7 md:p-9">
         <div className="mb-8 text-center">
-          <div className="neo-button relative mx-auto mb-5 flex h-16 w-16 items-center justify-center overflow-hidden rounded-3xl text-[var(--accent)]">
+          <div className="shadow-button relative mx-auto mb-5 flex h-16 w-16 items-center justify-center overflow-hidden rounded-3xl text-[var(--accent)] !bg-[var(--bg)]">
             <div
               className={`
                 absolute
@@ -385,7 +385,7 @@ export function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="absolute w-[80%] rounded-2xl !bg-[var(--accent)] px-5 py-3 font-semibold text-white transition opacity-90 hover:opacity-100 shadow-button disabled:cursor-not-allowed disabled:opacity-50 left-1/2 -translate-x-1/2 -bottom-6"
+            className="absolute w-[50%] rounded-2xl !bg-[var(--accent)] py-3 font-semibold text-white transition opacity-90 hover:opacity-100 shadow-button disabled:cursor-not-allowed disabled:opacity-50 left-1/2 -translate-x-1/2 -bottom-6"
           >
             {loading
               ? "Please wait..."

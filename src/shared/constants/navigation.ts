@@ -2,7 +2,7 @@ import {
   BadgeInfo,
   Blocks,
   BriefcaseBusiness,
-  ChartNoAxesCombined,
+  BrainCircuit,
   FileText,
 } from "lucide-react";
 
@@ -21,38 +21,58 @@ export const mainNavigation:
     {
       label:
         "Resume Builder",
-      path: "/resume",
-      icon: FileText,
+
+      path:
+        "/resume",
+
+      icon:
+        FileText,
     },
 
     {
-      label: "Jobs",
-      path: "/members",
+      label:
+        "Jobs",
+
+      path:
+        "/members",
+
       icon:
         BriefcaseBusiness,
     },
 
     {
-      label: "Analytics",
-      path: "/analytics",
+      label:
+        "Assessments",
+
+      path:
+        "/analytics",
+
       icon:
-        ChartNoAxesCombined,
+        BrainCircuit,
     },
 
     {
       label:
         "Components",
+
       path:
         "/components",
-      icon: Blocks,
+
+      icon:
+        Blocks,
     },
   ];
 
 export const footerNavigation:
   NavigationItem[] = [
     {
-      label: "About Me",
-      path: "/about",
-      icon: BadgeInfo,
+      label:
+        "About Me",
+
+      path:
+        "/about",
+
+      icon:
+        BadgeInfo,
     },
   ];

@@ -16,6 +16,10 @@ import {
 } from "../../features/about/pages/AboutPage";
 
 import {
+  AssessmentsPage,
+} from "../../features/assessments/pages/AssessmentsPage";
+
+import {
   LoginPage,
 } from "../../features/auth/pages/LoginPage";
 
@@ -105,10 +109,7 @@ export const router =
                 "analytics",
 
               element:
-                <PlaceholderPage
-                  title="Analytics"
-                  description="Analytics and charts will be implemented here."
-                />,
+                <AssessmentsPage />,
             },
 
             {
