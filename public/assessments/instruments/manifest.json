@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-02T18:44:12.991Z",
+  "instruments": [
+    {
+      "file": "big-five.json",
+      "id": "IPIP-Big5-50",
+      "title": "IPIP Big Five 50-Item Personality Markers",
+      "provider": "OpenScales",
+      "sourceName": "IPIP Big Five 50-Item Personality Markers",
+      "license": "Public Domain",
+      "version": "1.0",
+      "itemCount": 50
+    },
+    {
+      "file": "eq-quick.json",
+      "id": "IPIP-VIA-Soc",
+      "title": "IPIP Character Strength: Social/Emotional Intelligence",
+      "provider": "OpenScales",
+      "sourceName": "IPIP Character Strength: Social/Emotional Intelligence",
+      "license": "Public Domain",
+      "version": "1.0",
+      "itemCount": 7
+    },
+    {
+      "file": "eq-deep.json",
+      "id": "IPIP-EI",
+      "title": "IPIP Emotional Intelligence Scale",
+      "provider": "OpenScales",
+      "sourceName": "IPIP Emotional Intelligence Scale",
+      "license": "Public Domain",
+      "version": "1.0",
+      "itemCount": 68
+    },
+    {
+      "file": "leadership.json",
+      "id": "IPIP-VIA-Lea",
+      "title": "IPIP Character Strength: Leadership",
+      "provider": "OpenScales",
+      "sourceName": "IPIP Character Strength: Leadership",
+      "license": "Public Domain",
+      "version": "1.0",
+      "itemCount": 7
+    },
+    {
+      "file": "perseverance.json",
+      "id": "IPIP-VIA-Ind",
+      "title": "IPIP Character Strength: Perseverance/Industriousness",
+      "provider": "OpenScales",
+      "sourceName": "IPIP Character Strength: Perseverance/Industriousness",
+      "license": "Public Domain",
+      "version": "1.0",
+      "itemCount": 8
+    },
+    {
+      "file": "self-efficacy.json",
+      "id": "GSE",
+      "title": "General Self-Efficacy Scale",
+      "provider": "OpenScales",
+      "sourceName": "General Self-Efficacy Scale",
+      "license": "CC BY 4.0",
+      "version": "1.0",
+      "itemCount": 10
+    },
+    {
+      "file": "riasec.json",
+      "id": "ipip-riasec-bim",
+      "title": "IPIP Basic Interest Markers",
+      "provider": "IPIP / riasec-co",
+      "sourceName": "Public-domain Basic Interest Markers",
+      "license": "Public Domain items; MIT implementation source",
+      "version": "48-item BIM",
+      "itemCount": 48
+    }
+  ]
+}

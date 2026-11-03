@@ -1,0 +1,1396 @@
+{
+  "schemaVersion": 1,
+  "id": "ipip-riasec-bim",
+  "title": "IPIP Basic Interest Markers",
+  "instruction": "Rate how accurately each statement describes your interests.",
+  "source": {
+    "provider": "IPIP / riasec-co",
+    "sourceName": "Public-domain Basic Interest Markers",
+    "sourceUrl": "https://github.com/affromero/riasec-co",
+    "license": "Public Domain items; MIT implementation source",
+    "citation": "Liao, H.-Y., Armstrong, P. I., & Rounds, J. (2008). Development and initial validation of public domain Basic Interest Markers.",
+    "attribution": "Item bank distributed as public-domain IPIP RIASEC markers.",
+    "version": "48-item BIM",
+    "syncedAt": "2026-11-02T18:44:12.988Z"
+  },
+  "responseScale": {
+    "min": 1,
+    "max": 5,
+    "options": [
+      {
+        "value": 1,
+        "label": "Very inaccurate"
+      },
+      {
+        "value": 2,
+        "label": "Moderately inaccurate"
+      },
+      {
+        "value": 3,
+        "label": "Neither accurate nor inaccurate"
+      },
+      {
+        "value": 4,
+        "label": "Moderately accurate"
+      },
+      {
+        "value": 5,
+        "label": "Very accurate"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "R1",
+      "prompt": "Like to work with my hands",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "prompt": "Enjoy building things",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "prompt": "Like to tinker with machines",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "prompt": "Enjoy working outdoors",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "R5",
+      "prompt": "Am good at making and repairing things",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "R6",
+      "prompt": "Enjoy operating machines",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "R7",
+      "prompt": "Like to work with tools",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "R8",
+      "prompt": "Enjoy physical work",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "I1",
+      "prompt": "Like to solve complex problems",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "I2",
+      "prompt": "Am interested in science",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "I3",
+      "prompt": "Like to analyze things",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "I4",
+      "prompt": "Enjoy doing research",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "I5",
+      "prompt": "Need to understand the reasons behind things",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "I6",
+      "prompt": "Enjoy reading challenging material",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "I7",
+      "prompt": "Like to figure out how things work",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "I8",
+      "prompt": "Am curious about many different things",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "A1",
+      "prompt": "Like to draw or paint",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "A2",
+      "prompt": "Enjoy acting in plays",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "A3",
+      "prompt": "Like to write stories or poetry",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "A4",
+      "prompt": "Have a vivid imagination",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "A5",
+      "prompt": "Enjoy playing musical instruments",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "A6",
+      "prompt": "Like to create works of art",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "A7",
+      "prompt": "Am good at expressing myself creatively",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "A8",
+      "prompt": "Like to design things",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "S1",
+      "prompt": "Like to teach others",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "prompt": "Am good at counseling people",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "S3",
+      "prompt": "Enjoy helping others with their problems",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "S4",
+      "prompt": "Am interested in healing people",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "S5",
+      "prompt": "Like to work as part of a team",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "S6",
+      "prompt": "Am good at making people feel at ease",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "S7",
+      "prompt": "Enjoy volunteering for community causes",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "S8",
+      "prompt": "Am good at cooperating with others",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "prompt": "Like to lead others",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "prompt": "Am a natural leader",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "E3",
+      "prompt": "Like to sell things or promote ideas",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "E4",
+      "prompt": "Am good at persuading people",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "E5",
+      "prompt": "Like to take charge of things",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "E6",
+      "prompt": "Enjoy starting new projects or businesses",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "E7",
+      "prompt": "Am good at managing people",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "E8",
+      "prompt": "Like to organize events",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "prompt": "Like to follow a set schedule",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "prompt": "Am good at organizing things",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "prompt": "Like to keep detailed records",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "prompt": "Am detail-oriented",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "prompt": "Like to work with numbers and data",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "prompt": "Am accurate in my work",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "C7",
+      "prompt": "Like to follow set procedures",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    },
+    {
+      "id": "C8",
+      "prompt": "Like to file and organize information",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither accurate nor inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very accurate"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "key": "R",
+      "label": "Realistic",
+      "method": "sum",
+      "itemWeights": {
+        "R1": 1,
+        "R2": 1,
+        "R3": 1,
+        "R4": 1,
+        "R5": 1,
+        "R6": 1,
+        "R7": 1,
+        "R8": 1
+      },
+      "rawMin": 8,
+      "rawMax": 40
+    },
+    {
+      "key": "I",
+      "label": "Investigative",
+      "method": "sum",
+      "itemWeights": {
+        "I1": 1,
+        "I2": 1,
+        "I3": 1,
+        "I4": 1,
+        "I5": 1,
+        "I6": 1,
+        "I7": 1,
+        "I8": 1
+      },
+      "rawMin": 8,
+      "rawMax": 40
+    },
+    {
+      "key": "A",
+      "label": "Artistic",
+      "method": "sum",
+      "itemWeights": {
+        "A1": 1,
+        "A2": 1,
+        "A3": 1,
+        "A4": 1,
+        "A5": 1,
+        "A6": 1,
+        "A7": 1,
+        "A8": 1
+      },
+      "rawMin": 8,
+      "rawMax": 40
+    },
+    {
+      "key": "S",
+      "label": "Social",
+      "method": "sum",
+      "itemWeights": {
+        "S1": 1,
+        "S2": 1,
+        "S3": 1,
+        "S4": 1,
+        "S5": 1,
+        "S6": 1,
+        "S7": 1,
+        "S8": 1
+      },
+      "rawMin": 8,
+      "rawMax": 40
+    },
+    {
+      "key": "E",
+      "label": "Enterprising",
+      "method": "sum",
+      "itemWeights": {
+        "E1": 1,
+        "E2": 1,
+        "E3": 1,
+        "E4": 1,
+        "E5": 1,
+        "E6": 1,
+        "E7": 1,
+        "E8": 1
+      },
+      "rawMin": 8,
+      "rawMax": 40
+    },
+    {
+      "key": "C",
+      "label": "Conventional",
+      "method": "sum",
+      "itemWeights": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 1,
+        "C4": 1,
+        "C5": 1,
+        "C6": 1,
+        "C7": 1,
+        "C8": 1
+      },
+      "rawMin": 8,
+      "rawMax": 40
+    }
+  ]
+}

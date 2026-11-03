@@ -1,0 +1,2076 @@
+{
+  "schemaVersion": 1,
+  "id": "IPIP-EI",
+  "title": "IPIP Emotional Intelligence Scale",
+  "instruction": "How Accurately Can You Describe Yourself? Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age. So that you can describe yourself in an honest manner, your responses will be kept in absolute confidence. Indicate the accuracy of the item as it applies to you, using the following rating scale:",
+  "source": {
+    "provider": "OpenScales",
+    "sourceName": "IPIP Emotional Intelligence Scale",
+    "sourceUrl": "https://ipip.ori.org/newEmotionalIntelligenceKey.htm",
+    "license": "Public Domain",
+    "citation": "Barchard, K. A. (2001). Emotional and social intelligence: Examining its place in the nomological network. Unpublished doctoral dissertation, University of British Columbia.",
+    "attribution": "OpenScales encoding; underlying instrument license retained.",
+    "version": "1.0",
+    "syncedAt": "2026-11-02T18:44:11.432Z"
+  },
+  "responseScale": {
+    "min": 1,
+    "max": 5,
+    "options": [
+      {
+        "value": 1,
+        "label": "Very Inaccurate"
+      },
+      {
+        "value": 2,
+        "label": "Moderately Inaccurate"
+      },
+      {
+        "value": 3,
+        "label": "Neither Accurate Nor Inaccurate"
+      },
+      {
+        "value": 4,
+        "label": "Moderately Accurate"
+      },
+      {
+        "value": 5,
+        "label": "Very Accurate"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "ipip_ei_001",
+      "prompt": "Am calm even in tense situations.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_002",
+      "prompt": "Am deeply moved by others' misfortunes.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_003",
+      "prompt": "Am easily moved to tears.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_004",
+      "prompt": "Am not easily disturbed by events.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_005",
+      "prompt": "Am unaffected by the suffering of others.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_006",
+      "prompt": "Am upset by the misfortunes of strangers.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_007",
+      "prompt": "Rarely cry during sad movies.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_008",
+      "prompt": "Remain calm during emergencies.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_009",
+      "prompt": "Suffer from others' sorrows.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_010",
+      "prompt": "Would be upset if I saw an injured animal.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_011",
+      "prompt": "Am concerned about others.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_012",
+      "prompt": "Believe that criminals should receive help rather than punishment.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_013",
+      "prompt": "Believe that the poor deserve our sympathy.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_014",
+      "prompt": "Don't like to get involved in other people's problems.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_015",
+      "prompt": "Feel little concern for others.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_016",
+      "prompt": "Feel sympathy for those who are worse off than myself.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_017",
+      "prompt": "Have little sympathy for the unemployed.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_018",
+      "prompt": "Have no sympathy for criminals.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_019",
+      "prompt": "Look down on any weakness.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_020",
+      "prompt": "Sympathize with the homeless.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_021",
+      "prompt": "Am not in touch with my feelings.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_022",
+      "prompt": "Am usually aware of the way that I'm feeling.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_023",
+      "prompt": "Notice my emotions.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_024",
+      "prompt": "Often ignore my feelings.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_025",
+      "prompt": "Often stop to analyze how I'm feeling.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_026",
+      "prompt": "Pay a lot of attention to my feelings.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_027",
+      "prompt": "Rarely analyze my emotions.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_028",
+      "prompt": "Rarely notice my emotional reactions.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_029",
+      "prompt": "Rarely think about how I feel.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_030",
+      "prompt": "Think about the causes of my emotions.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_031",
+      "prompt": "Am strongly influenced by the good moods of others.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_032",
+      "prompt": "Am unaffected by other people's happiness.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_033",
+      "prompt": "Dislike being around happy people when I'm feeling sad.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_034",
+      "prompt": "Dislike children's birthday parties.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_035",
+      "prompt": "Feel other people's joy.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_036",
+      "prompt": "Find it hard to stay in a bad mood if the people around me are happy.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_037",
+      "prompt": "Get caught up in the excitement when others are celebrating.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_038",
+      "prompt": "Like to watch children open presents.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_039",
+      "prompt": "Rarely get caught up in the excitement.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_040",
+      "prompt": "Usually end up laughing if the people around me are laughing.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_041",
+      "prompt": "Base my goals in life on inspiration, rather than logic.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_042",
+      "prompt": "Believe emotions give direction to life.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_043",
+      "prompt": "Believe important decisions should be based on logical reasoning.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_044",
+      "prompt": "Listen to my brain rather than my heart.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_045",
+      "prompt": "Listen to my feelings when making important decisions.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_046",
+      "prompt": "Listen to my heart rather than my brain.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_047",
+      "prompt": "Make decisions based on facts, not feelings.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_048",
+      "prompt": "Plan my life based on how I feel.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_049",
+      "prompt": "Plan my life logically.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_050",
+      "prompt": "Can't help but look upset when something bad happens.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_051",
+      "prompt": "Find it difficult showing people that I'm angry with them.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_052",
+      "prompt": "Keep my feelings to myself, regardless of how scared I am.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_053",
+      "prompt": "Keep my feelings to myself, regardless of how unhappy I am.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_054",
+      "prompt": "Rarely show my anger.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_055",
+      "prompt": "Shout or scream when I'm angry.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_056",
+      "prompt": "Show my fear.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_057",
+      "prompt": "Show my sadness.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_058",
+      "prompt": "Suspect that my facial expressions give me away when I feel sad.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_059",
+      "prompt": "Wish I could more easily show my negative feelings.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_060",
+      "prompt": "Express my affection physically.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_061",
+      "prompt": "Express my happiness in a childlike manner.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_062",
+      "prompt": "Find it difficult showing people that I care about them.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_063",
+      "prompt": "Have difficulty showing affection.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_064",
+      "prompt": "Hug my close friends.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_065",
+      "prompt": "Keep my happy feelings to myself.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_066",
+      "prompt": "Laugh out loud if something is funny.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_067",
+      "prompt": "Show my feelings when I'm happy.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_ei_068",
+      "prompt": "Sometimes laugh out loud when reading or watching TV.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "key": "responsive_distress_sum",
+      "label": "Responsive Distress (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "ipip_ei_001": -1,
+        "ipip_ei_002": 1,
+        "ipip_ei_003": 1,
+        "ipip_ei_004": -1,
+        "ipip_ei_005": -1,
+        "ipip_ei_006": 1,
+        "ipip_ei_007": -1,
+        "ipip_ei_008": -1,
+        "ipip_ei_009": 1,
+        "ipip_ei_010": 1
+      },
+      "rawMin": 10,
+      "rawMax": 50
+    },
+    {
+      "key": "responsive_distress_mean",
+      "label": "Responsive Distress (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "ipip_ei_001": -1,
+        "ipip_ei_002": 1,
+        "ipip_ei_003": 1,
+        "ipip_ei_004": -1,
+        "ipip_ei_005": -1,
+        "ipip_ei_006": 1,
+        "ipip_ei_007": -1,
+        "ipip_ei_008": -1,
+        "ipip_ei_009": 1,
+        "ipip_ei_010": 1
+      },
+      "rawMin": 1,
+      "rawMax": 5
+    },
+    {
+      "key": "empathy_sum",
+      "label": "Empathy (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "ipip_ei_011": 1,
+        "ipip_ei_012": 1,
+        "ipip_ei_013": 1,
+        "ipip_ei_014": -1,
+        "ipip_ei_015": -1,
+        "ipip_ei_016": 1,
+        "ipip_ei_017": -1,
+        "ipip_ei_018": -1,
+        "ipip_ei_019": -1,
+        "ipip_ei_020": 1
+      },
+      "rawMin": 10,
+      "rawMax": 50
+    },
+    {
+      "key": "empathy_mean",
+      "label": "Empathy (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "ipip_ei_011": 1,
+        "ipip_ei_012": 1,
+        "ipip_ei_013": 1,
+        "ipip_ei_014": -1,
+        "ipip_ei_015": -1,
+        "ipip_ei_016": 1,
+        "ipip_ei_017": -1,
+        "ipip_ei_018": -1,
+        "ipip_ei_019": -1,
+        "ipip_ei_020": 1
+      },
+      "rawMin": 1,
+      "rawMax": 5
+    },
+    {
+      "key": "attention_to_emotions_sum",
+      "label": "Attention to Emotions (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "ipip_ei_021": -1,
+        "ipip_ei_022": 1,
+        "ipip_ei_023": 1,
+        "ipip_ei_024": -1,
+        "ipip_ei_025": 1,
+        "ipip_ei_026": 1,
+        "ipip_ei_027": -1,
+        "ipip_ei_028": -1,
+        "ipip_ei_029": -1,
+        "ipip_ei_030": 1
+      },
+      "rawMin": 10,
+      "rawMax": 50
+    },
+    {
+      "key": "attention_to_emotions_mean",
+      "label": "Attention to Emotions (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "ipip_ei_021": -1,
+        "ipip_ei_022": 1,
+        "ipip_ei_023": 1,
+        "ipip_ei_024": -1,
+        "ipip_ei_025": 1,
+        "ipip_ei_026": 1,
+        "ipip_ei_027": -1,
+        "ipip_ei_028": -1,
+        "ipip_ei_029": -1,
+        "ipip_ei_030": 1
+      },
+      "rawMin": 1,
+      "rawMax": 5
+    },
+    {
+      "key": "responsive_joy_sum",
+      "label": "Responsive Joy (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "ipip_ei_031": 1,
+        "ipip_ei_032": -1,
+        "ipip_ei_033": -1,
+        "ipip_ei_034": -1,
+        "ipip_ei_035": 1,
+        "ipip_ei_036": 1,
+        "ipip_ei_037": 1,
+        "ipip_ei_038": 1,
+        "ipip_ei_039": -1,
+        "ipip_ei_040": 1
+      },
+      "rawMin": 10,
+      "rawMax": 50
+    },
+    {
+      "key": "responsive_joy_mean",
+      "label": "Responsive Joy (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "ipip_ei_031": 1,
+        "ipip_ei_032": -1,
+        "ipip_ei_033": -1,
+        "ipip_ei_034": -1,
+        "ipip_ei_035": 1,
+        "ipip_ei_036": 1,
+        "ipip_ei_037": 1,
+        "ipip_ei_038": 1,
+        "ipip_ei_039": -1,
+        "ipip_ei_040": 1
+      },
+      "rawMin": 1,
+      "rawMax": 5
+    },
+    {
+      "key": "emotionbased_decisionmaking_sum",
+      "label": "Emotion-based Decision-making (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "ipip_ei_041": 1,
+        "ipip_ei_042": 1,
+        "ipip_ei_043": -1,
+        "ipip_ei_044": -1,
+        "ipip_ei_045": 1,
+        "ipip_ei_046": 1,
+        "ipip_ei_047": -1,
+        "ipip_ei_048": 1,
+        "ipip_ei_049": -1
+      },
+      "rawMin": 9,
+      "rawMax": 45
+    },
+    {
+      "key": "emotionbased_decisionmaking_mean",
+      "label": "Emotion-based Decision-making (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "ipip_ei_041": 1,
+        "ipip_ei_042": 1,
+        "ipip_ei_043": -1,
+        "ipip_ei_044": -1,
+        "ipip_ei_045": 1,
+        "ipip_ei_046": 1,
+        "ipip_ei_047": -1,
+        "ipip_ei_048": 1,
+        "ipip_ei_049": -1
+      },
+      "rawMin": 1,
+      "rawMax": 5
+    },
+    {
+      "key": "negative_expressivity_sum",
+      "label": "Negative Expressivity (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "ipip_ei_050": 1,
+        "ipip_ei_051": -1,
+        "ipip_ei_052": -1,
+        "ipip_ei_053": -1,
+        "ipip_ei_054": -1,
+        "ipip_ei_055": 1,
+        "ipip_ei_056": 1,
+        "ipip_ei_057": 1,
+        "ipip_ei_058": 1,
+        "ipip_ei_059": -1
+      },
+      "rawMin": 10,
+      "rawMax": 50
+    },
+    {
+      "key": "negative_expressivity_mean",
+      "label": "Negative Expressivity (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "ipip_ei_050": 1,
+        "ipip_ei_051": -1,
+        "ipip_ei_052": -1,
+        "ipip_ei_053": -1,
+        "ipip_ei_054": -1,
+        "ipip_ei_055": 1,
+        "ipip_ei_056": 1,
+        "ipip_ei_057": 1,
+        "ipip_ei_058": 1,
+        "ipip_ei_059": -1
+      },
+      "rawMin": 1,
+      "rawMax": 5
+    },
+    {
+      "key": "positive_expressivity_sum",
+      "label": "Positive Expressivity (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "ipip_ei_060": 1,
+        "ipip_ei_061": 1,
+        "ipip_ei_062": -1,
+        "ipip_ei_063": -1,
+        "ipip_ei_064": 1,
+        "ipip_ei_065": -1,
+        "ipip_ei_066": 1,
+        "ipip_ei_067": 1,
+        "ipip_ei_068": 1
+      },
+      "rawMin": 9,
+      "rawMax": 45
+    },
+    {
+      "key": "positive_expressivity_mean",
+      "label": "Positive Expressivity (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "ipip_ei_060": 1,
+        "ipip_ei_061": 1,
+        "ipip_ei_062": -1,
+        "ipip_ei_063": -1,
+        "ipip_ei_064": 1,
+        "ipip_ei_065": -1,
+        "ipip_ei_066": 1,
+        "ipip_ei_067": 1,
+        "ipip_ei_068": 1
+      },
+      "rawMin": 1,
+      "rawMax": 5
+    }
+  ]
+}

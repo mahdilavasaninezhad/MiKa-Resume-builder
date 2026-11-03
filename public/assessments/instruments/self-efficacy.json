@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "id": "GSE",
+  "title": "General Self-Efficacy Scale",
+  "instruction": "Please indicate your level of agreement with each of the following statements.",
+  "source": {
+    "provider": "OpenScales",
+    "sourceName": "General Self-Efficacy Scale",
+    "sourceUrl": "http://userpage.fu-berlin.de/~health/selfscal.htm",
+    "license": "CC BY 4.0",
+    "citation": "Schwarzer, R., & Jerusalem, M. (1995). Generalized Self-Efficacy scale. In J. Weinman, S. Wright, & M. Johnston (Eds.), Measures in health psychology: A user's portfolio. Causal and control beliefs (pp. 35–37). Windsor, UK: NFER-NELSON.",
+    "attribution": "OpenScales encoding; underlying instrument license retained.",
+    "version": "1.0",
+    "syncedAt": "2026-11-02T18:44:12.196Z"
+  },
+  "responseScale": {
+    "min": 1,
+    "max": 4,
+    "options": [
+      {
+        "value": 1,
+        "label": "not at all true"
+      },
+      {
+        "value": 2,
+        "label": "barely true"
+      },
+      {
+        "value": 3,
+        "label": "moderately true"
+      },
+      {
+        "value": 4,
+        "label": "exactly true"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "gse1",
+      "prompt": "I can always manage to solve difficult problems if I try hard enough.",
+      "options": [
+        {
+          "value": 1,
+          "label": "not at all true"
+        },
+        {
+          "value": 2,
+          "label": "barely true"
+        },
+        {
+          "value": 3,
+          "label": "moderately true"
+        },
+        {
+          "value": 4,
+          "label": "exactly true"
+        }
+      ]
+    },
+    {
+      "id": "gse2",
+      "prompt": "If someone opposes me, I can find the ways and means to get what I want.",
+      "options": [
+        {
+          "value": 1,
+          "label": "not at all true"
+        },
+        {
+          "value": 2,
+          "label": "barely true"
+        },
+        {
+          "value": 3,
+          "label": "moderately true"
+        },
+        {
+          "value": 4,
+          "label": "exactly true"
+        }
+      ]
+    },
+    {
+      "id": "gse3",
+      "prompt": "I am certain that I can accomplish my goals.",
+      "options": [
+        {
+          "value": 1,
+          "label": "not at all true"
+        },
+        {
+          "value": 2,
+          "label": "barely true"
+        },
+        {
+          "value": 3,
+          "label": "moderately true"
+        },
+        {
+          "value": 4,
+          "label": "exactly true"
+        }
+      ]
+    },
+    {
+      "id": "gse4",
+      "prompt": "I am confident that I could deal efficiently with unexpected events.",
+      "options": [
+        {
+          "value": 1,
+          "label": "not at all true"
+        },
+        {
+          "value": 2,
+          "label": "barely true"
+        },
+        {
+          "value": 3,
+          "label": "moderately true"
+        },
+        {
+          "value": 4,
+          "label": "exactly true"
+        }
+      ]
+    },
+    {
+      "id": "gse5",
+      "prompt": "Thanks to my resourcefulness, I can handle unforeseen situations.",
+      "options": [
+        {
+          "value": 1,
+          "label": "not at all true"
+        },
+        {
+          "value": 2,
+          "label": "barely true"
+        },
+        {
+          "value": 3,
+          "label": "moderately true"
+        },
+        {
+          "value": 4,
+          "label": "exactly true"
+        }
+      ]
+    },
+    {
+      "id": "gse6",
+      "prompt": "I can solve most problems if I invest the necessary effort.",
+      "options": [
+        {
+          "value": 1,
+          "label": "not at all true"
+        },
+        {
+          "value": 2,
+          "label": "barely true"
+        },
+        {
+          "value": 3,
+          "label": "moderately true"
+        },
+        {
+          "value": 4,
+          "label": "exactly true"
+        }
+      ]
+    },
+    {
+      "id": "gse7",
+      "prompt": "I can remain calm when facing difficulties because I can rely on my coping abilities.",
+      "options": [
+        {
+          "value": 1,
+          "label": "not at all true"
+        },
+        {
+          "value": 2,
+          "label": "barely true"
+        },
+        {
+          "value": 3,
+          "label": "moderately true"
+        },
+        {
+          "value": 4,
+          "label": "exactly true"
+        }
+      ]
+    },
+    {
+      "id": "gse8",
+      "prompt": "When I am confronted with a problem, I can find several solutions.",
+      "options": [
+        {
+          "value": 1,
+          "label": "not at all true"
+        },
+        {
+          "value": 2,
+          "label": "barely true"
+        },
+        {
+          "value": 3,
+          "label": "moderately true"
+        },
+        {
+          "value": 4,
+          "label": "exactly true"
+        }
+      ]
+    },
+    {
+      "id": "gse9",
+      "prompt": "If I am in trouble, I can think of a good solution.",
+      "options": [
+        {
+          "value": 1,
+          "label": "not at all true"
+        },
+        {
+          "value": 2,
+          "label": "barely true"
+        },
+        {
+          "value": 3,
+          "label": "moderately true"
+        },
+        {
+          "value": 4,
+          "label": "exactly true"
+        }
+      ]
+    },
+    {
+      "id": "gse10",
+      "prompt": "I can handle whatever comes my way.",
+      "options": [
+        {
+          "value": 1,
+          "label": "not at all true"
+        },
+        {
+          "value": 2,
+          "label": "barely true"
+        },
+        {
+          "value": 3,
+          "label": "moderately true"
+        },
+        {
+          "value": 4,
+          "label": "exactly true"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "key": "self_efficacy",
+      "label": "General Self-Efficacy",
+      "method": "sum",
+      "itemWeights": {
+        "gse1": 1,
+        "gse2": 1,
+        "gse3": 1,
+        "gse4": 1,
+        "gse5": 1,
+        "gse6": 1,
+        "gse7": 1,
+        "gse8": 1,
+        "gse9": 1,
+        "gse10": 1
+      },
+      "rawMin": 10,
+      "rawMax": 40,
+      "description": "Sum of all 10 items. Range 10–40; higher = greater general self-efficacy. No recoding required."
+    }
+  ]
+}

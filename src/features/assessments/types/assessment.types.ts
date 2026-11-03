@@ -1,23 +1,40 @@
 import type { LucideIcon } from "lucide-react";
 
-export type AssessmentAccess = "free" | "premium";
+export type AssessmentTier = "free" | "premium";
 
 export type AssessmentSourceKind =
-  | "openscales"
-  | "riasec"
+  | "vendored"
   | "local";
 
-export type AssessmentResultMode =
+export type AssessmentResultKind =
+  | "scale"
   | "profile"
-  | "single"
-  | "ability"
   | "riasec"
+  | "type16"
   | "disc"
-  | "type16";
+  | "ability";
 
-export interface AssessmentMetricDefinition {
-  keys: string[];
-  label: string;
+export type AssessmentScoreMethod =
+  | "mean"
+  | "sum";
+
+export interface AssessmentCatalogItem {
+  id: string;
+  title: string;
+  eyebrow: string;
+  description: string;
+  tier: AssessmentTier;
+  duration: string;
+  itemCountLabel: string;
+  icon: LucideIcon;
+  tags: string[];
+  sourceKind: AssessmentSourceKind;
+  sourceLabel: string;
+  licenseLabel: string;
+  resultKind: AssessmentResultKind;
+  instrumentPath?: string;
+  note?: string;
+  preferredMetricKeys?: string[];
 }
 
 export interface AssessmentOption {
@@ -33,55 +50,63 @@ export interface AssessmentQuestion {
   options: AssessmentOption[];
 }
 
-export interface AssessmentScoringRule {
-  key: string;
-  label: string;
-  method: string;
-  items?: string[] | Record<string, number>;
-  itemCoding?: Record<string, number>;
-  scores?: string[];
+export interface VendoredInstrumentSource {
+  provider: string;
+  sourceName: string;
+  sourceUrl: string;
+  license: string;
+  citation?: string;
+  attribution?: string;
+  version?: string;
+  syncedAt?: string;
 }
 
-export interface AssessmentDefinition {
+export interface VendoredResponseScale {
+  min: number;
+  max: number;
+
+  options: Array<{
+    value: number;
+    label: string;
+  }>;
+}
+
+export interface VendoredScaleDefinition {
+  key: string;
+  label: string;
+  method: AssessmentScoreMethod;
+  itemWeights: Record<string, number>;
+  rawMin?: number;
+  rawMax?: number;
+  description?: string;
+}
+
+export interface VendoredInstrument {
+  schemaVersion: 1;
   id: string;
   title: string;
-  eyebrow: string;
-  description: string;
-  access: AssessmentAccess;
-  duration: string;
-  itemCountLabel: string;
-  icon: LucideIcon;
-  tags: string[];
-  sourceLabel: string;
-  sourceKind: AssessmentSourceKind;
-  license: string;
-  resultMode: AssessmentResultMode;
-  sourceUrls?: string[];
-  preferredLanguage?: string;
-  metricDefinitions?: AssessmentMetricDefinition[];
-  note?: string;
-  citation?: string;
-  localQuestions?: AssessmentQuestion[];
+  instruction?: string;
+  source: VendoredInstrumentSource;
+  responseScale: VendoredResponseScale;
+  questions: AssessmentQuestion[];
+  scales: VendoredScaleDefinition[];
 }
 
 export interface LoadedAssessment {
-  definition: AssessmentDefinition;
-  questions: AssessmentQuestion[];
-  scoring: AssessmentScoringRule[];
-  scaleMin: number;
-  scaleMax: number;
-  instruction?: string;
-  sourceUrl?: string;
-  citation?: string;
+  definition: AssessmentCatalogItem;
+  instrument: VendoredInstrument;
 }
 
-export type AssessmentAnswers = Record<string, number>;
+export type AssessmentAnswers =
+  Record<string, number>;
 
 export interface AssessmentMetric {
   key: string;
   label: string;
-  value: number;
+  displayValue: string;
+  normalizedValue: number;
   rawValue?: number;
+  description?: string;
 }
 
 export interface AssessmentResult {
@@ -90,4 +115,5 @@ export interface AssessmentResult {
   summary: string;
   insight: string;
   metrics: AssessmentMetric[];
+  sourceNote?: string;
 }

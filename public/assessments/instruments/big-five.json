@@ -1,0 +1,1546 @@
+{
+  "schemaVersion": 1,
+  "id": "IPIP-Big5-50",
+  "title": "IPIP Big Five 50-Item Personality Markers",
+  "instruction": "How Accurately Can You Describe Yourself? Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age. So that you can describe yourself in an honest manner, your responses will be kept in absolute confidence. Indicate the accuracy of the item as it applies to you, using the following rating scale:",
+  "source": {
+    "provider": "OpenScales",
+    "sourceName": "IPIP Big Five 50-Item Personality Markers",
+    "sourceUrl": "https://ipip.ori.org/new_ipip-50-item-scale.htm",
+    "license": "Public Domain",
+    "citation": "Goldberg, L. R. (1992). The development of markers for the Big-Five factor structure. Psychological Assessment, 4(1), 26-42. https://doi.org/10.1037/1040-3590.4.1.26",
+    "attribution": "OpenScales encoding; underlying instrument license retained.",
+    "version": "1.0",
+    "syncedAt": "2026-11-02T18:44:09.884Z"
+  },
+  "responseScale": {
+    "min": 1,
+    "max": 5,
+    "options": [
+      {
+        "value": 1,
+        "label": "Very Inaccurate"
+      },
+      {
+        "value": 2,
+        "label": "Moderately Inaccurate"
+      },
+      {
+        "value": 3,
+        "label": "Neither Accurate Nor Inaccurate"
+      },
+      {
+        "value": 4,
+        "label": "Moderately Accurate"
+      },
+      {
+        "value": 5,
+        "label": "Very Accurate"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "i1",
+      "prompt": "Am the life of the party.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i2",
+      "prompt": "Feel little concern for others.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i3",
+      "prompt": "Am always prepared.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i4",
+      "prompt": "Get stressed out easily.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i5",
+      "prompt": "Have a rich vocabulary.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i6",
+      "prompt": "Don't talk a lot.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i7",
+      "prompt": "Am interested in people.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i8",
+      "prompt": "Leave my belongings around.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i9",
+      "prompt": "Am relaxed most of the time.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i10",
+      "prompt": "Have difficulty understanding abstract ideas.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i11",
+      "prompt": "Feel comfortable around people.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i12",
+      "prompt": "Insult people.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i13",
+      "prompt": "Pay attention to details.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i14",
+      "prompt": "Worry about things.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i15",
+      "prompt": "Have a vivid imagination.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i16",
+      "prompt": "Keep in the background.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i17",
+      "prompt": "Sympathize with others' feelings.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i18",
+      "prompt": "Make a mess of things.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i19",
+      "prompt": "Seldom feel blue.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i20",
+      "prompt": "Am not interested in abstract ideas.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i21",
+      "prompt": "Start conversations.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i22",
+      "prompt": "Am not interested in other people's problems.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i23",
+      "prompt": "Get chores done right away.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i24",
+      "prompt": "Am easily disturbed.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i25",
+      "prompt": "Have excellent ideas.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i26",
+      "prompt": "Have little to say.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i27",
+      "prompt": "Have a soft heart.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i28",
+      "prompt": "Often forget to put things back in their proper place.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i29",
+      "prompt": "Get upset easily.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i30",
+      "prompt": "Do not have a good imagination.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i31",
+      "prompt": "Talk to a lot of different people at parties.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i32",
+      "prompt": "Am not really interested in others.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i33",
+      "prompt": "Like order.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i34",
+      "prompt": "Change my mood a lot.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i35",
+      "prompt": "Am quick to understand things.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i36",
+      "prompt": "Don't like to draw attention to myself.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i37",
+      "prompt": "Take time out for others.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i38",
+      "prompt": "Shirk my duties.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i39",
+      "prompt": "Have frequent mood swings.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i40",
+      "prompt": "Use difficult words.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i41",
+      "prompt": "Don't mind being the center of attention.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i42",
+      "prompt": "Feel others' emotions.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i43",
+      "prompt": "Follow a schedule.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i44",
+      "prompt": "Get irritated easily.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i45",
+      "prompt": "Spend time reflecting on things.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i46",
+      "prompt": "Am quiet around strangers.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i47",
+      "prompt": "Make people feel at ease.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i48",
+      "prompt": "Am exacting in my work.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i49",
+      "prompt": "Often feel blue.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "i50",
+      "prompt": "Am full of ideas.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "key": "extraversion_sum",
+      "label": "Extraversion (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "i1": 1,
+        "i6": -1,
+        "i11": 1,
+        "i16": -1,
+        "i21": 1,
+        "i26": -1,
+        "i31": 1,
+        "i36": -1,
+        "i41": 1,
+        "i46": -1
+      },
+      "rawMin": 10,
+      "rawMax": 50,
+      "description": "Sum of 10 items after reverse coding (range 10-50). Higher scores = greater extraversion."
+    },
+    {
+      "key": "extraversion_mean",
+      "label": "Extraversion (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "i1": 1,
+        "i6": -1,
+        "i11": 1,
+        "i16": -1,
+        "i21": 1,
+        "i26": -1,
+        "i31": 1,
+        "i36": -1,
+        "i41": 1,
+        "i46": -1
+      },
+      "rawMin": 1,
+      "rawMax": 5,
+      "description": "Mean of 10 items after reverse coding (range 1-5). Higher scores = greater extraversion."
+    },
+    {
+      "key": "agreeableness_sum",
+      "label": "Agreeableness (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "i2": -1,
+        "i7": 1,
+        "i12": -1,
+        "i17": 1,
+        "i22": -1,
+        "i27": 1,
+        "i32": -1,
+        "i37": 1,
+        "i42": 1,
+        "i47": 1
+      },
+      "rawMin": 10,
+      "rawMax": 50,
+      "description": "Sum of 10 items after reverse coding (range 10-50). Higher scores = greater agreeableness."
+    },
+    {
+      "key": "agreeableness_mean",
+      "label": "Agreeableness (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "i2": -1,
+        "i7": 1,
+        "i12": -1,
+        "i17": 1,
+        "i22": -1,
+        "i27": 1,
+        "i32": -1,
+        "i37": 1,
+        "i42": 1,
+        "i47": 1
+      },
+      "rawMin": 1,
+      "rawMax": 5,
+      "description": "Mean of 10 items after reverse coding (range 1-5). Higher scores = greater agreeableness."
+    },
+    {
+      "key": "conscientiousness_sum",
+      "label": "Conscientiousness (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "i3": 1,
+        "i8": -1,
+        "i13": 1,
+        "i18": -1,
+        "i23": 1,
+        "i28": -1,
+        "i33": 1,
+        "i38": -1,
+        "i43": 1,
+        "i48": 1
+      },
+      "rawMin": 10,
+      "rawMax": 50,
+      "description": "Sum of 10 items after reverse coding (range 10-50). Higher scores = greater conscientiousness."
+    },
+    {
+      "key": "conscientiousness_mean",
+      "label": "Conscientiousness (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "i3": 1,
+        "i8": -1,
+        "i13": 1,
+        "i18": -1,
+        "i23": 1,
+        "i28": -1,
+        "i33": 1,
+        "i38": -1,
+        "i43": 1,
+        "i48": 1
+      },
+      "rawMin": 1,
+      "rawMax": 5,
+      "description": "Mean of 10 items after reverse coding (range 1-5). Higher scores = greater conscientiousness."
+    },
+    {
+      "key": "emotional_stability_sum",
+      "label": "Emotional Stability (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "i4": -1,
+        "i9": 1,
+        "i14": -1,
+        "i19": 1,
+        "i24": -1,
+        "i29": -1,
+        "i34": -1,
+        "i39": -1,
+        "i44": -1,
+        "i49": -1
+      },
+      "rawMin": 10,
+      "rawMax": 50,
+      "description": "Sum of 10 items after reverse coding (range 10-50). Higher scores = greater emotional stability."
+    },
+    {
+      "key": "emotional_stability_mean",
+      "label": "Emotional Stability (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "i4": -1,
+        "i9": 1,
+        "i14": -1,
+        "i19": 1,
+        "i24": -1,
+        "i29": -1,
+        "i34": -1,
+        "i39": -1,
+        "i44": -1,
+        "i49": -1
+      },
+      "rawMin": 1,
+      "rawMax": 5,
+      "description": "Mean of 10 items after reverse coding (range 1-5). Higher scores = greater emotional stability."
+    },
+    {
+      "key": "intellect_sum",
+      "label": "Intellect/Imagination (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "i5": 1,
+        "i10": -1,
+        "i15": 1,
+        "i20": -1,
+        "i25": 1,
+        "i30": -1,
+        "i35": 1,
+        "i40": 1,
+        "i45": 1,
+        "i50": 1
+      },
+      "rawMin": 10,
+      "rawMax": 50,
+      "description": "Sum of 10 items after reverse coding (range 10-50). Higher scores = greater intellect/imagination."
+    },
+    {
+      "key": "intellect_mean",
+      "label": "Intellect/Imagination (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "i5": 1,
+        "i10": -1,
+        "i15": 1,
+        "i20": -1,
+        "i25": 1,
+        "i30": -1,
+        "i35": 1,
+        "i40": 1,
+        "i45": 1,
+        "i50": 1
+      },
+      "rawMin": 1,
+      "rawMax": 5,
+      "description": "Mean of 10 items after reverse coding (range 1-5). Higher scores = greater intellect/imagination."
+    }
+  ]
+}

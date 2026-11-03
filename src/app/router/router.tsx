@@ -54,7 +54,8 @@ import {
 export const router =
   createHashRouter([
     {
-      path: "/login",
+      path:
+        "/login",
 
       element:
         <LoginPage />,

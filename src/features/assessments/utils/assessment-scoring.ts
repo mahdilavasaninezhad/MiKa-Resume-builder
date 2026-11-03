@@ -2,16 +2,21 @@ import type {
   AssessmentAnswers,
   AssessmentMetric,
   AssessmentResult,
-  AssessmentScoringRule,
   LoadedAssessment,
+  VendoredScaleDefinition,
 } from "../types/assessment.types";
 
-interface ComputedScore {
+interface ComputedScale {
   key: string;
   label: string;
+  method:
+    | "mean"
+    | "sum";
   raw: number;
+  rawMin: number;
+  rawMax: number;
   normalized: number;
-  method: string;
+  description?: string;
 }
 
 export function buildAssessmentResult(
@@ -23,10 +28,10 @@ export function buildAssessmentResult(
 ): AssessmentResult {
   switch (
     assessment.definition
-      .resultMode
+      .resultKind
   ) {
-    case "ability":
-      return buildAbilityResult(
+    case "type16":
+      return buildType16Result(
         assessment,
         answers,
       );
@@ -37,8 +42,8 @@ export function buildAssessmentResult(
         answers,
       );
 
-    case "type16":
-      return buildType16Result(
+    case "ability":
+      return buildAbilityResult(
         assessment,
         answers,
       );
@@ -49,7 +54,7 @@ export function buildAssessmentResult(
         answers,
       );
 
-    case "single":
+    case "scale":
       return buildSingleScaleResult(
         assessment,
         answers,
@@ -73,106 +78,31 @@ function buildProfileResult(
     AssessmentAnswers,
 ): AssessmentResult {
   const computed =
-    computeScales(
+    computeAllScales(
       assessment,
       answers,
     );
 
-  const configured =
-    assessment.definition
-      .metricDefinitions;
-
-  let selected:
-    ComputedScore[] =
-    [];
-
-  if (
-    configured?.length
-  ) {
-    selected =
-      configured
-        .map(
-          (
-            metricDefinition,
-          ) => {
-            const score =
-              metricDefinition
-                .keys
-                .map(
-                  (
-                    key,
-                  ) =>
-                    computed.get(
-                      key,
-                    ),
-                )
-                .find(
-                  Boolean,
-                );
-
-            if (!score) {
-              return null;
-            }
-
-            return {
-              ...score,
-
-              label:
-                metricDefinition
-                  .label,
-            };
-          },
-        )
-        .filter(
-          (
-            score,
-          ): score is ComputedScore =>
-            score !==
-            null,
-        );
-  }
-
-  if (
-    !selected.length
-  ) {
-    selected =
-      Array.from(
-        computed.values(),
-      ).filter(
-        (
-          score,
-        ) =>
-          score.method.includes(
-            "mean",
-          ),
-      );
-  }
-
-  if (
-    !selected.length
-  ) {
-    selected =
-      Array.from(
-        computed.values(),
-      );
-  }
+  const selected =
+    selectPreferredScales(
+      assessment,
+      computed,
+    );
 
   const metrics =
-    selected
-      .map(
-        toMetric,
-      )
-      .sort(
-        (
-          a,
-          b,
-        ) =>
-          b.value -
-          a.value,
-      );
+    selected.map(
+      toMetric,
+    );
 
   const strongest =
-    metrics[0];
+    [...metrics].sort(
+      (
+        a,
+        b,
+      ) =>
+        b.normalizedValue -
+        a.normalizedValue,
+    )[0];
 
   return {
     headline:
@@ -181,17 +111,23 @@ function buildProfileResult(
         : "Profile complete",
 
     badge:
-      `${assessment.definition.title} result`,
+      assessment.definition
+        .title,
 
     summary:
       strongest
-        ? `Your highest score in this profile is ${strongest.label}. Read the full pattern rather than treating one dimension as a fixed identity.`
-        : "Your responses were scored successfully.",
+        ? `The strongest relative signal in this profile is ${strongest.label}. The displayed score remains on the instrument's original scoring scale.`
+        : "Your responses were scored using the instrument's published scoring rules.",
 
     insight:
-      "Use the profile as a structured signal for reflection, career conversations and development planning. Trait scores describe tendencies, not destiny or capability.",
+      "Read the full pattern rather than treating one dimension as a fixed identity. Bars are only a visual normalization of the instrument's valid raw range; the number beside each bar is the actual instrument score.",
 
     metrics,
+
+    sourceNote:
+      buildSourceNote(
+        assessment,
+      ),
   };
 }
 
@@ -203,65 +139,62 @@ function buildSingleScaleResult(
     AssessmentAnswers,
 ): AssessmentResult {
   const computed =
-    Array.from(
-      computeScales(
-        assessment,
-        answers,
-      ).values(),
+    computeAllScales(
+      assessment,
+      answers,
     );
 
-  const preferred =
-    computed.find(
-      (
-        score,
-      ) =>
-        score.method.includes(
-          "mean",
-        ),
-    ) ??
+  const selected =
+    selectPreferredScales(
+      assessment,
+      computed,
+    );
+
+  const primary =
+    selected[0] ??
     computed[0];
 
-  if (!preferred) {
+  if (!primary) {
     return emptyResult(
-      assessment.definition
-        .title,
+      assessment,
     );
   }
 
-  const value =
-    Math.round(
-      preferred.normalized,
-    );
-
-  const band =
-    value >= 75
-      ? "Strong signal"
-      : value >=
-          60
-        ? "Above midpoint"
-        : value >=
-            40
-          ? "Moderate signal"
-          : "Lower signal";
-
   return {
     headline:
-      `${value}%`,
+      formatRawScore(
+        primary,
+      ),
 
     badge:
-      band,
+      primary.label,
 
     summary:
-      `${preferred.label} is ${band.toLowerCase()} in this self-report snapshot.`,
+      primary.description
+        ? primary.description
+        : `Your ${primary.label.toLowerCase()} score is shown on the instrument's original ${formatRange(
+            primary.rawMin,
+            primary.rawMax,
+          )} scale.`,
 
     insight:
-      "Interpret this score relative to your own behavior and context. It is not a clinical diagnosis, percentile rank or hiring decision.",
+      "This is a self-report score, not a percentile unless the original instrument explicitly provides population norms. Pulse does not invent normative rankings.",
 
-    metrics: [
-      toMetric(
-        preferred,
+    metrics:
+      selected.length
+        ? selected.map(
+            toMetric,
+          )
+        : [
+            toMetric(
+              primary,
+            ),
+          ],
+
+    sourceNote:
+      buildSourceNote(
+        assessment,
       ),
-    ],
   };
 }
 
@@ -272,6 +205,12 @@ function buildRiasecResult(
   answers:
     AssessmentAnswers,
 ): AssessmentResult {
+  const computed =
+    computeAllScales(
+      assessment,
+      answers,
+    );
+
   const orderedKeys = [
     "R",
     "I",
@@ -281,185 +220,74 @@ function buildRiasecResult(
     "C",
   ];
 
-  const alpha:
-    Record<
-      string,
-      number
-    > = {
-      R: 1,
-      I: 1,
-      A: 1,
-      S: 1,
-      E: 1,
-      C: 1,
-    };
-
-  assessment.scoring.forEach(
-    (
-      rule,
-    ) => {
-      if (
-        !orderedKeys.includes(
-          rule.key,
-        ) ||
-        !rule.items
-      ) {
-        return;
-      }
-
-      const entries =
-        Array.isArray(
-          rule.items,
-        )
-          ? rule.items.map(
-              (
-                itemId,
-              ) =>
-                [
-                  itemId,
-
-                  rule.itemCoding?.[
-                    itemId
-                  ] ??
-                    1,
-                ] as const,
-            )
-          : Object.entries(
-              rule.items,
-            );
-
-      entries.forEach(
-        ([
-          itemId,
-          coding,
-        ]) => {
-          const response =
-            answers[
-              itemId
-            ];
-
-          if (
-            response ===
-              undefined ||
-            coding === 0
-          ) {
-            return;
-          }
-
-          const coded =
-            coding <
-            0
-              ? assessment.scaleMin +
-                assessment.scaleMax -
-                response
-              : response;
-
-          const evidence =
-            normalizeToUnit(
-              coded,
-
-              assessment.scaleMin,
-
-              assessment.scaleMax,
-            );
-
-          alpha[
-            rule.key
-          ] += evidence;
-        },
-      );
-    },
-  );
-
-  const totalAlpha =
-    Math.max(
-      1,
-
-      orderedKeys.reduce(
+  const byKey =
+    new Map(
+      computed.map(
         (
-          sum,
-          key,
-        ) =>
-          sum +
-          alpha[
-            key
-          ],
-
-        0,
+          score,
+        ) => [
+          score.key.toUpperCase(),
+          score,
+        ],
       ),
     );
 
-  const metrics:
-    AssessmentMetric[] =
+  const selected =
     orderedKeys
       .map(
         (
           key,
-        ) => ({
-          key,
-
-          label:
-            riasecLabel(
-              key,
-            ),
-
-          value:
-            Math.round(
-              (alpha[
-                key
-              ] /
-                totalAlpha) *
-                100,
-            ),
-
-          rawValue:
-            Number(
-              alpha[
-                key
-              ].toFixed(
-                2,
-              ),
-            ),
-        }),
-      )
-      .sort(
-        (
-          a,
-          b,
         ) =>
-          b.value -
-          a.value,
+          byKey.get(
+            key,
+          ),
+      )
+      .filter(
+        (
+          score,
+        ): score is ComputedScale =>
+          Boolean(
+            score,
+          ),
       );
 
+  const ranked =
+    [...selected].sort(
+      (
+        a,
+        b,
+      ) =>
+        b.raw -
+        a.raw,
+    );
+
   const code =
-    metrics
+    ranked
       .slice(
         0,
         3,
       )
       .map(
         (
-          metric,
+          score,
         ) =>
-          metric.key,
+          score.key.toUpperCase(),
       )
       .join("");
 
   const topNames =
-    metrics
+    ranked
       .slice(
         0,
         3,
       )
       .map(
         (
-          metric,
+          score,
         ) =>
-          metric.label,
+          score.label,
       )
-      .join(
-        ", ",
-      );
+      .join(", ");
 
   return {
     headline:
@@ -470,12 +298,22 @@ function buildRiasecResult(
       "Top-three interest code",
 
     summary:
-      `Your strongest interest themes are ${topNames}.`,
+      topNames
+        ? `Your strongest work-interest themes are ${topNames}.`
+        : "Your RIASEC interest profile is complete.",
 
     insight:
-      "RIASEC measures what kinds of work activities you currently find interesting. It does not measure intelligence, skill level or job eligibility.",
+      "RIASEC describes preferred kinds of work activity. It does not measure intelligence, skill level or job eligibility. Use the top themes to explore environments and roles that contain more of the activities you actually enjoy.",
 
-    metrics,
+    metrics:
+      selected.map(
+        toMetric,
+      ),
+
+    sourceNote:
+      buildSourceNote(
+        assessment,
+      ),
   };
 }
 
@@ -501,56 +339,53 @@ function buildType16Result(
       P: 0,
     };
 
-  assessment.questions.forEach(
-    (
-      question,
-    ) => {
-      const answerValue =
-        answers[
-          question.id
-        ];
+  assessment.instrument
+    .questions
+    .forEach(
+      (
+        question,
+      ) => {
+        const answer =
+          answers[
+            question.id
+          ];
 
-      if (
-        answerValue ===
-        undefined
-      ) {
-        return;
-      }
+        if (
+          answer ===
+          undefined
+        ) {
+          return;
+        }
 
-      const option =
-        question.options.find(
-          (
-            candidate,
-          ) =>
-            candidate.value ===
-            answerValue,
-        );
+        const option =
+          question.options.find(
+            (
+              item,
+            ) =>
+              item.value ===
+              answer,
+          );
 
-      if (
-        !option?.scores
-      ) {
-        return;
-      }
-
-      Object.entries(
-        option.scores,
-      ).forEach(
-        ([
-          key,
-          value,
-        ]) => {
-          totals[
-            key
-          ] =
-            (totals[
+        Object.entries(
+          option?.scores ??
+            {},
+        ).forEach(
+          ([
+            key,
+            value,
+          ]) => {
+            totals[
               key
-            ] ??
-              0) +
-            value;
-        },
-      );
-    },
-  );
+            ] =
+              (totals[
+                key
+              ] ??
+                0) +
+              value;
+          },
+        );
+      },
+    );
 
   const pairs = [
     [
@@ -604,12 +439,12 @@ function buildType16Result(
         right,
         label,
       ]) => {
-        const leftScore =
+        const leftValue =
           totals[
             left
           ];
 
-        const rightScore =
+        const rightValue =
           totals[
             right
           ];
@@ -617,16 +452,21 @@ function buildType16Result(
         const total =
           Math.max(
             1,
-
-            leftScore +
-              rightScore,
+            leftValue +
+              rightValue,
           );
 
         const winner =
-          leftScore >=
-          rightScore
+          leftValue >=
+          rightValue
             ? left
             : right;
+
+        const winnerValue =
+          Math.max(
+            leftValue,
+            rightValue,
+          );
 
         return {
           key:
@@ -635,16 +475,16 @@ function buildType16Result(
           label:
             `${label} · ${winner}`,
 
-          value:
-            Math.round(
-              (Math.max(
-                leftScore,
+          displayValue:
+            `${winnerValue} / ${total}`,
 
-                rightScore,
-              ) /
-                total) *
-                100,
-            ),
+          rawValue:
+            winnerValue,
+
+          normalizedValue:
+            (winnerValue /
+              total) *
+            100,
         };
       },
     );
@@ -654,15 +494,18 @@ function buildType16Result(
       code,
 
     badge:
-      "Exploratory 16-type preference code",
+      "Exploratory preference code",
 
     summary:
-      "This code summarizes four preference pairs from a short set of original Pulse questions. It is not the official MBTI® assessment and should not be treated as a fixed identity.",
+      "This code summarizes four preference pairs from Pulse-original questions. It is not the official MBTI® assessment and should not be treated as a fixed personality identity.",
 
     insight:
-      "Use the result to compare communication habits, decision style and preferred work rhythm. Big Five remains the stronger trait-based instrument in this assessment lab.",
+      "Use the result as a conversation starter about communication, decisions and work rhythm. For trait-based assessment, the Big Five profile in this lab is the stronger scientific option.",
 
     metrics,
+
+    sourceNote:
+      "Pulse original exploratory item set.",
   };
 }
 
@@ -684,56 +527,66 @@ function buildDiscResult(
       C: 0,
     };
 
-  assessment.questions.forEach(
-    (
-      question,
-    ) => {
-      const answerValue =
-        answers[
-          question.id
-        ];
+  assessment.instrument
+    .questions
+    .forEach(
+      (
+        question,
+      ) => {
+        const answer =
+          answers[
+            question.id
+          ];
 
-      if (
-        answerValue ===
-        undefined
-      ) {
-        return;
-      }
+        if (
+          answer ===
+          undefined
+        ) {
+          return;
+        }
 
-      const option =
-        question.options.find(
-          (
-            candidate,
-          ) =>
-            candidate.value ===
-            answerValue,
-        );
+        const option =
+          question.options.find(
+            (
+              item,
+            ) =>
+              item.value ===
+              answer,
+          );
 
-      if (
-        !option?.scores
-      ) {
-        return;
-      }
-
-      Object.entries(
-        option.scores,
-      ).forEach(
-        ([
-          key,
-          value,
-        ]) => {
-          totals[
-            key
-          ] =
-            (totals[
+        Object.entries(
+          option?.scores ??
+            {},
+        ).forEach(
+          ([
+            key,
+            value,
+          ]) => {
+            totals[
               key
-            ] ??
-              0) +
-            value;
-        },
-      );
-    },
-  );
+            ] =
+              (totals[
+                key
+              ] ??
+                0) +
+              value;
+          },
+        );
+      },
+    );
+
+  const labels:
+    Record<
+      string,
+      string
+    > = {
+      D: "Drive",
+      I: "Influence",
+      S:
+        "Steadiness",
+      C:
+        "Conscientiousness",
+    };
 
   const total =
     Math.max(
@@ -753,24 +606,8 @@ function buildDiscResult(
       ),
     );
 
-  const labels:
-    Record<
-      string,
-      string
-    > = {
-      D: "Drive",
-
-      I:
-        "Influence",
-
-      S:
-        "Steadiness",
-
-      C:
-        "Conscientiousness",
-    };
-
-  const metrics =
+  const metrics:
+    AssessmentMetric[] =
     Object.entries(
       totals,
     )
@@ -784,17 +621,19 @@ function buildDiscResult(
           label:
             labels[
               key
-            ] ?? key,
+            ] ??
+            key,
 
-          value:
-            Math.round(
-              (raw /
-                total) *
-                100,
-            ),
+          displayValue:
+            `${raw} / ${total}`,
 
           rawValue:
             raw,
+
+          normalizedValue:
+            (raw /
+              total) *
+            100,
         }),
       )
       .sort(
@@ -802,8 +641,8 @@ function buildDiscResult(
           a,
           b,
         ) =>
-          b.value -
-          a.value,
+          b.normalizedValue -
+          a.normalizedValue,
       );
 
   const strongest =
@@ -820,13 +659,16 @@ function buildDiscResult(
 
     summary:
       strongest
-        ? `${strongest.label} is the most visible preference in this short exploratory work-style exercise.`
+        ? `${strongest.label} is the most visible preference in this short work-style exercise.`
         : "Your work-style reflection is complete.",
 
     insight:
-      "This tool is intentionally not treated as a validated DISC instrument. Use it as conversation material for teamwork and communication, not selection or diagnosis.",
+      "This is deliberately not presented as Everything DiSC® or as a validated selection instrument. Use it for team and communication reflection only.",
 
     metrics,
+
+    sourceNote:
+      "Pulse original exploratory item set.",
   };
 }
 
@@ -839,61 +681,62 @@ function buildAbilityResult(
 ): AssessmentResult {
   let correct = 0;
 
-  assessment.questions.forEach(
-    (
-      question,
-    ) => {
-      const answerValue =
-        answers[
-          question.id
-        ];
+  assessment.instrument
+    .questions
+    .forEach(
+      (
+        question,
+      ) => {
+        const answer =
+          answers[
+            question.id
+          ];
 
-      if (
-        answerValue ===
-        undefined
-      ) {
-        return;
-      }
+        if (
+          answer ===
+          undefined
+        ) {
+          return;
+        }
 
-      const selected =
-        question.options.find(
-          (
-            option,
-          ) =>
-            option.value ===
-            answerValue,
-        );
+        const selected =
+          question.options.find(
+            (
+              option,
+            ) =>
+              option.value ===
+              answer,
+          );
 
-      if (
-        selected?.correct
-      ) {
-        correct += 1;
-      }
-    },
-  );
-
-  const total =
-    assessment.questions
-      .length;
-
-  const percentage =
-    Math.round(
-      (correct /
-        Math.max(
-          1,
-          total,
-        )) *
-        100,
+        if (
+          selected?.correct
+        ) {
+          correct +=
+            1;
+        }
+      },
     );
 
+  const total =
+    assessment.instrument
+      .questions.length;
+
+  const accuracy =
+    (correct /
+      Math.max(
+        1,
+        total,
+      )) *
+    100;
+
   const band =
-    percentage >=
+    accuracy >=
     85
       ? "Very strong performance"
-      : percentage >=
+      : accuracy >=
           70
         ? "Strong performance"
-        : percentage >=
+        : accuracy >=
             50
           ? "Developing performance"
           : "More practice needed";
@@ -903,13 +746,13 @@ function buildAbilityResult(
       `${correct} / ${total} correct`,
 
     badge:
-      `${band} · ${percentage}%`,
+      band,
 
     summary:
-      "This percentage reflects accuracy on this original Pulse question set only.",
+      "This result is task accuracy on this original Pulse item set. It is intentionally not converted into an IQ number or a standardized Raven score.",
 
     insight:
-      "Do not convert this result into an IQ number or a Raven score. Standardized cognitive tests require validated item banks, norms and controlled administration.",
+      "Standardized cognitive assessment requires validated item banks, controlled administration and normative data. This lab is useful for practice and reflection, not diagnosis or high-stakes decisions.",
 
     metrics: [
       {
@@ -919,380 +762,339 @@ function buildAbilityResult(
         label:
           "Accuracy",
 
-        value:
-          percentage,
+        displayValue:
+          `${Math.round(
+            accuracy,
+          )}%`,
 
         rawValue:
           correct,
+
+        normalizedValue:
+          accuracy,
       },
     ],
+
+    sourceNote:
+      "Pulse original reasoning items.",
   };
 }
 
-function computeScales(
+function computeAllScales(
   assessment:
     LoadedAssessment,
 
   answers:
     AssessmentAnswers,
-) {
-  const result =
-    new Map<
-      string,
-      ComputedScore
-    >();
-
-  const pending = [
-    ...assessment.scoring,
-  ];
-
-  let guard =
-    pending.length *
-      3 +
-    3;
-
-  while (
-    pending.length &&
-    guard > 0
-  ) {
-    guard -= 1;
-
-    const rule =
-      pending.shift();
-
-    if (!rule) {
-      break;
-    }
-
-    const computed =
-      computeRule(
-        rule,
-
-        assessment,
-
-        answers,
-
-        result,
-      );
-
-    if (!computed) {
-      pending.push(
-        rule,
-      );
-
-      continue;
-    }
-
-    result.set(
-      rule.key,
-
-      computed,
+): ComputedScale[] {
+  return assessment.instrument
+    .scales
+    .map(
+      (
+        scale,
+      ) =>
+        computeScale(
+          assessment,
+          scale,
+          answers,
+        ),
+    )
+    .filter(
+      (
+        score,
+      ): score is ComputedScale =>
+        Boolean(
+          score,
+        ),
     );
-  }
-
-  return result;
 }
 
-function computeRule(
-  rule:
-    AssessmentScoringRule,
-
+function computeScale(
   assessment:
     LoadedAssessment,
 
+  scale:
+    VendoredScaleDefinition,
+
   answers:
     AssessmentAnswers,
+): ComputedScale | null {
+  const min =
+    assessment.instrument
+      .responseScale.min;
 
-  previousScores:
-    Map<
-      string,
-      ComputedScore
-    >,
-): ComputedScore | null {
-  const inputs:
+  const max =
+    assessment.instrument
+      .responseScale.max;
+
+  const values:
     number[] = [];
 
-  if (rule.items) {
-    if (
-      Array.isArray(
-        rule.items,
-      )
-    ) {
-      rule.items.forEach(
-        (
-          itemId,
-        ) => {
-          const response =
-            answers[
-              itemId
-            ];
+  Object.entries(
+    scale.itemWeights,
+  ).forEach(
+    ([
+      itemId,
+      weight,
+    ]) => {
+      const answer =
+        answers[
+          itemId
+        ];
 
-          if (
-            response ===
-            undefined
-          ) {
-            return;
-          }
-
-          const coding =
-            rule.itemCoding?.[
-              itemId
-            ] ??
-            1;
-
-          if (
-            coding ===
-            0
-          ) {
-            return;
-          }
-
-          const coded =
-            coding <
-            0
-              ? assessment.scaleMin +
-                assessment.scaleMax -
-                response
-              : response;
-
-          inputs.push(
-            coded *
-              Math.max(
-                1,
-
-                Math.abs(
-                  coding,
-                ),
-              ),
-          );
-        },
-      );
-    } else {
-      Object.entries(
-        rule.items,
-      ).forEach(
-        ([
-          itemId,
-          coding,
-        ]) => {
-          if (
-            coding ===
-            0
-          ) {
-            return;
-          }
-
-          const response =
-            answers[
-              itemId
-            ];
-
-          if (
-            response ===
-            undefined
-          ) {
-            return;
-          }
-
-          const coded =
-            coding <
-            0
-              ? assessment.scaleMin +
-                assessment.scaleMax -
-                response
-              : response;
-
-          inputs.push(
-            coded *
-              Math.max(
-                1,
-
-                Math.abs(
-                  coding,
-                ),
-              ),
-          );
-        },
-      );
-    }
-  }
-
-  if (
-    rule.scores?.length
-  ) {
-    for (
-      const scoreKey of
-        rule.scores
-    ) {
-      const score =
-        previousScores.get(
-          scoreKey,
-        );
-
-      if (!score) {
-        return null;
+      if (
+        answer ===
+          undefined ||
+        weight ===
+          0
+      ) {
+        return;
       }
 
-      inputs.push(
-        score.raw,
+      const reversed =
+        weight <
+        0;
+
+      const coded =
+        reversed
+          ? min +
+            max -
+            answer
+          : answer;
+
+      const multiplier =
+        Math.max(
+          1,
+
+          Math.abs(
+            weight,
+          ),
+        );
+
+      values.push(
+        coded *
+          multiplier,
       );
-    }
-  }
+    },
+  );
 
   if (
-    !inputs.length
+    !values.length
   ) {
     return null;
   }
 
-  const method =
-    rule.method.toLowerCase();
+  const raw =
+    scale.method ===
+    "mean"
+      ? values.reduce(
+          (
+            sum,
+            value,
+          ) =>
+            sum +
+            value,
 
-  let raw = 0;
+          0,
+        ) /
+        values.length
+      : values.reduce(
+          (
+            sum,
+            value,
+          ) =>
+            sum +
+            value,
 
-  if (
-    method ===
-    "max"
-  ) {
-    raw =
-      Math.max(
-        ...inputs,
-      );
-  } else if (
-    method ===
-    "min"
-  ) {
-    raw =
-      Math.min(
-        ...inputs,
-      );
-  } else if (
-    method.includes(
-      "mean",
-    )
-  ) {
-    raw =
-      inputs.reduce(
-        (
-          sum,
-          value,
-        ) =>
-          sum +
-          value,
+          0,
+        );
 
-        0,
-      ) /
-      inputs.length;
-  } else {
-    raw =
-      inputs.reduce(
-        (
-          sum,
-          value,
-        ) =>
-          sum +
-          value,
+  const defaultMin =
+    scale.method ===
+    "mean"
+      ? min
+      : values.length *
+        min;
 
-        0,
-      );
-  }
+  const defaultMax =
+    scale.method ===
+    "mean"
+      ? max
+      : values.length *
+        max;
 
-  let normalized = 0;
+  const rawMin =
+    scale.rawMin ??
+    defaultMin;
 
-  if (
-    method.includes(
-      "mean",
-    )
-  ) {
-    normalized =
-      normalizeRange(
-        raw,
-
-        assessment.scaleMin,
-
-        assessment.scaleMax,
-      );
-  } else if (
-    method.includes(
-      "correct",
-    )
-  ) {
-    normalized =
-      normalizeRange(
-        raw,
-
-        0,
-
-        inputs.length,
-      );
-  } else if (
-    method ===
-      "max" ||
-    method ===
-      "min"
-  ) {
-    normalized =
-      normalizeRange(
-        raw,
-
-        assessment.scaleMin,
-
-        assessment.scaleMax,
-      );
-  } else {
-    normalized =
-      normalizeRange(
-        raw,
-
-        inputs.length *
-          assessment.scaleMin,
-
-        inputs.length *
-          assessment.scaleMax,
-      );
-  }
+  const rawMax =
+    scale.rawMax ??
+    defaultMax;
 
   return {
     key:
-      rule.key,
+      scale.key,
 
     label:
-      rule.label,
+      scale.label,
+
+    method:
+      scale.method,
 
     raw,
 
-    normalized,
+    rawMin,
 
-    method,
+    rawMax,
+
+    normalized:
+      normalize(
+        raw,
+        rawMin,
+        rawMax,
+      ),
+
+    description:
+      scale.description,
   };
 }
 
-function normalizeToUnit(
-  value: number,
+function selectPreferredScales(
+  assessment:
+    LoadedAssessment,
+
+  computed:
+    ComputedScale[],
+): ComputedScale[] {
+  const preferred =
+    assessment.definition
+      .preferredMetricKeys ??
+    [];
+
+  if (
+    !preferred.length
+  ) {
+    const meanScores =
+      computed.filter(
+        (
+          score,
+        ) =>
+          score.method ===
+          "mean",
+      );
+
+    return meanScores.length
+      ? meanScores
+      : computed;
+  }
+
+  const byKey =
+    new Map(
+      computed.map(
+        (
+          score,
+        ) => [
+          score.key,
+          score,
+        ],
+      ),
+    );
+
+  const selected:
+    ComputedScale[] = [];
+
+  const labels =
+    new Set<string>();
+
+  preferred.forEach(
+    (
+      key,
+    ) => {
+      const score =
+        byKey.get(
+          key,
+        );
+
+      if (
+        !score ||
+        labels.has(
+          score.label,
+        )
+      ) {
+        return;
+      }
+
+      labels.add(
+        score.label,
+      );
+
+      selected.push(
+        score,
+      );
+    },
+  );
+
+  return selected.length
+    ? selected
+    : computed;
+}
+
+function toMetric(
+  score:
+    ComputedScale,
+): AssessmentMetric {
+  return {
+    key:
+      score.key,
+
+    label:
+      score.label,
+
+    displayValue:
+      formatRawScore(
+        score,
+      ),
+
+    rawValue:
+      Number(
+        score.raw.toFixed(
+          2,
+        ),
+      ),
+
+    normalizedValue:
+      score.normalized,
+
+    description:
+      score.description,
+  };
+}
+
+function formatRawScore(
+  score:
+    ComputedScale,
+) {
+  const decimals =
+    score.method ===
+    "mean"
+      ? 2
+      : 0;
+
+  return `${score.raw.toFixed(
+    decimals,
+  )} / ${score.rawMax.toFixed(
+    decimals,
+  )}`;
+}
+
+function formatRange(
   min: number,
   max: number,
 ) {
-  if (
-    max <= min
-  ) {
-    return 0;
-  }
-
-  return Math.max(
-    0,
-
-    Math.min(
-      1,
-
-      (value -
-        min) /
-        (max -
-          min),
-    ),
-  );
+  return `${min}–${max}`;
 }
 
-function normalizeRange(
+function normalize(
   value: number,
   min: number,
   max: number,
@@ -1318,78 +1120,51 @@ function normalizeRange(
   );
 }
 
-function toMetric(
-  score:
-    ComputedScore,
-): AssessmentMetric {
-  return {
-    key:
-      score.key,
-
-    label:
-      score.label,
-
-    value:
-      Math.round(
-        score.normalized,
-      ),
-
-    rawValue:
-      Number(
-        score.raw.toFixed(
-          2,
-        ),
-      ),
-  };
-}
-
-function riasecLabel(
-  key: string,
+function buildSourceNote(
+  assessment:
+    LoadedAssessment,
 ) {
-  const labels:
-    Record<
-      string,
-      string
-    > = {
-      R: "Realistic",
+  const {
+    source,
+  } =
+    assessment.instrument;
 
-      I:
-        "Investigative",
+  const parts = [
+    source.sourceName,
+    source.license,
+    source.citation,
+  ].filter(
+    Boolean,
+  );
 
-      A: "Artistic",
-
-      S: "Social",
-
-      E:
-        "Enterprising",
-
-      C:
-        "Conventional",
-    };
-
-  return (
-    labels[
-      key
-    ] ?? key
+  return parts.join(
+    " · ",
   );
 }
 
 function emptyResult(
-  title: string,
+  assessment:
+    LoadedAssessment,
 ): AssessmentResult {
   return {
     headline:
       "Result ready",
 
     badge:
-      title,
+      assessment.definition
+        .title,
 
     summary:
-      "The assessment was completed successfully.",
+      "The assessment was completed, but no compatible score was produced.",
 
     insight:
-      "The source did not expose a compatible scoring dimension for this version.",
+      "Check the vendored instrument definition and scoring rules before using this result.",
 
     metrics: [],
+
+    sourceNote:
+      buildSourceNote(
+        assessment,
+      ),
   };
 }

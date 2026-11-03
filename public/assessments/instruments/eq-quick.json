@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "id": "IPIP-VIA-Soc",
+  "title": "IPIP Character Strength: Social/Emotional Intelligence",
+  "instruction": "How Accurately Can You Describe Yourself? Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age. So that you can describe yourself in an honest manner, your responses will be kept in absolute confidence. Indicate the accuracy of the item as it applies to you, using the following rating scale:",
+  "source": {
+    "provider": "OpenScales",
+    "sourceName": "IPIP Character Strength: Social/Emotional Intelligence",
+    "sourceUrl": "https://ipip.ori.org/newVIAKey.htm",
+    "license": "Public Domain",
+    "citation": "Peterson, C., & Seligman, M. E. P. (2004). Character Strengths and Virtues: A Handbook and Classification. Oxford University Press. IPIP items: Goldberg et al. (2006). https://ipip.ori.org/newVIAKey.htm",
+    "attribution": "OpenScales encoding; underlying instrument license retained.",
+    "version": "1.0",
+    "syncedAt": "2026-11-02T18:44:10.660Z"
+  },
+  "responseScale": {
+    "min": 1,
+    "max": 5,
+    "options": [
+      {
+        "value": 1,
+        "label": "Very Inaccurate"
+      },
+      {
+        "value": 2,
+        "label": "Moderately Inaccurate"
+      },
+      {
+        "value": 3,
+        "label": "Neither Accurate Nor Inaccurate"
+      },
+      {
+        "value": 4,
+        "label": "Moderately Accurate"
+      },
+      {
+        "value": 5,
+        "label": "Very Accurate"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "ipip_via_084",
+      "prompt": "Am able to fit into any situation.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_via_085",
+      "prompt": "Am good at sensing what others are feeling.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_via_086",
+      "prompt": "Don't know how to handle myself in a new social situation.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_via_087",
+      "prompt": "Get along well with people I have just met.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_via_088",
+      "prompt": "Have the ability to make others feel interesting.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_via_089",
+      "prompt": "Know what makes others tick.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_via_090",
+      "prompt": "Know what to say to make people feel good.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "key": "social_personal_emotional_intelligence_sum",
+      "label": "Social/Emotional Intelligence (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "ipip_via_084": 1,
+        "ipip_via_085": 1,
+        "ipip_via_086": -1,
+        "ipip_via_087": 1,
+        "ipip_via_088": 1,
+        "ipip_via_089": 1,
+        "ipip_via_090": 1
+      },
+      "rawMin": 7,
+      "rawMax": 35,
+      "description": "Mean of 7 items (range 1–5; higher = stronger Social/Emotional Intelligence). Negatively-worded items are reverse-coded."
+    },
+    {
+      "key": "social_personal_emotional_intelligence_mean",
+      "label": "Social/Emotional Intelligence (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "ipip_via_084": 1,
+        "ipip_via_085": 1,
+        "ipip_via_086": -1,
+        "ipip_via_087": 1,
+        "ipip_via_088": 1,
+        "ipip_via_089": 1,
+        "ipip_via_090": 1
+      },
+      "rawMin": 1,
+      "rawMax": 5,
+      "description": "Mean of 7 items (range 1–5; higher = stronger Social/Emotional Intelligence). Negatively-worded items are reverse-coded."
+    }
+  ]
+}

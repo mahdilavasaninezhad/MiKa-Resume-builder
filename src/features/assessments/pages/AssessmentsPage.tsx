@@ -18,36 +18,33 @@ import {
 } from "react";
 
 import {
-  assessmentCatalog,
-} from "../data/assessment.catalog";
-
-import {
   clearAssessmentCache,
   loadAssessment,
-} from "../api/assessment.provider";
+} from "../api/assessment.repository";
+
+import {
+  assessmentCatalog,
+} from "../data/assessment.catalog";
 
 import {
   buildAssessmentResult,
 } from "../utils/assessment-scoring";
 
 import type {
-  AssessmentAccess,
   AssessmentAnswers,
-  AssessmentDefinition,
+  AssessmentCatalogItem,
   AssessmentMetric,
   AssessmentResult,
+  AssessmentTier,
   LoadedAssessment,
 } from "../types/assessment.types";
-
-type AssessmentTab =
-  AssessmentAccess;
 
 export function AssessmentsPage() {
   const [
     activeTab,
     setActiveTab,
   ] =
-    useState<AssessmentTab>(
+    useState<AssessmentTier>(
       "free",
     );
 
@@ -55,7 +52,7 @@ export function AssessmentsPage() {
     activeDefinition,
     setActiveDefinition,
   ] =
-    useState<AssessmentDefinition | null>(
+    useState<AssessmentCatalogItem | null>(
       null,
     );
 
@@ -108,7 +105,7 @@ export function AssessmentsPage() {
           (
             assessment,
           ) =>
-            assessment.access ===
+            assessment.tier ===
             activeTab,
         ),
 
@@ -119,7 +116,7 @@ export function AssessmentsPage() {
 
   async function startAssessment(
     definition:
-      AssessmentDefinition,
+      AssessmentCatalogItem,
   ) {
     setActiveDefinition(
       definition,
@@ -287,7 +284,6 @@ export function AssessmentsPage() {
             ) =>
               Math.max(
                 0,
-
                 current -
                   1,
               ),
@@ -300,6 +296,7 @@ export function AssessmentsPage() {
             ) =>
               Math.min(
                 loadedAssessment
+                  .instrument
                   .questions
                   .length -
                   1,
@@ -313,7 +310,6 @@ export function AssessmentsPage() {
           setResult(
             buildAssessmentResult(
               loadedAssessment,
-
               answers,
             ),
           )
@@ -370,9 +366,7 @@ export function AssessmentsPage() {
               "
             >
               <Database
-                size={
-                  28
-                }
+                size={28}
                 strokeWidth={
                   1.8
                 }
@@ -408,7 +402,8 @@ export function AssessmentsPage() {
                     font-semibold
                   "
                 >
-                  Open-source first
+                  Self-hosted
+                  instruments
                 </span>
               </div>
 
@@ -434,17 +429,16 @@ export function AssessmentsPage() {
                   text-[var(--muted)]
                 "
               >
-                Run personality,
+                Personality,
                 career-interest,
-                emotional,
-                leadership and
-                reasoning
-                assessments inside
+                emotional and
+                reasoning assessments
+                run entirely inside
                 Pulse. Open
                 instruments keep
                 their original
-                scoring and license
-                metadata.
+                scoring, source and
+                license metadata.
               </p>
             </div>
           </div>
@@ -534,13 +528,13 @@ export function AssessmentsPage() {
                   text-[var(--muted)]
                 "
               >
-                Demo access is open
-                for now. Premium
-                means Pulse feature
-                access; open-source
-                instrument licenses
-                remain visible and
-                unchanged.
+                Premium currently
+                controls Pulse
+                feature access. It
+                does not change the
+                license of an
+                underlying open
+                instrument.
               </p>
             )}
           </div>
@@ -598,9 +592,7 @@ export function AssessmentsPage() {
           "
         >
           <ShieldCheck
-            size={
-              18
-            }
+            size={18}
             className="
               mt-0.5
               shrink-0
@@ -628,17 +620,20 @@ export function AssessmentsPage() {
                 text-[var(--muted)]
               "
             >
-              Open scales keep
-              their source and
-              license visible.
+              Open scales retain
+              their published
+              scoring.
               Pulse-original
-              reasoning labs
-              report task accuracy
-              only. Nothing here
-              should be used as a
-              medical diagnosis or
-              as a standalone
-              hiring decision.
+              cognitive, 16-type
+              and DISC-style
+              exercises are
+              explicitly
+              exploratory and are
+              never presented as
+              standardized IQ,
+              MBTI®, Raven® or
+              Everything DiSC®
+              results.
             </p>
           </div>
         </div>
@@ -652,7 +647,7 @@ function AssessmentCard({
   onStart,
 }: {
   assessment:
-    AssessmentDefinition;
+    AssessmentCatalogItem;
 
   onStart:
     () => void;
@@ -666,7 +661,7 @@ function AssessmentCard({
         neo-surface
         relative
         flex
-        min-h-[265px]
+        min-h-[270px]
         flex-col
         rounded-[24px]
         p-4
@@ -694,9 +689,7 @@ function AssessmentCard({
           "
         >
           <Icon
-            size={
-              20
-            }
+            size={20}
             strokeWidth={
               1.8
             }
@@ -720,14 +713,14 @@ function AssessmentCard({
               font-semibold
 
               ${
-                assessment.access ===
+                assessment.tier ===
                 "premium"
                   ? "bg-[var(--accent-soft)] text-[var(--accent)]"
                   : "active-inset text-[var(--success)]"
               }
             `}
           >
-            {assessment.access ===
+            {assessment.tier ===
             "premium"
               ? "Premium"
               : "Free"}
@@ -745,7 +738,7 @@ function AssessmentCard({
             "
           >
             {
-              assessment.license
+              assessment.licenseLabel
             }
           </span>
         </div>
@@ -847,9 +840,7 @@ function AssessmentCard({
             "
           >
             <Timer
-              size={
-                12
-              }
+              size={12}
             />
 
             {
@@ -910,9 +901,7 @@ function AssessmentCard({
         Start assessment
 
         <ArrowRight
-          size={
-            14
-          }
+          size={14}
         />
       </button>
     </article>
@@ -944,11 +933,8 @@ function AssessmentRunner({
     AssessmentResult | null;
 
   onAnswer: (
-    questionId:
-      string,
-
-    value:
-      number,
+    questionId: string,
+    value: number,
   ) => void;
 
   onBack:
@@ -986,9 +972,10 @@ function AssessmentRunner({
   }
 
   const question =
-    assessment.questions[
-      currentQuestionIndex
-    ];
+    assessment.instrument
+      .questions[
+        currentQuestionIndex
+      ];
 
   const selectedAnswer =
     answers[
@@ -1003,7 +990,7 @@ function AssessmentRunner({
   const progress =
     Math.round(
       (answeredCount /
-        assessment
+        assessment.instrument
           .questions
           .length) *
         100,
@@ -1011,8 +998,8 @@ function AssessmentRunner({
 
   const isLastQuestion =
     currentQuestionIndex ===
-    assessment.questions
-      .length -
+    assessment.instrument
+      .questions.length -
       1;
 
   const canContinue =
@@ -1030,13 +1017,8 @@ function AssessmentRunner({
       ) =>
         option.label
           .length <=
-        26,
+        28,
     );
-
-  const showNumericScale =
-    assessment.definition
-      .sourceKind !==
-    "local";
 
   const optionGridClass =
     compactOptions &&
@@ -1045,8 +1027,7 @@ function AssessmentRunner({
       5
       ? "sm:grid-cols-2 lg:grid-cols-5"
       : compactOptions &&
-          question
-            .options
+          question.options
             .length ===
             4
         ? "sm:grid-cols-2 lg:grid-cols-4"
@@ -1100,9 +1081,7 @@ function AssessmentRunner({
               "
             >
               <ArrowLeft
-                size={
-                  17
-                }
+                size={17}
               />
             </button>
 
@@ -1120,9 +1099,7 @@ function AssessmentRunner({
               "
             >
               <Icon
-                size={
-                  21
-                }
+                size={21}
               />
             </div>
 
@@ -1138,9 +1115,9 @@ function AssessmentRunner({
                 "
               >
                 {
-                  assessment
-                    .definition
-                    .sourceLabel
+                  assessment.instrument
+                    .source
+                    .sourceName
                 }
               </p>
 
@@ -1153,8 +1130,7 @@ function AssessmentRunner({
                 "
               >
                 {
-                  assessment
-                    .definition
+                  assessment.definition
                     .title
                 }
               </h1>
@@ -1183,9 +1159,8 @@ function AssessmentRunner({
                 1}{" "}
               /{" "}
               {
-                assessment
-                  .questions
-                  .length
+                assessment.instrument
+                  .questions.length
               }
             </span>
 
@@ -1272,7 +1247,8 @@ function AssessmentRunner({
             }
           </h2>
 
-          {assessment.instruction &&
+          {assessment.instrument
+            .instruction &&
             currentQuestionIndex ===
               0 && (
               <p
@@ -1286,13 +1262,13 @@ function AssessmentRunner({
                 "
               >
                 {
-                  assessment.instruction
+                  assessment.instrument
+                    .instruction
                 }
               </p>
             )}
 
-          {assessment
-            .definition
+          {assessment.definition
             .note &&
             currentQuestionIndex ===
               0 && (
@@ -1307,8 +1283,7 @@ function AssessmentRunner({
                 "
               >
                 {
-                  assessment
-                    .definition
+                  assessment.definition
                     .note
                 }
               </p>
@@ -1335,6 +1310,11 @@ function AssessmentRunner({
                 selectedAnswer ===
                 option.value;
 
+              const showScaleValue =
+                assessment.definition
+                  .sourceKind ===
+                "vendored";
+
               return (
                 <button
                   key={`${question.id}-${option.value}`}
@@ -1342,7 +1322,6 @@ function AssessmentRunner({
                   onClick={() =>
                     onAnswer(
                       question.id,
-
                       option.value,
                     )
                   }
@@ -1386,7 +1365,7 @@ function AssessmentRunner({
                       }
                     `}
                   >
-                    {showNumericScale
+                    {showScaleValue
                       ? option.value
                       : String.fromCharCode(
                           65 +
@@ -1440,9 +1419,7 @@ function AssessmentRunner({
             "
           >
             <ArrowLeft
-              size={
-                14
-              }
+              size={14}
             />
 
             Previous
@@ -1477,9 +1454,7 @@ function AssessmentRunner({
               See result
 
               <Trophy
-                size={
-                  14
-                }
+                size={14}
               />
             </button>
           ) : (
@@ -1509,9 +1484,7 @@ function AssessmentRunner({
               Next
 
               <ArrowRight
-                size={
-                  14
-                }
+                size={14}
               />
             </button>
           )}
@@ -1582,9 +1555,7 @@ function AssessmentResultView({
               "
             >
               <CheckCircle2
-                size={
-                  24
-                }
+                size={24}
               />
             </div>
 
@@ -1609,15 +1580,19 @@ function AssessmentResultView({
                 "
               >
                 {
-                  assessment
-                    .definition
+                  assessment.definition
                     .title
                 }
               </h1>
             </div>
           </div>
 
-          <div className="flex gap-2">
+          <div
+            className="
+              flex
+              gap-2
+            "
+          >
             <button
               type="button"
               onClick={
@@ -1639,9 +1614,7 @@ function AssessmentResultView({
               "
             >
               <RefreshCw
-                size={
-                  14
-                }
+                size={14}
               />
 
               Retake
@@ -1669,9 +1642,7 @@ function AssessmentResultView({
               All tests
 
               <ArrowRight
-                size={
-                  14
-                }
+                size={14}
               />
             </button>
           </div>
@@ -1708,9 +1679,7 @@ function AssessmentResultView({
             "
           >
             <Icon
-              size={
-                30
-              }
+              size={30}
             />
           </div>
 
@@ -1859,8 +1828,8 @@ function AssessmentResultView({
               "
             >
               {
-                assessment
-                  .definition
+                assessment.instrument
+                  .source
                   .license
               }
             </span>
@@ -1899,10 +1868,9 @@ function AssessmentResultView({
                   text-[var(--muted)]
                 "
               >
-                No compatible score
-                dimensions were
-                returned by this
-                source version.
+                No compatible
+                scoring dimensions
+                were found.
               </div>
             )}
           </div>
@@ -1924,9 +1892,7 @@ function AssessmentResultView({
               "
             >
               <ShieldCheck
-                size={
-                  15
-                }
+                size={15}
                 className="
                   mt-0.5
                   shrink-0
@@ -1943,9 +1909,9 @@ function AssessmentResultView({
                 >
                   Source ·{" "}
                   {
-                    assessment
-                      .definition
-                      .sourceLabel
+                    assessment.instrument
+                      .source
+                      .sourceName
                   }
                 </p>
 
@@ -1957,11 +1923,11 @@ function AssessmentResultView({
                     text-[var(--muted)]
                   "
                 >
-                  {assessment.citation ||
-                    assessment
-                      .definition
-                      .citation ||
-                    "Open-source or Pulse-original assessment content."}
+                  {result.sourceNote ||
+                    assessment.instrument
+                      .source
+                      .attribution ||
+                    "Source metadata retained with the vendored instrument."}
                 </p>
               </div>
             </div>
@@ -1990,7 +1956,11 @@ function MetricBar({
           text-[11px]
         "
       >
-        <span className="font-medium">
+        <span
+          className="
+            font-medium
+          "
+        >
           {
             metric.label
           }
@@ -2003,9 +1973,8 @@ function MetricBar({
           "
         >
           {
-            metric.value
+            metric.displayValue
           }
-          %
         </span>
       </div>
 
@@ -2028,10 +1997,25 @@ function MetricBar({
           "
           style={{
             width:
-              `${metric.value}%`,
+              `${metric.normalizedValue}%`,
           }}
         />
       </div>
+
+      {metric.description && (
+        <p
+          className="
+            mt-1
+            text-[9px]
+            leading-4
+            text-[var(--muted)]
+          "
+        >
+          {
+            metric.description
+          }
+        </p>
+      )}
     </div>
   );
 }
@@ -2041,7 +2025,7 @@ function AssessmentLoadingState({
   onClose,
 }: {
   definition:
-    AssessmentDefinition;
+    AssessmentCatalogItem;
 
   onClose:
     () => void;
@@ -2082,9 +2066,7 @@ function AssessmentLoadingState({
             "
           >
             <ArrowLeft
-              size={
-                17
-              }
+              size={17}
             />
           </button>
 
@@ -2101,9 +2083,7 @@ function AssessmentLoadingState({
             "
           >
             <Icon
-              size={
-                21
-              }
+              size={21}
             />
           </div>
 
@@ -2117,7 +2097,8 @@ function AssessmentLoadingState({
                 text-[var(--muted)]
               "
             >
-              Loading source
+              Loading local
+              instrument
             </p>
 
             <h1
@@ -2164,9 +2145,7 @@ function AssessmentLoadingState({
           "
         >
           <Database
-            size={
-              26
-            }
+            size={26}
           />
         </div>
 
@@ -2190,10 +2169,12 @@ function AssessmentLoadingState({
           "
         >
           Pulse is loading the
-          open question definition
-          and scoring rules. Your
-          answers are not being
-          sent to the source.
+          versioned instrument
+          from its own deployed
+          assets. Your answers
+          are not sent to
+          OpenScales, O*NET or
+          another provider.
         </p>
       </section>
     </div>
@@ -2207,10 +2188,9 @@ function AssessmentErrorState({
   onRetry,
 }: {
   definition:
-    AssessmentDefinition;
+    AssessmentCatalogItem;
 
-  message:
-    string;
+  message: string;
 
   onClose:
     () => void;
@@ -2254,9 +2234,7 @@ function AssessmentErrorState({
             "
           >
             <ArrowLeft
-              size={
-                17
-              }
+              size={17}
             />
           </button>
 
@@ -2273,9 +2251,7 @@ function AssessmentErrorState({
             "
           >
             <Icon
-              size={
-                21
-              }
+              size={21}
             />
           </div>
 
@@ -2320,9 +2296,7 @@ function AssessmentErrorState({
           "
         >
           <Database
-            size={
-              26
-            }
+            size={26}
           />
         </div>
 
@@ -2333,7 +2307,7 @@ function AssessmentErrorState({
             font-semibold
           "
         >
-          Assessment source
+          Instrument asset
           unavailable
         </h2>
 
@@ -2393,9 +2367,7 @@ function AssessmentErrorState({
             "
           >
             <RefreshCw
-              size={
-                14
-              }
+              size={14}
             />
 
             Retry
@@ -2452,9 +2424,7 @@ function AssessmentTabButton({
       `}
     >
       <Icon
-        size={
-          16
-        }
+        size={16}
         strokeWidth={
           1.8
         }

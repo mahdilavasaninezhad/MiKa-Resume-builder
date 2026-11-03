@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "id": "IPIP-VIA-Lea",
+  "title": "IPIP Character Strength: Leadership",
+  "instruction": "How Accurately Can You Describe Yourself? Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age. So that you can describe yourself in an honest manner, your responses will be kept in absolute confidence. Indicate the accuracy of the item as it applies to you, using the following rating scale:",
+  "source": {
+    "provider": "OpenScales",
+    "sourceName": "IPIP Character Strength: Leadership",
+    "sourceUrl": "https://ipip.ori.org/newVIAKey.htm",
+    "license": "Public Domain",
+    "citation": "Peterson, C., & Seligman, M. E. P. (2004). Character Strengths and Virtues: A Handbook and Classification. Oxford University Press. IPIP items: Goldberg et al. (2006). https://ipip.ori.org/newVIAKey.htm",
+    "attribution": "OpenScales encoding; underlying instrument license retained.",
+    "version": "1.0",
+    "syncedAt": "2026-11-02T18:44:11.749Z"
+  },
+  "responseScale": {
+    "min": 1,
+    "max": 5,
+    "options": [
+      {
+        "value": 1,
+        "label": "Very Inaccurate"
+      },
+      {
+        "value": 2,
+        "label": "Moderately Inaccurate"
+      },
+      {
+        "value": 3,
+        "label": "Neither Accurate Nor Inaccurate"
+      },
+      {
+        "value": 4,
+        "label": "Moderately Accurate"
+      },
+      {
+        "value": 5,
+        "label": "Very Accurate"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "ipip_via_118",
+      "prompt": "Am good at helping people work well together.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_via_119",
+      "prompt": "Am not good at planning group activities.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_via_120",
+      "prompt": "Am not good at taking charge of a group.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_via_121",
+      "prompt": "Am told that I am a strong but fair leader.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_via_122",
+      "prompt": "Have difficulty getting others to work together.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_via_123",
+      "prompt": "Try to make my group members happy.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    },
+    {
+      "id": "ipip_via_124",
+      "prompt": "Try to make sure everyone in a group feels included.",
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Inaccurate"
+        },
+        {
+          "value": 2,
+          "label": "Moderately Inaccurate"
+        },
+        {
+          "value": 3,
+          "label": "Neither Accurate Nor Inaccurate"
+        },
+        {
+          "value": 4,
+          "label": "Moderately Accurate"
+        },
+        {
+          "value": 5,
+          "label": "Very Accurate"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "key": "leadership_sum",
+      "label": "Leadership (sum)",
+      "method": "sum",
+      "itemWeights": {
+        "ipip_via_118": 1,
+        "ipip_via_119": -1,
+        "ipip_via_120": -1,
+        "ipip_via_121": 1,
+        "ipip_via_122": -1,
+        "ipip_via_123": 1,
+        "ipip_via_124": 1
+      },
+      "rawMin": 7,
+      "rawMax": 35,
+      "description": "Mean of 7 items (range 1–5; higher = stronger Leadership). Negatively-worded items are reverse-coded."
+    },
+    {
+      "key": "leadership_mean",
+      "label": "Leadership (mean)",
+      "method": "mean",
+      "itemWeights": {
+        "ipip_via_118": 1,
+        "ipip_via_119": -1,
+        "ipip_via_120": -1,
+        "ipip_via_121": 1,
+        "ipip_via_122": -1,
+        "ipip_via_123": 1,
+        "ipip_via_124": 1
+      },
+      "rawMin": 1,
+      "rawMax": 5,
+      "description": "Mean of 7 items (range 1–5; higher = stronger Leadership). Negatively-worded items are reverse-coded."
+    }
+  ]
+}

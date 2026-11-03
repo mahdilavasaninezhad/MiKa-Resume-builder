@@ -1670,6 +1670,7 @@ function SmartMatchesIntro({
         transition-all
         duration-500
         ease-[cubic-bezier(0.22,1,0.36,1)]
+        text-[var(--warning)]
 
         ${
           active
