@@ -7,7 +7,7 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #f8faff;
+  --bg: #fff;
   --surface: #f2f6fa;
   --sidebar: #f2f6fae0;
   --text: #111827;
@@ -23,8 +23,8 @@
   --success-soft: #16a34a1f;
   --danger: #dc2626;
   --danger-soft: #dc26261f;
-  --warning: #ffca28;
-  --warning-soft: #ffc9281d;
+  --warning: #d4af37;
+  --warning-soft: #d4af371a;
 }
 
 :root[data-theme="dark"] {
@@ -179,9 +179,15 @@ textarea::placeholder {
 
 .form-field:focus-within .form-icon,
 .form-field[data-filled="true"] .form-icon,
-.sidebar-icon,
 .shadow-button {
   background: var(--surface);
+  box-shadow:
+    2px 2px 3px var(--shadow-dark),
+    -2px -2px 3px var(--shadow-light);
+}
+
+.sidebar-icon {
+  background: var(--bg);
   box-shadow:
     2px 2px 3px var(--shadow-dark),
     -2px -2px 3px var(--shadow-light);

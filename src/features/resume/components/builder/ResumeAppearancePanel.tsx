@@ -495,7 +495,7 @@ export function ResumeAppearancePanel({
 
                     ${
                       active
-                        ? "active-inset !text-[var(--accent)]"
+                        ? "!text-[var(--accent)]"
                         : "hover:!text-[var(--text)]"
                     }
                   `}
@@ -936,7 +936,7 @@ export function ResumeAppearancePanel({
 
                 ${
                   sectionStyle.borderEnabled
-                    ? "!text-[var(--accent)]"
+                    ? "!text-[var(--accent)] px-2.5"
                     : "text-[var(--muted)]"
                 }
               `}

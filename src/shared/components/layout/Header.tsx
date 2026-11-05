@@ -165,7 +165,7 @@ export function Header({
           <button
   type="button"
   onClick={toggleTheme}
-  className="neo-button theme-toggle flex h-11 w-11 items-center justify-center rounded-2xl"
+  className="neo-button theme-toggle flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--bg)]"
   aria-label="Toggle theme"
 >
   <Sun

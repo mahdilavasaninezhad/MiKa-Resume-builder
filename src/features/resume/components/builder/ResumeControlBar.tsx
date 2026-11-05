@@ -485,7 +485,7 @@ function PanelView({
             type="button"
             onClick={onBack}
             title="Back"
-            className="shadow-button flex h-7 w-7 shrink-0 items-center justify-center rounded-lg !text-[var(--text)] transition hover:!text-[var(--accent)]"
+            className="shadow-button flex h-7 w-7 shrink-0 items-center justify-center rounded-lg !text-[var(--text)] transition hover:!text-[var(--danger)]"
           >
             <ArrowLeft size={13} />
           </button>
