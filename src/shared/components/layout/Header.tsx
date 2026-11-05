@@ -66,9 +66,9 @@ export function Header({
             type="button"
             onClick={onMenuClick}
             aria-label="Open menu"
-            className="neo-button rounded-xl p-2 md:hidden"
+            className="neo-button rounded-2xl flex items-center justify-center h-11 w-11 md:hidden"
           >
-            <Menu size={20} />
+            <Menu size={23} />
           </button>
 
           <div>

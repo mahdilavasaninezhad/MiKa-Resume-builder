@@ -36,7 +36,7 @@ export function Sidebar({
   onClose,
 }: SidebarProps) {
   const mobileState = open
-    ? "translate-x-0"
+    ? "translate-x-0 w-full"
     : "-translate-x-full";
 
   const [
@@ -134,7 +134,7 @@ export function Sidebar({
         className={`
           neo-inset
           fixed left-0 top-0 z-50
-          flex h-20 w-72
+          flex h-20 md:w-72
           items-center justify-between
           rounded-br-md
           px-12.5
@@ -172,7 +172,7 @@ export function Sidebar({
       <aside
         className={`
           fixed bottom-0 left-0 top-20 z-50
-          flex w-72 flex-col
+          flex md:w-72 flex-col
           px-4 py-5
           backdrop-blur-2xl
           transition-transform duration-300
