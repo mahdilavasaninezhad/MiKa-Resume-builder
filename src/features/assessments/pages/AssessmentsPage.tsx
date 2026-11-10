@@ -405,7 +405,7 @@ function PremiumAssessmentCard({
 
   return (
     <article
-      className="neo-surface relative flex min-w-0 flex-col rounded-[28px] p-3 my-4"
+      className="neo-surface relative flex min-w-0 flex-col rounded-[28px] p-3 mb-4"
       aria-label={assessment.title}
       aria-busy={busy}
       onKeyDown={(event) => {
@@ -420,12 +420,12 @@ function PremiumAssessmentCard({
           aria-hidden={view !== "front"}
           inert={view !== "front"}
           className={`py-2 
-            col-start-1 row-start-1 flex items-center justify-center min-h-[180px] min-w-0 flex-col
+            col-start-1 row-start-1 flex items-center justify-center min-h-[190px] min-w-0 flex-col
             ${view !== "front" ? "invisible pointer-events-none" : ""}
           `}
         >
-          <div className="w-45 flex items-center justify-between">
-            <span className="justify-self-start rounded-full bg-[var(--warning-soft)] px-2.5 py-1 text-[9px] font-semibold text-[var(--warning)]">
+          <div className="flex w-full items-center justify-between">
+            <span className="rounded-full bg-[var(--warning-soft)] px-2.5 py-1 text-[9px] font-semibold text-[var(--warning)]">
               {renderWord(sequence.front.fields[0])}
             </span>
 
@@ -434,7 +434,7 @@ function PremiumAssessmentCard({
             </span>
           </div>
 
-          <div className="m-7 shadow-button flex h-15 w-15 shrink-0 items-center justify-center rounded-xl text-[var(--warning)]">
+          <div className="m-6.5 shadow-button flex h-15 w-15 shrink-0 items-center justify-center rounded-xl text-[var(--warning)]">
               <Icon size={35} strokeWidth={1.5} />
             </div>
 
@@ -451,8 +451,8 @@ function PremiumAssessmentCard({
           aria-label={`${assessment.title} details`}
           aria-hidden={view !== "details"}
           inert={view !== "details"}
-          className={`py-3 text-center 
-            col-start-1 row-start-1 flex min-h-[180px] min-w-0 flex-col
+          className={`py-2 text-center 
+            col-start-1 row-start-1 flex min-h-[190px] min-w-0 flex-col
             ${view !== "details" ? "invisible pointer-events-none" : ""}
           `}
         >
@@ -506,16 +506,7 @@ function PremiumAssessmentCard({
         </div>
       </div>
 
-      <div className="mt-1 flex items-center gap-2">
-        <button
-          type="button"
-          onClick={onStart}
-          className="absolute -bottom-4 left-1/2 -translate-x-1/2 shadow-button flex min-h-8 min-w-38 flex-1 items-center justify-center gap-2 rounded-xl !text-[13px] font-semibold transition-colors !bg-[var(--warning)] !text-[var(--bg)] hover:!bg-[var(--bg)] hover:!text-[var(--warning)]"
-        >
-          Start Assessment
-          <ArrowRight size={14} className="shrink-0" />
-        </button>
-
+      <div className="flex absolute -bottom-4 left-1/2 -translate-x-1/2 gap-4 md:gap-2">
         <button
           type="button"
           onClick={toggleDetails}
@@ -528,13 +519,21 @@ function PremiumAssessmentCard({
           aria-expanded={view === "details"}
           aria-controls={detailsId}
           title={view === "front" ? "Show details" : "Close details"}
-          className="absolute -top-4 left-1/2 -translate-x-1/2 shadow-button flex h-7.5 w-7.5 shrink-0 items-center justify-center rounded-xl text-[var(--muted)] hover:text-[var(--warning)] transition-colors disabled:cursor-wait"
+          className="shadow-button flex h-7.5 w-7.5 shrink-0 items-center justify-center rounded-xl text-[var(--muted)] hover:text-[var(--warning)] transition-colors disabled:cursor-wait"
         >
           {view === "front" ? (
             <Info size={21} />
           ) : (
             <X size={21} />
           )}
+        </button>
+        <button
+          type="button"
+          onClick={onStart}
+          className="shadow-button flex min-h-8 min-w-35 flex-1 items-center justify-center gap-2 rounded-xl !text-[12px] font-semibold transition-colors !bg-[var(--warning)] !text-[var(--bg)] hover:!bg-[var(--bg)] hover:!text-[var(--warning)]"
+        >
+          Start Assessment
+          <ArrowRight size={14} className="shrink-0 mt-0.5" />
         </button>
       </div>
     </article>

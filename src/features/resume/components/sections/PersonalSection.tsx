@@ -1,3 +1,4 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   BriefcaseBusiness,
   Globe2,
@@ -6,17 +7,12 @@ import {
   Phone,
   UserRound,
 } from "lucide-react";
-import { cloneElement, useState } from "react";
-import type { ElementType, ReactElement } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import type { z } from "zod";
 
+import { FloatingField as Field } from "../../../../shared/components/form/FloatingField";
 import { resumePersonalFormSchema } from "../../schemas/resume.schema";
-import type {
-  Resume,
-  UpdateResumeInput,
-} from "../../types/resume.types";
+import type { Resume, UpdateResumeInput } from "../../types/resume.types";
 
 type PersonalFormValues = z.infer<typeof resumePersonalFormSchema>;
 
@@ -46,7 +42,13 @@ export function PersonalSection({
   });
 
   return (
-    <div className="grid grid-cols-1 gap-x-3 gap-y-2.5 w-[calc(100%_-_0.875rem)] max-w-[340px] min-w-0 ml-3.5">
+    <div
+      className="
+        grid grid-cols-1 gap-x-3 gap-y-2.5
+        w-[calc(100%_-_0.875rem)] max-w-[340px]
+        min-w-0 ml-3.5
+      "
+    >
       <Controller
         name="fullName"
         control={control}
@@ -203,95 +205,5 @@ export function PersonalSection({
         )}
       />
     </div>
-  );
-}
-
-interface FieldProps {
-  label: string;
-  icon: ElementType;
-  value: string;
-  error?: string;
-  children: ReactElement<{ placeholder?: string }>;
-}
-
-function Field({
-  label,
-  icon: Icon,
-  value,
-  error,
-  children,
-}: FieldProps) {
-  const [focused, setFocused] = useState(false);
-  const filled = value.trim().length > 0;
-  const floating = focused || filled;
-
-  const input = cloneElement(children, {
-    placeholder:
-      focused && !filled ? children.props.placeholder : "",
-  });
-
-  return (
-    <label className="relative block min-w-0 pt-[10px]">
-      <div
-        className={`
-          absolute -left-4.5 top-6 flex h-[11px] items-center
-          transition-colors duration-200
-          ${
-            error
-              ? "text-[var(--danger)]"
-              : filled
-                ? "text-[var(--success)]"
-                : "text-[var(--muted)]"
-          }
-        `}
-      >
-        <Icon size={13} strokeWidth={1.9} />
-      </div>
-
-      <div
-        data-filled={filled}
-        onFocusCapture={() => setFocused(true)}
-        onBlurCapture={() => setFocused(false)}
-        className={`
-          form-field relative flex h-9 min-w-0 items-center
-          rounded-lg px-4 py-4.5 transition-all text-md
-          ${error ? "border-[var(--danger)]" : ""}
-        `}
-      >
-        {input}
-
-        <span
-          className={`
-            pointer-events-none absolute z-10 whitespace-nowrap
-            transition-all duration-300
-            ${
-              floating
-                ? "shadow-button left-3.5 -top-0 -translate-y-1/2 rounded-[5px] bg-[var(--surface)] px-1 text-[9px]"
-                : "left-4 top-1/2 -translate-y-1/2 text-xs"
-            }
-            ${
-              error
-                ? "text-[var(--danger)]"
-                : focused
-                  ? "text-[var(--accent)]"
-                  : filled
-                    ? "text-[var(--success)]"
-                    : "text-[var(--muted)]"
-            }
-          `}
-        >
-          {label}
-        </span>
-      </div>
-
-      {error && (
-        <p
-          className="absolute -top-1 right-0 truncate text-[10px] leading-3 text-[var(--danger)]"
-          title={error}
-        >
-          {error}
-        </p>
-      )}
-    </label>
   );
 }

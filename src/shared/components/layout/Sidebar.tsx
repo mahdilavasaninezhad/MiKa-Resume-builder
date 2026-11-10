@@ -37,7 +37,7 @@ export function Sidebar({
 }: SidebarProps) {
   const mobileState = open
     ? "translate-x-0 w-full"
-    : "-translate-x-full";
+    : "-translate-x-full w-full";
 
   const [
     showProfileHint,

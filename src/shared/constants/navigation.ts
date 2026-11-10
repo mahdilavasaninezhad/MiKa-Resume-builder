@@ -1,13 +1,10 @@
 import {
   BadgeInfo,
-  Blocks,
   BrainCircuit,
   BriefcaseBusiness,
   FileText,
-} from "lucide-react";
-
-import type {
-  LucideIcon,
+  GraduationCap,
+  type LucideIcon,
 } from "lucide-react";
 
 export interface NavigationItem {
@@ -16,63 +13,13 @@ export interface NavigationItem {
   icon: LucideIcon;
 }
 
-export const mainNavigation:
-  NavigationItem[] = [
-    {
-      label:
-        "Resume Builder",
+export const mainNavigation: NavigationItem[] = [
+  { label: "Resume Builder", path: "/resume", icon: FileText },
+  { label: "Jobs", path: "/members", icon: BriefcaseBusiness },
+  { label: "Assessments", path: "/analytics", icon: BrainCircuit },
+  { label: "Learning", path: "/components", icon: GraduationCap },
+];
 
-      path:
-        "/resume",
-
-      icon:
-        FileText,
-    },
-
-    {
-      label:
-        "Jobs",
-
-      path:
-        "/members",
-
-      icon:
-        BriefcaseBusiness,
-    },
-
-    {
-      label:
-        "Assessments",
-
-      path:
-        "/analytics",
-
-      icon:
-        BrainCircuit,
-    },
-
-    {
-      label:
-        "Components",
-
-      path:
-        "/components",
-
-      icon:
-        Blocks,
-    },
-  ];
-
-export const footerNavigation:
-  NavigationItem[] = [
-    {
-      label:
-        "About Me",
-
-      path:
-        "/about",
-
-      icon:
-        BadgeInfo,
-    },
-  ];
+export const footerNavigation: NavigationItem[] = [
+  { label: "About Me", path: "/about", icon: BadgeInfo },
+];
