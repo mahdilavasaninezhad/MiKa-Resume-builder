@@ -17,25 +17,16 @@ import type { LucideIcon } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
+import { Carousel } from "../../../shared/components/carousel/Carousel";
 import { useAuthStore } from "../../auth/store/auth.store";
-import {
-  useResume,
-  useResumes,
-} from "../../resume/api/resume.queries";
+import { useResume, useResumes } from "../../resume/api/resume.queries";
 import { useResumeEditorStore } from "../../resume/store/resume-editor.store";
-import type {
-  Resume,
-  ResumeSkill,
-} from "../../resume/types/resume.types";
+import type { Resume, ResumeSkill } from "../../resume/types/resume.types";
 import { notify } from "../../../shared/lib/notify";
 
 type JobsTab = "boards" | "matches";
 
-type BoardFocus =
-  | "general"
-  | "tech"
-  | "enterprise"
-  | "public";
+type BoardFocus = "general" | "tech" | "enterprise" | "public";
 
 interface JobBoard {
   id: string;
@@ -137,7 +128,6 @@ export function JobsPage() {
   const [activeTab, setActiveTab] = useState<JobsTab>("boards");
 
   const user = useAuthStore((state) => state.user);
-
   const activeResumeId = useResumeEditorStore(
     (state) => state.activeResumeId,
   );
@@ -189,87 +179,85 @@ export function JobsPage() {
 
   return (
     <div className="space-y-5">
-      <section className="glass-panel-header rounded-[32px] p-5">
-        <div className="flex flex-col gap-15 xl:flex-row xl:items-center xl:justify-evenly">
-          <div className="flex min-w-0 items-center text-center">
-            <div className="min-w-0">
-              <div className="flex justify-between flex-wrap items-center gap-2">
-                <p
-  className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors duration-300 ${
-    activeTab === "matches"
-      ? "text-[var(--warning)] bg-[var(--warning-soft)]"
-      : "text-[var(--accent)] bg-[var(--accent-soft)]"
-  }`}
->
-  Career Hub
-</p>
+      <section className="glass-panel-header rounded-[32px] p-2">
+        <div className="flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-evenly xl:gap-15">
+          <div className="flex w-full min-w-0 flex-col items-center text-center">
+            <div className="flex w-full flex-wrap items-center justify-evenly">
+              <p
+                className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
+                  activeTab === "matches"
+                    ? "bg-[var(--warning-soft)] text-[var(--warning)]"
+                    : "bg-[var(--accent-soft)] text-[var(--accent)]"
+                }`}
+              >
+                Career Hub
+              </p>
 
-<div
-  className={`active-inset flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl transition-colors duration-300 ${
-    activeTab === "matches"
-      ? "text-[var(--warning)]"
-      : "text-[var(--accent)]"
-  }`}
->
-  <BriefcaseBusiness size={30} strokeWidth={1.8} />
-</div>
-
-                <span className="rounded-full active-inset px-2 py-1 text-[9px] font-semibold text-[var(--text)]">
-                  Resume-aware
-                </span>
+              <div
+                className={`active-inset flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl transition-colors ${
+                  activeTab === "matches"
+                    ? "text-[var(--warning)]"
+                    : "text-[var(--accent)]"
+                }`}
+              >
+                <BriefcaseBusiness size={30} strokeWidth={1.8} />
               </div>
 
-              <h1 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
-                Find The Right Opportunity Faster
-              </h1>
-
-              <p className="mt-2 max-w-3xl text-sm leading-5 text-[var(--muted)]">
-                Explore trusted Iranian job boards or use your current
-                resume to build a focused job-search profile.
-              </p>
+              <span className="active-inset rounded-full px-2 py-1 text-[9px] font-semibold">
+                Resume-aware
+              </span>
             </div>
-          </div>
 
-          <div className="w-full shrink-0 xl:w-[360px]">
-            <div className="neo-inset relative grid w-full grid-cols-2 rounded-2xl p-1">
+            <h1 className="mt-1 text-2xl font-semibold tracking-tight md:text-3xl">
+              Find The Right Opportunity Faster
+            </h1>
+
+            <p className="mt-1 max-w-3xl text-sm leading-5 text-[var(--muted)]">
+              Explore trusted Iranian job boards or use your current
+              resume to build a focused job-search profile.
+            </p>
+
+            <div className="mt-3 w-full shrink-0 xl:w-[360px]">
               <div
-                className={`
-                  absolute
-                  bottom-1.5
-                  left-1.5
-                  top-1.5
-                  w-[calc(50%-5px)]
-                  rounded-xl
-                  bg-[var(--bg)]
-                  shadow-[2px_2px_3px_var(--shadow-dark),-2px_-2px_3px_var(--shadow-light)]
-                  transition-transform
-                  duration-700
-                  ease-[cubic-bezier(0.22,1,0.36,1)]
-                  ${
-                    activeTab === "matches"
-                      ? "translate-x-full"
-                      : "translate-x-0"
-                  }
-                `}
-              />
+                role="group"
+                aria-label="Jobs view"
+                className="neo-inset relative grid w-full grid-cols-2 rounded-2xl p-1"
+              >
+                <div
+                  aria-hidden="true"
+                  className={`
+                    pointer-events-none absolute bottom-1.5 left-1.5 top-1.5
+                    w-[calc(50%_-_5px)] rounded-xl bg-[var(--bg)]
+                    shadow-[2px_2px_3px_var(--shadow-dark),-2px_-2px_3px_var(--shadow-light)]
+                    transition-transform duration-700
+                    ease-[cubic-bezier(0.22,1,0.36,1)]
+                    motion-reduce:transition-none
+                    ${
+                      activeTab === "matches"
+                        ? "translate-x-full"
+                        : "translate-x-0"
+                    }
+                  `}
+                />
 
-              <TabButton
-                active={activeTab === "boards"}
-                icon={Globe2}
-                label="Job Boards"
-                onClick={() => setActiveTab("boards")}
-              />
+                <TabButton
+                  active={activeTab === "boards"}
+                  icon={Globe2}
+                  label="Job Boards"
+                  onClick={() => setActiveTab("boards")}
+                />
 
-              <TabButton
-                active={activeTab === "matches"}
-                icon={Sparkles}
-                yellowIcon
-                label="Smart Matches"
-                onClick={() => setActiveTab("matches")}
-              />
+                <TabButton
+                  active={activeTab === "matches"}
+                  icon={Sparkles}
+                  yellowIcon
+                  label="Smart Matches"
+                  onClick={() => setActiveTab("matches")}
+                />
+              </div>
+
+              <SmartMatchesIntro active={activeTab === "matches"} />
             </div>
-
-            <SmartMatchesIntro active={activeTab === "matches"} />
           </div>
         </div>
       </section>
@@ -291,11 +279,11 @@ export function JobsPage() {
 
 function JobBoardsTab() {
   return (
-    <section className="grid gap-9 md:grid-cols-2 xl:grid-cols-3">
+    <Carousel label="Job boards">
       {jobBoards.map((board) => (
         <JobBoardCard key={board.id} board={board} />
       ))}
-    </section>
+    </Carousel>
   );
 }
 
@@ -309,10 +297,7 @@ function SmartMatchesTab({
   loading: boolean;
   resume: Resume | null;
   profile: ResumeSearchProfile | null;
-  rankedBoards: {
-    board: JobBoard;
-    score: number;
-  }[];
+  rankedBoards: { board: JobBoard; score: number }[];
   onCopySearchPhrase: () => void;
 }) {
   if (loading) {
@@ -331,9 +316,7 @@ function SmartMatchesTab({
           <FileSearch2 size={40} strokeWidth={1.6} />
         </div>
 
-        <h2 className="mt-7 text-xl font-semibold">
-          Build your resume first
-        </h2>
+        <h2 className="mt-7 text-xl font-semibold">Build your resume first</h2>
 
         <p className="m-7 max-w-2xl text-sm leading-5 text-[var(--muted)]">
           Smart Matches uses your target role, skills, experience and
@@ -382,15 +365,8 @@ function SmartMatchesTab({
           </div>
 
           <div className="mt-0.5 grid">
-            <InfoRow
-              label="Target role"
-              value={profile.role || "Not specified"}
-            />
-
-            <InfoRow
-              label="Location"
-              value={profile.city || "Any location"}
-            />
+            <InfoRow label="Target role" value={profile.role || "Not specified"} />
+            <InfoRow label="Location" value={profile.city || "Any location"} />
           </div>
 
           <div className="mt-2 text-center flex flex-col items-center">
@@ -411,13 +387,9 @@ function SmartMatchesTab({
               ) : (
                 <span className="text-xs text-[var(--text)]">
                   Add a{" "}
-                  <span className="text-[var(--success)]">
-                    Target Title
-                  </span>{" "}
+                  <span className="text-[var(--success)]">Target Title</span>{" "}
                   or{" "}
-                  <span className="text-[var(--success)]">
-                    Skills{" "}
-                  </span>
+                  <span className="text-[var(--success)]">Skills{" "}</span>
                   to improve matching.
                 </span>
               )}
@@ -466,10 +438,7 @@ function SmartMatchesTab({
           </div>
 
           <div className="mt-2 flex items-start gap-1">
-            <CheckCircle2
-              size={13}
-              className="shrink-0 text-[var(--success)]"
-            />
+            <CheckCircle2 size={13} className="shrink-0 text-[var(--success)]" />
 
             <p className="text-[10px] leading-3.5 text-[var(--muted)]">
               Pulse does not fabricate job ads. These recommendations
@@ -482,8 +451,8 @@ function SmartMatchesTab({
       </div>
 
       {hasUsefulProfile ? (
-        <section>
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <section className="min-w-0">
+          <Carousel label="Smart job matches" tone="warning">
             {rankedBoards.map(({ board, score }) => (
               <MatchSourceCard
                 key={board.id}
@@ -492,13 +461,11 @@ function SmartMatchesTab({
                 profile={profile}
               />
             ))}
-          </div>
+          </Carousel>
         </section>
       ) : (
         <section className="mt-20 glass-panel rounded-[28px] p-15 text-center">
-          <h3 className="font-semibold">
-            Add More Resume Signals
-          </h3>
+          <h3 className="font-semibold">Add More Resume Signals</h3>
 
           <p className="mx-auto mt-8 max-w-xl text-sm leading-6 text-[var(--muted)]">
             Add a target job title or a few skills in Resume Builder.
@@ -531,23 +498,15 @@ function JobBoardCard({ board }: { board: JobBoard }) {
           </div>
 
           <div className="min-w-0">
-            <h2 className="truncate text-base font-semibold">
-              {board.name}
-            </h2>
+            <h2 className="truncate text-base font-semibold">{board.name}</h2>
 
-            <p
-              className="mt-0.5 text-[10px] text-[var(--text)]"
-              dir="rtl"
-            >
+            <p className="mt-0.5 text-[10px] text-[var(--text)]" dir="rtl">
               {board.faName}
             </p>
           </div>
         </div>
 
-        <ArrowUpRight
-          size={18}
-          className="shrink-0 text-[var(--muted)]"
-        />
+        <ArrowUpRight size={18} className="shrink-0 text-[var(--muted)]" />
       </div>
 
       <p className="mt-3.5 text-[11px] leading-4 text-center text-[var(--muted)]">
@@ -597,9 +556,7 @@ function MatchSourceCard({
         </div>
 
         <div className="min-w-0">
-          <h3 className="truncate text-[11px] font-semibold">
-            {board.name}
-          </h3>
+          <h3 className="truncate text-[11px] font-semibold">{board.name}</h3>
         </div>
 
         <span className="text-center rounded-full px-2 py-1 text-[8px] font-semibold text-[var(--warning)] bg-[var(--warning-soft)]">
@@ -609,10 +566,7 @@ function MatchSourceCard({
 
       <div className="active-inset mt-1.5 rounded-xl px-2.5 py-1.5">
         <p className="flex justify-center gap-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
-          <Search
-            size={11}
-            className="text-[var(--warning)]"
-          />
+          <Search size={11} className="text-[var(--warning)]" />
           Search for
         </p>
 
@@ -634,23 +588,14 @@ function MatchSourceCard({
   );
 }
 
-function InfoRow({
-  label,
-  value,
-}: {
-  label: string;
-  value: string;
-}) {
+function InfoRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between gap-4 border-b border-dashed border-[var(--border)] py-2">
       <span className="text-[10px] font-medium text-[var(--muted)]">
         {label}
       </span>
 
-      <span
-        className="min-w-0 truncate text-right text-xs font-semibold"
-        title={value}
-      >
+      <span className="min-w-0 truncate text-right text-xs font-semibold" title={value}>
         {value}
       </span>
     </div>
@@ -701,16 +646,9 @@ function SmartMatchesIntro({ active }: { active: boolean }) {
   return (
     <div
       className={`
-        grid
-        transition-all
-        duration-500
-        ease-[cubic-bezier(0.22,1,0.36,1)]
-        text-[var(--warning)]
-        ${
-          active
-            ? "grid-rows-[1fr] opacity-100"
-            : "grid-rows-[0fr] opacity-0"
-        }
+        grid transition-all duration-500
+        ease-[cubic-bezier(0.22,1,0.36,1)] text-[var(--warning)]
+        ${active ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}
       `}
     >
       <div className="overflow-hidden">
@@ -720,9 +658,7 @@ function SmartMatchesIntro({ active }: { active: boolean }) {
               <span
                 key={word}
                 className={`
-                  inline-block
-                  transition-all
-                  duration-500
+                  inline-block transition-all duration-500
                   ease-[cubic-bezier(0.22,1,0.36,1)]
                   ${
                     index < visibleWords
@@ -739,12 +675,7 @@ function SmartMatchesIntro({ active }: { active: boolean }) {
 
           <p
             className={`
-              mt-1
-              text-xs
-              text-[var(--muted)]
-              transition-all
-              duration-1000
-              ease-out
+              mt-1 text-xs text-[var(--muted)] transition-all duration-1000 ease-out
               ${
                 showSubtitle
                   ? "translate-y-0 opacity-100"
@@ -778,33 +709,17 @@ function TabButton({
       type="button"
       onClick={onClick}
       className={`
-        relative
-        z-10
-        flex
-        items-center
-        justify-center
-        gap-2
-        rounded-xl
-        px-4
-        py-2.5
-        text-sm
-        transition-colors
-        duration-300
-        hover:text-[var(--text)]
-        group
-        ${
-          active
-            ? "font-semibold text-[var(--text)]"
-            : "text-[var(--muted)]"
-        }
+        relative z-10 flex items-center justify-center gap-2
+        rounded-xl px-4 py-2.5 text-sm transition-colors duration-300
+        hover:text-[var(--text)] group
+        ${active ? "font-semibold text-[var(--text)]" : "text-[var(--muted)]"}
       `}
     >
       <Icon
         size={18}
         strokeWidth={1.3}
         className={`
-          transition-colors
-          duration-300
+          transition-colors duration-300
           ${
             yellowIcon
               ? "group-hover:!text-[var(--warning)]"
@@ -825,9 +740,7 @@ function TabButton({
   );
 }
 
-function buildResumeSearchProfile(
-  resume: Resume,
-): ResumeSearchProfile {
+function buildResumeSearchProfile(resume: Resume): ResumeSearchProfile {
   const sortedExperiences = [...resume.experiences].sort(
     (a, b) => a.order - b.order,
   );
@@ -859,10 +772,7 @@ function buildResumeSearchProfile(
     ...experienceRoles,
   ])
     .filter(Boolean)
-    .filter(
-      (value) =>
-        value.toLocaleLowerCase() !== role.toLocaleLowerCase(),
-    )
+    .filter((value) => value.toLocaleLowerCase() !== role.toLocaleLowerCase())
     .slice(0, 6);
 
   const searchPhrase = uniqueValues([
@@ -883,9 +793,7 @@ function buildResumeSearchProfile(
     .join(" ")
     .toLocaleLowerCase();
 
-  const isTech = techTerms.some((term) =>
-    techHaystack.includes(term),
-  );
+  const isTech = techTerms.some((term) => techHaystack.includes(term));
 
   const strength = Math.min(
     100,
@@ -906,10 +814,7 @@ function buildResumeSearchProfile(
   };
 }
 
-function rankBoards(
-  boards: JobBoard[],
-  profile: ResumeSearchProfile,
-) {
+function rankBoards(boards: JobBoard[], profile: ResumeSearchProfile) {
   return boards
     .map((board) => {
       let score = board.baseScore;
@@ -952,9 +857,7 @@ function getSkillWeight(skill: ResumeSkill) {
 }
 
 function firstFilled(...values: string[]) {
-  return (
-    values.find((value) => value.trim().length > 0)?.trim() ?? ""
-  );
+  return values.find((value) => value.trim().length > 0)?.trim() ?? "";
 }
 
 function uniqueValues(values: string[]) {

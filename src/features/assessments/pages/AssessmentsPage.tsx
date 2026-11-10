@@ -15,10 +15,8 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import {
-  clearAssessmentCache,
-  loadAssessment,
-} from "../api/assessment.repository";
+import { Carousel } from "../../../shared/components/carousel/Carousel";
+import { clearAssessmentCache, loadAssessment } from "../api/assessment.repository";
 import { assessmentCatalog } from "../data/assessment.catalog";
 import { buildAssessmentResult } from "../utils/assessment-scoring";
 import type {
@@ -43,10 +41,7 @@ export function AssessmentsPage() {
   const [result, setResult] = useState<AssessmentResult | null>(null);
 
   const visibleAssessments = useMemo(
-    () =>
-      assessmentCatalog.filter(
-        (assessment) => assessment.tier === activeTab,
-      ),
+    () => assessmentCatalog.filter((assessment) => assessment.tier === activeTab),
     [activeTab],
   );
 
@@ -153,79 +148,99 @@ export function AssessmentsPage() {
 
   return (
     <div className="space-y-5">
-      <section className="glass-panel-header rounded-[32px] p-5 md:p-6">
-        <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
-          <div className="flex min-w-0 items-center gap-4">
-            <div className="active-inset flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-[var(--accent)]">
-              <Database size={28} strokeWidth={1.8} />
-            </div>
+      <section className="glass-panel-header rounded-[32px] p-2">
+        <div className="flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-evenly xl:gap-15">
+          <div className="flex w-full min-w-0 flex-col items-center text-center">
+            <div className="flex w-full flex-wrap items-center justify-evenly">
+              <p
+                className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
+                  activeTab === "premium"
+                    ? "bg-[var(--warning-soft)] text-[var(--warning)]"
+                    : "bg-[var(--accent-soft)] text-[var(--accent)]"
+                }`}
+              >
+                Assessment Lab
+              </p>
 
-            <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2">
-                <p className="text-sm font-medium text-[var(--accent)]">
-                  Assessment Lab
-                </p>
-
-                <span className="active-inset rounded-full px-2.5 py-1 text-[9px] font-semibold">
-                  Self-hosted instruments
-                </span>
+              <div
+                className={`active-inset flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl transition-colors ${
+                  activeTab === "premium"
+                    ? "text-[var(--warning)]"
+                    : "text-[var(--accent)]"
+                }`}
+              >
+                <Database size={30} strokeWidth={1.8} />
               </div>
 
-              <h1 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
-                Evidence-aware assessments
-              </h1>
-
-              <p className="mt-2 max-w-3xl text-sm leading-5 text-[var(--muted)]">
-                Personality, career-interest, emotional and reasoning
-                assessments run entirely inside Pulse. Open instruments
-                keep their original scoring, source and license metadata.
-              </p>
+              <span className="active-inset rounded-full px-2 py-1 text-[9px] font-semibold">
+                Self-hosted instruments
+              </span>
             </div>
-          </div>
 
-          <div className="w-full shrink-0 xl:w-[360px]">
-            <div className="neo-inset relative grid w-full grid-cols-2 rounded-2xl p-1">
+            <h1 className="mt-1 text-2xl font-semibold tracking-tight md:text-3xl">
+              Evidence-aware assessments
+            </h1>
+
+            <p className="mt-1 max-w-3xl text-sm leading-5 text-[var(--muted)]">
+              Personality, career-interest, emotional and reasoning
+              assessments run entirely inside Pulse. Open instruments
+              keep their original scoring, source and license metadata.
+            </p>
+
+            <div className="mt-3 w-full shrink-0 xl:w-[360px]">
               <div
-                className={`
-                  absolute bottom-1.5 left-1.5 top-1.5
-                  w-[calc(50%-5px)] rounded-xl bg-[var(--bg)]
-                  shadow-[2px_2px_3px_var(--shadow-dark),-2px_-2px_3px_var(--shadow-light)]
-                  transition-transform duration-700
-                  ease-[cubic-bezier(0.22,1,0.36,1)]
-                  ${
-                    activeTab === "premium"
-                      ? "translate-x-full"
-                      : "translate-x-0"
-                  }
-                `}
-              />
+                role="group"
+                aria-label="Assessment view"
+                className="neo-inset relative grid w-full grid-cols-2 rounded-2xl p-1"
+              >
+                <div
+                  aria-hidden="true"
+                  className={`
+                    pointer-events-none absolute bottom-1.5 left-1.5 top-1.5
+                    w-[calc(50%_-_5px)] rounded-xl bg-[var(--bg)]
+                    shadow-[2px_2px_3px_var(--shadow-dark),-2px_-2px_3px_var(--shadow-light)]
+                    transition-transform duration-700
+                    ease-[cubic-bezier(0.22,1,0.36,1)]
+                    motion-reduce:transition-none
+                    ${
+                      activeTab === "premium"
+                        ? "translate-x-full"
+                        : "translate-x-0"
+                    }
+                  `}
+                />
 
-              <AssessmentTabButton
-                active={activeTab === "free"}
-                icon={Sparkles}
-                label="Free"
-                onClick={() => setActiveTab("free")}
-              />
+                <AssessmentTabButton
+                  active={activeTab === "free"}
+                  icon={Sparkles}
+                  label="Free"
+                  onClick={() => setActiveTab("free")}
+                />
 
-              <AssessmentTabButton
-                active={activeTab === "premium"}
-                icon={Crown}
-                label="Premium"
-                onClick={() => setActiveTab("premium")}
-              />
+                <AssessmentTabButton
+                  active={activeTab === "premium"}
+                  icon={Crown}
+                  label="Premium"
+                  paid
+                  onClick={() => setActiveTab("premium")}
+                />
+              </div>
+
+              {activeTab === "premium" && (
+                <p className="mt-2 text-center text-[9px] leading-4 text-[var(--muted)]">
+                  Premium currently controls Pulse feature access. It does
+                  not change the license of an underlying open instrument.
+                </p>
+              )}
             </div>
-
-            {activeTab === "premium" && (
-              <p className="mt-2 text-center text-[9px] leading-4 text-[var(--muted)]">
-                Premium currently controls Pulse feature access. It does
-                not change the license of an underlying open instrument.
-              </p>
-            )}
           </div>
         </div>
       </section>
 
-      <section className="grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
+      <Carousel
+        label="Assessments"
+        tone={activeTab === "premium" ? "warning" : "accent"}
+      >
         {visibleAssessments.map((assessment) => (
           <AssessmentCard
             key={assessment.id}
@@ -233,27 +248,22 @@ export function AssessmentsPage() {
             onStart={() => startAssessment(assessment)}
           />
         ))}
-      </section>
+      </Carousel>
 
       <section className="glass-panel-header flex flex-col gap-3 rounded-2xl px-4 py-3 md:flex-row md:items-center md:justify-center">
-          
-          <div>
-            <p className="mb-3 flex gap-3 items-center justify-center text-xs font-semibold text-center">
-                <ShieldCheck
-            size={18}
-            className=" shrink-0 text-[var(--success)]"
-          />
-              Results are signals, not verdicts.
-              
-            </p>
+        <div>
+          <p className="mb-3 flex gap-3 items-center justify-center text-xs font-semibold text-center">
+            <ShieldCheck size={18} className="shrink-0 text-[var(--success)]" />
+            Results are signals, not verdicts.
+          </p>
 
-            <p className="mt-1 max-w-5xl text-[10px] leading-4 text-[var(--muted)]">
-              Open scales retain their published scoring. Pulse-original
-              cognitive, 16-type and DISC-style exercises are explicitly
-              exploratory and are never presented as standardized IQ,
-              MBTI®, Raven® or Everything DiSC® results.
-            </p>
-          </div>
+          <p className="mt-1 max-w-5xl text-[10px] leading-4 text-[var(--muted)]">
+            Open scales retain their published scoring. Pulse-original
+            cognitive, 16-type and DISC-style exercises are explicitly
+            exploratory and are never presented as standardized IQ,
+            MBTI®, Raven® or Everything DiSC® results.
+          </p>
+        </div>
       </section>
     </div>
   );
@@ -297,9 +307,7 @@ function WordText({
           <span
             key={index}
             className="transition-opacity duration-100 motion-reduce:transition-none"
-            style={{
-              opacity: field.start + index < visibleWords ? 1 : 0,
-            }}
+            style={{ opacity: field.start + index < visibleWords ? 1 : 0 }}
           >
             {word}
           </span>
@@ -419,8 +427,8 @@ function PremiumAssessmentCard({
         <div
           aria-hidden={view !== "front"}
           inert={view !== "front"}
-          className={`py-2 
-            col-start-1 row-start-1 flex items-center justify-center min-h-[190px] min-w-0 flex-col
+          className={`
+            py-2 col-start-1 row-start-1 flex items-center justify-center min-h-[190px] min-w-0 flex-col
             ${view !== "front" ? "invisible pointer-events-none" : ""}
           `}
         >
@@ -435,8 +443,8 @@ function PremiumAssessmentCard({
           </div>
 
           <div className="m-6.5 shadow-button flex h-15 w-15 shrink-0 items-center justify-center rounded-xl text-[var(--warning)]">
-              <Icon size={35} strokeWidth={1.5} />
-            </div>
+            <Icon size={35} strokeWidth={1.5} />
+          </div>
 
           <div className="flex items-center justify-center">
             <h2 className="break-words text-center text-[12px] text-base font-semibold">
@@ -451,8 +459,8 @@ function PremiumAssessmentCard({
           aria-label={`${assessment.title} details`}
           aria-hidden={view !== "details"}
           inert={view !== "details"}
-          className={`py-2 text-center 
-            col-start-1 row-start-1 flex min-h-[190px] min-w-0 flex-col
+          className={`
+            py-2 text-center col-start-1 row-start-1 flex min-h-[190px] min-w-0 flex-col
             ${view !== "details" ? "invisible pointer-events-none" : ""}
           `}
         >
@@ -479,7 +487,7 @@ function PremiumAssessmentCard({
             <div className="active-inset grid grid-cols-2 gap-3 rounded-2xl px-3 py-2.5">
               <div className="min-w-0">
                 <p className="flex items-center justify-center gap-1 text-[8px] uppercase tracking-wider text-[var(--muted)]">
-                  <Timer size={10} className="mb-0.5"/>
+                  <Timer size={10} className="mb-0.5" />
                   {renderWord(sequence.details.fields[metaStart])}
                 </p>
 
@@ -521,12 +529,9 @@ function PremiumAssessmentCard({
           title={view === "front" ? "Show details" : "Close details"}
           className="shadow-button flex h-7.5 w-7.5 shrink-0 items-center justify-center rounded-xl text-[var(--muted)] hover:text-[var(--warning)] transition-colors disabled:cursor-wait"
         >
-          {view === "front" ? (
-            <Info size={21} />
-          ) : (
-            <X size={21} />
-          )}
+          {view === "front" ? <Info size={21} /> : <X size={21} />}
         </button>
+
         <button
           type="button"
           onClick={onStart}
@@ -600,9 +605,7 @@ function FreeAssessmentCard({
         "
         style={{
           transformStyle: "preserve-3d",
-          transform: isFlipped
-            ? "rotateY(180deg)"
-            : "rotateY(0deg)",
+          transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
       >
         <div
@@ -752,8 +755,7 @@ function AssessmentRunner({
     );
   }
 
-  const question =
-    assessment.instrument.questions[currentQuestionIndex];
+  const question = assessment.instrument.questions[currentQuestionIndex];
   const selectedAnswer = answers[question.id];
   const answeredCount = Object.keys(answers).length;
 
@@ -841,27 +843,20 @@ function AssessmentRunner({
             {question.prompt}
           </h2>
 
-          {assessment.instrument.instruction &&
-            currentQuestionIndex === 0 && (
-              <p className="mx-auto mt-3 max-w-2xl text-[10px] leading-4 text-[var(--muted)]">
-                {assessment.instrument.instruction}
-              </p>
-            )}
+          {assessment.instrument.instruction && currentQuestionIndex === 0 && (
+            <p className="mx-auto mt-3 max-w-2xl text-[10px] leading-4 text-[var(--muted)]">
+              {assessment.instrument.instruction}
+            </p>
+          )}
 
-          {assessment.definition.note &&
-            currentQuestionIndex === 0 && (
-              <p className="mx-auto mt-2 max-w-2xl text-[10px] leading-4 text-[var(--muted)]">
-                {assessment.definition.note}
-              </p>
-            )}
+          {assessment.definition.note && currentQuestionIndex === 0 && (
+            <p className="mx-auto mt-2 max-w-2xl text-[10px] leading-4 text-[var(--muted)]">
+              {assessment.definition.note}
+            </p>
+          )}
         </div>
 
-        <div
-          className={`
-            mx-auto mt-7 grid max-w-4xl gap-3
-            ${optionGridClass}
-          `}
-        >
+        <div className={`mx-auto mt-7 grid max-w-4xl gap-3 ${optionGridClass}`}>
           {question.options.map((option, index) => {
             const selected = selectedAnswer === option.value;
             const showScaleValue =
@@ -1036,9 +1031,7 @@ function AssessmentResultView({
                 Breakdown
               </p>
 
-              <h3 className="mt-1 text-lg font-semibold">
-                Scored dimensions
-              </h3>
+              <h3 className="mt-1 text-lg font-semibold">Scored dimensions</h3>
             </div>
 
             <span className="active-inset rounded-full px-2.5 py-1 text-[9px] font-semibold text-[var(--muted)]">
@@ -1060,10 +1053,7 @@ function AssessmentResultView({
 
           <div className="mt-6 rounded-2xl bg-[var(--accent-soft)] px-4 py-3">
             <div className="flex items-start gap-2">
-              <ShieldCheck
-                size={15}
-                className="mt-0.5 shrink-0 text-[var(--accent)]"
-              />
+              <ShieldCheck size={15} className="mt-0.5 shrink-0 text-[var(--accent)]" />
 
               <div>
                 <p className="text-[10px] font-semibold">
@@ -1131,12 +1121,13 @@ function AssessmentLoadingState({
           <button
             type="button"
             onClick={onClose}
-            className="shadow-button flex h-9 w-9 items-center justify-center rounded-xl text-[var(--muted)]"
+            aria-label="Back to assessments"
+            className="shadow-button flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-[var(--muted)]"
           >
             <ArrowLeft size={17} />
           </button>
 
-          <div className="active-inset flex h-11 w-11 items-center justify-center rounded-xl text-[var(--accent)]">
+          <div className="active-inset flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[var(--accent)]">
             <Icon size={21} />
           </div>
 
@@ -1145,21 +1136,17 @@ function AssessmentLoadingState({
               Loading local instrument
             </p>
 
-            <h1 className="mt-0.5 text-xl font-semibold">
-              {definition.title}
-            </h1>
+            <h1 className="mt-0.5 text-xl font-semibold">{definition.title}</h1>
           </div>
         </div>
       </section>
 
       <section className="glass-panel mx-auto flex min-h-[320px] max-w-4xl flex-col items-center justify-center rounded-[32px] p-8 text-center">
-        <div className="neo-inset flex h-16 w-16 animate-pulse items-center justify-center rounded-2xl text-[var(--accent)]">
+        <div className="active-inset flex h-16 w-16 animate-pulse items-center justify-center rounded-2xl text-[var(--accent)]">
           <Database size={26} />
         </div>
 
-        <h2 className="mt-5 text-lg font-semibold">
-          Preparing assessment
-        </h2>
+        <h2 className="mt-5 text-lg font-semibold">Preparing assessment</h2>
 
         <p className="mt-2 max-w-xl text-xs leading-5 text-[var(--muted)]">
           Pulse is loading the versioned instrument from its own
@@ -1191,18 +1178,17 @@ function AssessmentErrorState({
           <button
             type="button"
             onClick={onClose}
-            className="shadow-button flex h-9 w-9 items-center justify-center rounded-xl text-[var(--muted)]"
+            aria-label="Back to assessments"
+            className="shadow-button flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-[var(--muted)]"
           >
             <ArrowLeft size={17} />
           </button>
 
-          <div className="active-inset flex h-11 w-11 items-center justify-center rounded-xl text-[var(--accent)]">
+          <div className="active-inset flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[var(--accent)]">
             <Icon size={21} />
           </div>
 
-          <h1 className="text-xl font-semibold">
-            {definition.title}
-          </h1>
+          <h1 className="text-xl font-semibold">{definition.title}</h1>
         </div>
       </section>
 
@@ -1246,38 +1232,34 @@ function AssessmentTabButton({
   active,
   icon: Icon,
   label,
+  paid = false,
   onClick,
 }: {
   active: boolean;
   icon: LucideIcon;
   label: string;
+  paid?: boolean;
   onClick: () => void;
 }) {
+  const accent = paid ? "text-[var(--warning)]" : "text-[var(--accent)]";
+  const hover = paid
+    ? "group-hover:!text-[var(--warning)]"
+    : "group-hover:!text-[var(--accent)]";
+
   return (
     <button
       type="button"
+      aria-pressed={active}
       onClick={onClick}
-      className={`
-        relative z-10 flex items-center justify-center gap-2
-        rounded-xl px-4 py-2.5 text-sm
-        transition-colors duration-300
-        ${
-          active
-            ? "font-semibold text-[var(--text)]"
-            : "text-[var(--muted)]"
-        }
-      `}
+      className={`group relative z-10 flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm transition-colors ${
+        active ? "font-semibold text-[var(--text)]" : "text-[var(--muted)]"
+      }`}
     >
       <Icon
-        size={16}
-        strokeWidth={1.8}
-        className={
-          active
-            ? "text-[var(--accent)]"
-            : "text-[var(--muted)]"
-        }
+        size={18}
+        strokeWidth={1.3}
+        className={`transition-colors ${hover} ${active ? accent : ""}`}
       />
-
       {label}
     </button>
   );

@@ -542,8 +542,6 @@ function LearningCard({
             </p>
           </div>
         </div>
-
-        <ArrowUpRight size={18} className="shrink-0 text-[var(--muted)]" />
       </div>
 
       <div className="mt-2.5 flex flex-wrap justify-center gap-1">
@@ -562,7 +560,7 @@ function LearningCard({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${linkLabel} — ${title}`}
-        className={`shadow-button absolute -bottom-3 left-1/2 flex h-6 -translate-x-1/2 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-3 text-xs font-semibold transition hover:!bg-[var(--bg)] ${linkTone}`}
+        className={`shadow-button absolute -bottom-3 left-1/2 flex h-6 -translate-x-1/2 items-center justify-center gap-5 whitespace-nowrap rounded-lg w-[calc(100%-120px)] text-xs font-semibold transition hover:!bg-[var(--bg)] ${linkTone}`}
       >
         {linkLabel}
         <ExternalLink size={13} className="shrink-0" />
