@@ -181,7 +181,7 @@ export function Carousel({
     <div className="carousel" data-tone={tone}>
       <div
         ref={viewportRef}
-        className="carousel__viewport"
+        className="carousel__viewport border-r border-l border-[var(--bg)]"
         role="region"
         aria-roledescription="carousel"
         aria-label={label}

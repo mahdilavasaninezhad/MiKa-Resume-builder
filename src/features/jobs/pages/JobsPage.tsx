@@ -203,7 +203,10 @@ export function JobsPage() {
                 <BriefcaseBusiness size={30} strokeWidth={1.8} />
               </div>
 
-              <span className="active-inset rounded-full px-2 py-1 text-[9px] font-semibold">
+              <span className={`active-inset rounded-full px-2 py-1 text-[9px] font-semibold ${activeTab === "matches"
+                    ? "text-[var(--warning)]"
+                    : "text-[var(--accent)]"
+                }`}>
                 Resume-aware
               </span>
             </div>
@@ -217,11 +220,11 @@ export function JobsPage() {
               resume to build a focused job-search profile.
             </p>
 
-            <div className="mt-3 w-full shrink-0 xl:w-[360px]">
+            <div className="mt-3 flex w-full flex-col items-center gap-2 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)_minmax(0,1fr)] lg:gap-x-4">
               <div
                 role="group"
                 aria-label="Jobs view"
-                className="neo-inset relative grid w-full grid-cols-2 rounded-2xl p-1"
+                className="neo-inset relative grid w-full max-w-[360px] grid-cols-2 rounded-2xl p-1 lg:col-start-2"
               >
                 <div
                   aria-hidden="true"
@@ -256,7 +259,9 @@ export function JobsPage() {
                 />
               </div>
 
-              <SmartMatchesIntro active={activeTab === "matches"} />
+              <div className="min-w-0 lg:col-start-3">
+                <SmartMatchesIntro active={activeTab === "matches"} />
+              </div>
             </div>
           </div>
         </div>
@@ -338,12 +343,12 @@ function SmartMatchesTab({
     Boolean(profile.role) || profile.keywords.length > 0;
 
   return (
-    <div className="grid gap-6 xl:grid-cols-[0.5fr_1fr] xl:items-start">
+    <div className="grid gap-4 xl:grid-cols-[0.5fr_1fr] xl:items-start">
       <div className="grid gap-3">
         <section className="glass-panel rounded-[28px] py-3 px-4">
           <div className="flex items-center justify-between">
-            <div className="shadow-button flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[var(--warning)]">
-              <Target size={20} />
+            <div className="shadow-button flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-[var(--warning)]">
+              <Target size={35} />
             </div>
 
             <div className="min-w-0 text-center">
@@ -490,26 +495,24 @@ function JobBoardCard({ board }: { board: JobBoard }) {
   const Icon = board.icon;
 
   return (
-    <article className="relative neo-surface flex min-h-[160px] flex-col rounded-[28px] p-3">
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex min-w-0 w-full items-center justify-center text-center gap-10">
-          <div className="shadow-button flex h-9 w-9 shrink-0 items-center justify-center rounded-lg !text-[var(--accent)]">
-            <Icon size={18} strokeWidth={1.8} />
+    <article className="relative glass-panel flex min-h-[160px] flex-col rounded-[28px] px-3 pt-3 pb-7 my-12">
+      <div className="flex items-start justify-between gap-5">
+        <div className="flex min-w-0 w-full items-center justify-center text-center gap-5">
+          <div className="shadow-button flex h-10 w-10 shrink-0 items-center justify-center rounded-lg !text-[var(--accent)]">
+            <Icon size={25} strokeWidth={1.5} />
           </div>
 
           <div className="min-w-0">
-            <h2 className="truncate text-base font-semibold">{board.name}</h2>
+            <h2 className="truncate text-base font-bold">{board.name}</h2>
 
-            <p className="mt-0.5 text-[10px] text-[var(--text)]" dir="rtl">
+            <p className="mt-0.5 text-[12px] text-[var(--text)]" dir="rtl">
               {board.faName}
             </p>
           </div>
         </div>
-
-        <ArrowUpRight size={18} className="shrink-0 text-[var(--muted)]" />
       </div>
 
-      <p className="mt-3.5 text-[11px] leading-4 text-center text-[var(--muted)]">
+      <p className="mt-4 text-[12px] leading-4 text-center text-[var(--muted)]">
         {board.description}
       </p>
 
@@ -517,7 +520,7 @@ function JobBoardCard({ board }: { board: JobBoard }) {
         {board.tags.map((tag) => (
           <span
             key={tag}
-            className="rounded-full active-inset px-1.5 py-0.5 text-[9px] font-medium text-[var(--text)]"
+            className="rounded-full active-inset px-1.5 py-0.5 text-[10px] font-medium text-[var(--text)]"
           >
             {tag}
           </span>
@@ -528,10 +531,10 @@ function JobBoardCard({ board }: { board: JobBoard }) {
         href={board.jobsUrl}
         target="_blank"
         rel="noreferrer"
-        className="absolute -bottom-3.5 left-1/2 -translate-x-1/2 max-w-[150px] shadow-button flex h-7 items-center justify-center gap-4 rounded-xl px-4 text-xs font-semibold !bg-[var(--accent)] text-[var(--bg)] transition hover:!bg-[var(--bg)] hover:!text-[var(--accent)]"
+        className="absolute -bottom-4 left-1/2 -translate-x-1/2 max-w-[150px] shadow-button flex h-8 w-[calc(100%-120px)] items-center justify-center gap-4 rounded-xl text-[14px] font-semibold !bg-[var(--accent)] text-[var(--bg)] transition hover:!bg-[var(--bg)] hover:!text-[var(--accent)]"
       >
         Browse jobs
-        <ExternalLink size={14} />
+        <ExternalLink size={16} />
       </a>
     </article>
   );
@@ -549,28 +552,28 @@ function MatchSourceCard({
   const Icon = board.icon;
 
   return (
-    <article className="glass-panel flex flex-col rounded-[20px] px-2 pb-4 pt-2 mb-2">
-      <div className="flex min-w-0 items-center justify-between gap-2">
-        <div className="shadow-button flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[var(--warning)]">
-          <Icon size={13} />
+    <article className="glass-panel flex flex-col rounded-[20px] px-3 pb-7 pt-3 mb-8 md:mt-10">
+      <div className="flex min-w-0 items-center justify-between">
+        <div className="shadow-button flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-[var(--warning)]">
+          <Icon size={25} strokeWidth={1.5}/>
         </div>
 
         <div className="min-w-0">
-          <h3 className="truncate text-[11px] font-semibold">{board.name}</h3>
+          <h3 className="truncate text-[20px] font-bold">{board.name}</h3>
         </div>
 
-        <span className="text-center rounded-full px-2 py-1 text-[8px] font-semibold text-[var(--warning)] bg-[var(--warning-soft)]">
+        <span className="text-center rounded-full px-2 py-1 text-[10px] font-semibold tracking-[0.03em] text-[var(--warning)] bg-[var(--warning-soft)]">
           {score}% Fit
         </span>
       </div>
 
-      <div className="active-inset mt-1.5 rounded-xl px-2.5 py-1.5">
-        <p className="flex justify-center gap-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
-          <Search size={11} className="text-[var(--warning)]" />
+      <div className="active-inset mt-5 rounded-xl px-2.5 py-1.5">
+        <p className="flex justify-center gap-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--muted)]">
+          <Search size={14} className="text-[var(--warning)]" />
           Search for
         </p>
 
-        <p className="line-clamp-2 text-[9px] font-medium leading-3 overflow-y-auto">
+        <p className="text-center mt-3 line-clamp-8 text-[12px] font-medium leading-4 overflow-y-auto">
           {profile.searchPhrase}
         </p>
       </div>
@@ -579,10 +582,10 @@ function MatchSourceCard({
         href={board.jobsUrl}
         target="_blank"
         rel="noreferrer"
-        className="absolute -bottom-3 left-1/2 -translate-x-1/2 shadow-button flex h-6 items-center justify-center gap-1.5 rounded-xl px-2 text-[10px] font-semibold transition !text-[var(--bg)] hover:!text-[var(--warning)] !bg-[var(--warning)] hover:!bg-[var(--bg)]"
+        className="absolute -bottom-4 left-1/2 -translate-x-1/2 shadow-button flex h-8 w-[calc(100%-120px)] items-center justify-center gap-4 rounded-xl text-[14px] font-semibold transition !text-[var(--bg)] hover:!text-[var(--warning)] !bg-[var(--warning)] hover:!bg-[var(--bg)]"
       >
         Open Official Jobs
-        <ExternalLink size={13} />
+        <ExternalLink size={16} />
       </a>
     </article>
   );
@@ -652,7 +655,7 @@ function SmartMatchesIntro({ active }: { active: boolean }) {
       `}
     >
       <div className="overflow-hidden">
-        <div className="pt-6 text-center">
+        <div className="pt-1 text-center lg:pt-0 text-center rounded-full bg-[var(--warning-soft)]">
           <h2 className="text-lg font-semibold">
             {words.map((word, index) => (
               <span
@@ -675,7 +678,7 @@ function SmartMatchesIntro({ active }: { active: boolean }) {
 
           <p
             className={`
-              mt-1 text-xs text-[var(--muted)] transition-all duration-1000 ease-out
+              mt-1 pb-1 text-xs text-[var(--muted)] transition-all duration-1000 ease-out
               ${
                 showSubtitle
                   ? "translate-y-0 opacity-100"

@@ -13,7 +13,7 @@ export function AppLayout() {
 
       <main className="min-h-screen pt-20 md:ml-72">
         <div className="fixed neo-inset rounded-tl-md mx-auto min-h-screen w-full p-4 md:p-8"></div>
-        <div className="rounded-tl-lg mx-auto max-w-[1600px] p-4 md:p-8">
+        <div className="rounded-tl-lg mx-auto max-w-[1600px] p-4">
           <Outlet />
         </div>
       </main>

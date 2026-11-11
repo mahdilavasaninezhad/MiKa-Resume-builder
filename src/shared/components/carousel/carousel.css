@@ -19,7 +19,7 @@
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  padding: 48px calc((100% - var(--slide-width)) / 2) 54px;
+  padding: 15px calc((100% - var(--slide-width)) / 2) 15px;
   scroll-padding-inline: calc((100% - var(--slide-width)) / 2);
 }
 
@@ -53,7 +53,10 @@
 }
 
 .carousel__controls {
+  position: relative;
+  z-index: 2;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   gap: 22px;
@@ -62,21 +65,21 @@
 
 .carousel__arrow {
   display: grid;
+  flex: 0 0 auto;
   place-items: center;
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  color: var(--carousel-tone);
-  transition: opacity 180ms, transform 180ms;
+  transition: opacity 180ms;
+}
+
+.carousel__arrow:hover {
+    color: var(--carousel-tone);
 }
 
 .carousel__arrow:disabled {
-  opacity: 0.25;
+  opacity: 0.55;
   cursor: default;
-}
-
-.carousel__arrow:not(:disabled):active {
-  transform: scale(0.92);
 }
 
 .carousel__arrow:focus-visible {
@@ -89,16 +92,17 @@
   flex-wrap: wrap;
   justify-content: center;
   max-width: 480px;
+  min-width: 0;
   gap: 2px;
 }
 
 .carousel__dot {
   display: grid;
   place-items: center;
-  width: 22px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
   padding: 0;
-  border-radius: 8px;
+  border-radius: 50%;
 }
 
 .carousel__dot > span {
@@ -108,6 +112,12 @@
   background: var(--muted);
   opacity: 0.35;
   transition: transform 180ms, opacity 180ms;
+}
+
+.carousel__dot:hover > span {
+  transform: scale(1.4);
+  background: var(--carousel-tone);
+  opacity: 1;
 }
 
 .carousel__dot[aria-current="true"] > span {

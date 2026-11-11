@@ -1,8 +1,6 @@
 .learning-view-toggle {
-  position: fixed;
-  right: max(16px, env(safe-area-inset-right));
-  bottom: max(16px, env(safe-area-inset-bottom));
-  z-index: 40;
+  align-self: flex-end;
+  flex-shrink: 0;
   display: flex;
   gap: 4px;
   padding: 5px;
@@ -41,10 +39,9 @@
 }
 
 .learning-directory-compact {
-  position: fixed;
-  z-index: 30;
-  bottom: max(80px, calc(env(safe-area-inset-bottom) + 72px));
   display: flex;
+  flex: 1;
+  min-height: 0;
   flex-direction: column;
   gap: 12px;
   padding: 14px;
@@ -95,7 +92,6 @@
 
 @media (max-height: 500px) {
   .learning-directory-compact {
-    bottom: 68px;
     gap: 5px;
     padding: 6px;
   }
@@ -106,28 +102,32 @@
   }
 }
 
-.learning-directory-compact,
-[data-learning-view="slider"] {
-  top: 96px;
-  right: 16px;
-  left: 16px;
-  max-width: 1536px;
-  margin-inline: auto;
-}
-
-[data-learning-view="slider"] {
-  position: fixed;
-  bottom: 80px;
+main:has(> div > [data-learning-view]) {
   display: flex;
   flex-direction: column;
+  height: 100dvh;
+}
+
+main > div:has(> [data-learning-view]) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+}
+
+[data-learning-view] {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   gap: 12px;
+  min-width: 0;
   min-height: 0;
   padding-bottom: 0;
 }
 
-[data-learning-view="slider"] > * {
-  margin-top: 0;
-  margin-bottom: 0;
+[data-learning-view] > * {
+  margin-block: 0;
 }
 
 [data-learning-view="slider"] > .glass-panel-header {
@@ -226,18 +226,8 @@
   }
 }
 
-@media (min-width: 768px) {
-  .learning-directory-compact,
-  [data-learning-view="slider"] {
-    top: 112px;
-    right: 32px;
-    left: 320px;
-  }
-}
-
 @media (max-height: 650px) {
   [data-learning-view="slider"] {
-    bottom: 68px;
     gap: 6px;
   }
 }
