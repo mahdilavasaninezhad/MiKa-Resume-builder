@@ -474,7 +474,7 @@ function LearningCard({
   return (
     <article
       className={`glass-panel relative flex min-w-0 flex-col rounded-[28px] px-3 pt-3 ${
-        paid ? "mb-1 min-h-[115px]" : "mb-12 min-h-[150px]"
+        paid ? "mb-1 min-h-[115px]" : "mt-3 mb-14 min-h-[150px]"
       }`}
     >
       <div className="flex min-w-0 items-center justify-center gap-5 text-center">
