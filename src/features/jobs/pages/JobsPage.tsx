@@ -1,3 +1,4 @@
+import { CompactDisplay, CompactDisplayItem, DisplayModeToggle, type DisplayMode } from "../../../shared/components/tabs/DisplayModeToggle";
 import {
   ArrowUpRight,
   BriefcaseBusiness,
@@ -125,6 +126,7 @@ const jobBoards: JobBoard[] = [
 ];
 
 export function JobsPage() {
+  const [view, setView] = useState<DisplayMode>("slider");
   const [activeTab, setActiveTab] = useState<JobsTab>("boards");
 
   const user = useAuthStore((state) => state.user);
@@ -178,7 +180,7 @@ export function JobsPage() {
   }
 
   return (
-    <div className="space-y-5">
+    <div className="flex flex-col gap-5">
       <section className="glass-panel-header rounded-[32px] p-2">
         <div className="flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-evenly xl:gap-15">
           <div className="flex w-full min-w-0 flex-col items-center text-center">
@@ -268,9 +270,10 @@ export function JobsPage() {
       </section>
 
       {activeTab === "boards" ? (
-        <JobBoardsTab />
+        <JobBoardsTab view={view} />
       ) : (
         <SmartMatchesTab
+          view={view}
           loading={resumesQuery.isLoading || resumeQuery.isLoading}
           resume={resume}
           profile={profile}
@@ -278,11 +281,23 @@ export function JobsPage() {
           onCopySearchPhrase={copySearchPhrase}
         />
       )}
+
+      <DisplayModeToggle value={view} onChange={setView} tone={activeTab === "matches" ? "warning" : "accent"} />
     </div>
   );
 }
 
-function JobBoardsTab() {
+function JobBoardsTab({ view }: { view: DisplayMode }) {
+  if (view === "compact") {
+    return (
+      <CompactDisplay label="Job boards" tone="accent">
+        {jobBoards.map((board) => (
+          <CompactDisplayItem key={board.id} title={board.name} action={{ label: "Open", href: board.jobsUrl }} />
+        ))}
+      </CompactDisplay>
+    );
+  }
+
   return (
     <Carousel label="Job boards">
       {jobBoards.map((board) => (
@@ -293,12 +308,14 @@ function JobBoardsTab() {
 }
 
 function SmartMatchesTab({
+  view,
   loading,
   resume,
   profile,
   rankedBoards,
   onCopySearchPhrase,
 }: {
+  view: DisplayMode;
   loading: boolean;
   resume: Resume | null;
   profile: ResumeSearchProfile | null;
@@ -455,7 +472,13 @@ function SmartMatchesTab({
         </section>
       </div>
 
-      {hasUsefulProfile ? (
+      {hasUsefulProfile && view === "compact" ? (
+        <CompactDisplay label="Smart job matches" tone="warning">
+          {rankedBoards.map(({ board }) => (
+            <CompactDisplayItem key={board.id} title={board.name} action={{ label: "Open", href: board.jobsUrl }} />
+          ))}
+        </CompactDisplay>
+      ) : hasUsefulProfile ? (
         <section className="min-w-0">
           <Carousel label="Smart job matches" tone="warning">
             {rankedBoards.map(({ board, score }) => (
@@ -531,9 +554,9 @@ function JobBoardCard({ board }: { board: JobBoard }) {
         href={board.jobsUrl}
         target="_blank"
         rel="noreferrer"
-        className="absolute -bottom-4 left-1/2 -translate-x-1/2 max-w-[150px] shadow-button flex h-8 w-[calc(100%-120px)] items-center justify-center gap-4 rounded-xl text-[14px] font-semibold !bg-[var(--accent)] text-[var(--bg)] transition hover:!bg-[var(--bg)] hover:!text-[var(--accent)]"
+        className="absolute -bottom-4 left-1/2 -translate-x-1/2 shadow-button flex h-8 w-[calc(100%-120px)] items-center justify-center gap-4 rounded-xl text-[14px] font-semibold !bg-[var(--accent)] text-[var(--bg)] transition hover:!bg-[var(--bg)] hover:!text-[var(--accent)]"
       >
-        Browse jobs
+        Browse Jobs
         <ExternalLink size={16} />
       </a>
     </article>

@@ -2,12 +2,13 @@ import {
   ArrowLeft,
   ArrowRight,
   CheckCircle2,
+  CircleHelp,
   Crown,
   Database,
   Info,
   RefreshCw,
   ShieldCheck,
-  Sparkles,
+  Gift,
   Timer,
   Trophy,
   X,
@@ -16,9 +17,18 @@ import {
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { Carousel } from "../../../shared/components/carousel/Carousel";
-import { clearAssessmentCache, loadAssessment } from "../api/assessment.repository";
+import { AnimatedTabIntro } from "../../../shared/components/tabs/AnimatedTabIntro";
+import {
+  CompactDisplay,
+  CompactDisplayItem,
+  DisplayModeToggle,
+  type DisplayMode,
+} from "../../../shared/components/tabs/DisplayModeToggle";
+import {
+  clearAssessmentCache,
+  loadAssessment,
+} from "../api/assessment.repository";
 import { assessmentCatalog } from "../data/assessment.catalog";
-import { buildAssessmentResult } from "../utils/assessment-scoring";
 import type {
   AssessmentAnswers,
   AssessmentCatalogItem,
@@ -27,8 +37,10 @@ import type {
   AssessmentTier,
   LoadedAssessment,
 } from "../types/assessment.types";
+import { buildAssessmentResult } from "../utils/assessment-scoring";
 
 export function AssessmentsPage() {
+  const [view, setView] = useState<DisplayMode>("slider");
   const [activeTab, setActiveTab] = useState<AssessmentTier>("free");
   const [activeDefinition, setActiveDefinition] =
     useState<AssessmentCatalogItem | null>(null);
@@ -147,7 +159,7 @@ export function AssessmentsPage() {
   }
 
   return (
-    <div className="space-y-5">
+    <div className="flex flex-col gap-5">
       <section className="glass-panel-header rounded-[32px] p-2">
         <div className="flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-evenly xl:gap-15">
           <div className="flex w-full min-w-0 flex-col items-center text-center">
@@ -156,7 +168,7 @@ export function AssessmentsPage() {
                 className={`rounded-full px-3.5 py-1 text-sm font-medium transition-colors ${
                   activeTab === "premium"
                     ? "bg-[var(--warning-soft)] text-[var(--warning)]"
-                    : "bg-[var(--accent-soft)] text-[var(--accent)]"
+                    : "bg-[var(--success-soft)] text-[var(--success)]"
                 }`}
               >
                 Assessment Lab
@@ -166,13 +178,19 @@ export function AssessmentsPage() {
                 className={`active-inset flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl transition-colors ${
                   activeTab === "premium"
                     ? "text-[var(--warning)]"
-                    : "text-[var(--accent)]"
+                    : "text-[var(--success)]"
                 }`}
               >
                 <Database size={30} strokeWidth={1.8} />
               </div>
 
-              <span className="active-inset rounded-full px-2 py-1 text-[9px] font-semibold">
+              <span
+                className={`active-inset rounded-full px-2 py-1 text-[9px] font-semibold transition-colors ${
+                  activeTab === "premium"
+                    ? "text-[var(--warning)]"
+                    : "text-[var(--success)]"
+                }`}
+              >
                 Self-hosted instruments
               </span>
             </div>
@@ -181,17 +199,17 @@ export function AssessmentsPage() {
               Evidence-aware assessments
             </h1>
 
-            <p className="mt-1 max-w-3xl text-sm leading-5 text-[var(--muted)]">
+            <p className="mt-1 text-sm leading-5 text-[var(--muted)] w-full">
               Personality, career-interest, emotional and reasoning
               assessments run entirely inside Pulse. Open instruments
               keep their original scoring, source and license metadata.
             </p>
 
-            <div className="mt-3 w-full shrink-0 xl:w-[360px]">
+            <div className="mt-3 flex w-full flex-col items-center gap-2 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)_minmax(0,1fr)] lg:gap-x-4">
               <div
                 role="group"
                 aria-label="Assessment view"
-                className="neo-inset relative grid w-full grid-cols-2 rounded-2xl p-1"
+                className="neo-inset relative grid w-full max-w-[360px] grid-cols-2 rounded-2xl p-1 lg:col-start-2"
               >
                 <div
                   aria-hidden="true"
@@ -202,17 +220,13 @@ export function AssessmentsPage() {
                     transition-transform duration-700
                     ease-[cubic-bezier(0.22,1,0.36,1)]
                     motion-reduce:transition-none
-                    ${
-                      activeTab === "premium"
-                        ? "translate-x-full"
-                        : "translate-x-0"
-                    }
+                    ${activeTab === "premium" ? "translate-x-full" : "translate-x-0"}
                   `}
                 />
 
                 <AssessmentTabButton
                   active={activeTab === "free"}
-                  icon={Sparkles}
+                  icon={Gift}
                   label="Free"
                   onClick={() => setActiveTab("free")}
                 />
@@ -226,45 +240,52 @@ export function AssessmentsPage() {
                 />
               </div>
 
-              {activeTab === "premium" && (
-                <p className="mt-2 text-center text-[9px] leading-4 text-[var(--muted)]">
-                  Premium currently controls Pulse feature access. It does
-                  not change the license of an underlying open instrument.
-                </p>
-              )}
+              <AnimatedTabIntro
+                active={activeTab === "premium"}
+                title="Explore Premium Assessments"
+                description="Open instruments keep their original scoring and licenses."
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <Carousel
-        label="Assessments"
-        tone={activeTab === "premium" ? "warning" : "accent"}
-      >
-        {visibleAssessments.map((assessment) => (
-          <AssessmentCard
-            key={assessment.id}
-            assessment={assessment}
-            onStart={() => startAssessment(assessment)}
-          />
-        ))}
-      </Carousel>
+      {view === "compact" ? (
+        <CompactDisplay
+          label="Assessments"
+          tone={activeTab === "premium" ? "warning" : "success"}
+        >
+          {visibleAssessments.map((assessment) => (
+            <CompactDisplayItem
+              key={assessment.id}
+              title={assessment.title}
+              action={{
+                label: "Start",
+                onClick: () => void startAssessment(assessment),
+              }}
+            />
+          ))}
+        </CompactDisplay>
+      ) : (
+        <Carousel
+          label="Assessments"
+          tone={activeTab === "premium" ? "warning" : "success"}
+        >
+          {visibleAssessments.map((assessment) => (
+            <AssessmentCard
+              key={assessment.id}
+              assessment={assessment}
+              onStart={() => startAssessment(assessment)}
+            />
+          ))}
+        </Carousel>
+      )}
 
-      <section className="glass-panel-header flex flex-col gap-3 rounded-2xl px-4 py-3 md:flex-row md:items-center md:justify-center">
-        <div>
-          <p className="mb-3 flex gap-3 items-center justify-center text-xs font-semibold text-center">
-            <ShieldCheck size={18} className="shrink-0 text-[var(--success)]" />
-            Results are signals, not verdicts.
-          </p>
-
-          <p className="mt-1 max-w-5xl text-[10px] leading-4 text-[var(--muted)]">
-            Open scales retain their published scoring. Pulse-original
-            cognitive, 16-type and DISC-style exercises are explicitly
-            exploratory and are never presented as standardized IQ,
-            MBTI®, Raven® or Everything DiSC® results.
-          </p>
-        </div>
-      </section>
+      <DisplayModeToggle
+        value={view}
+        onChange={setView}
+        tone={activeTab === "premium" ? "warning" : "success"}
+      />
     </div>
   );
 }
@@ -413,7 +434,7 @@ function PremiumAssessmentCard({
 
   return (
     <article
-      className="neo-surface relative flex min-w-0 flex-col rounded-[28px] p-3 mb-4"
+      className="glass-panel relative col-start-1 row-start-1 flex min-h-[160px] min-w-0 flex-col rounded-[28px] my-8"
       aria-label={assessment.title}
       aria-busy={busy}
       onKeyDown={(event) => {
@@ -423,31 +444,30 @@ function PremiumAssessmentCard({
         }
       }}
     >
-      <div className="grid min-w-0 flex-1">
+      <div className="grid min-w-0 flex-1 py-1 px-4">
         <div
           aria-hidden={view !== "front"}
           inert={view !== "front"}
-          className={`
-            py-2 col-start-1 row-start-1 flex items-center justify-center min-h-[190px] min-w-0 flex-col
+          className={`col-start-1 row-start-1 flex items-center justify-center min-h-[170px] min-w-0 flex-col
             ${view !== "front" ? "invisible pointer-events-none" : ""}
           `}
         >
           <div className="flex w-full items-center justify-between">
-            <span className="rounded-full bg-[var(--warning-soft)] px-2.5 py-1 text-[9px] font-semibold text-[var(--warning)]">
+            <span className="rounded-full bg-[var(--warning-soft)] px-2.5 py-1 text-[11px] font-semibold text-[var(--warning)]">
               {renderWord(sequence.front.fields[0])}
             </span>
 
-            <span className="active-inset min-w-0 max-w-full justify-self-end break-words rounded-full px-2.5 py-1 text-center text-[9px] font-semibold text-[var(--muted)]">
+            <span className="active-inset min-w-0 max-w-full justify-self-end break-words rounded-full px-2.5 py-1 text-center text-[9px] tracking-[0.5px] font-semibold text-[var(--warning)]">
               {renderWord(sequence.front.fields[1])}
             </span>
           </div>
 
-          <div className="m-6.5 shadow-button flex h-15 w-15 shrink-0 items-center justify-center rounded-xl text-[var(--warning)]">
-            <Icon size={35} strokeWidth={1.5} />
+          <div className="my-3 shadow-button flex h-15 w-15 shrink-0 items-center justify-center rounded-xl text-[var(--warning)]">
+            <Icon size={35} strokeWidth={1.2} />
           </div>
 
-          <div className="flex items-center justify-center">
-            <h2 className="break-words text-center text-[12px] text-base font-semibold">
+          <div className="mb-6 mt-3 flex items-center justify-center">
+            <h2 className="break-words text-center text-[15px] text-base font-bold">
               {renderWord(sequence.front.fields[2])}
             </h2>
           </div>
@@ -486,35 +506,36 @@ function PremiumAssessmentCard({
           <div className="mt-auto">
             <div className="active-inset grid grid-cols-2 gap-3 rounded-2xl px-3 py-2.5">
               <div className="min-w-0">
-                <p className="flex items-center justify-center gap-1 text-[8px] uppercase tracking-wider text-[var(--muted)]">
-                  <Timer size={10} className="mb-0.5" />
+                <p className="flex items-center justify-center gap-1 text-[8px] uppercase tracking-wider">
+                  <Timer size={12} strokeWidth={1.5} className="mb-0.5" />
                   {renderWord(sequence.details.fields[metaStart])}
                 </p>
 
-                <p className="mt-1 break-words text-[10px] font-semibold">
+                <p className="mt-1 break-words text-[10px] font-semibold text-[var(--warning)]">
                   {renderWord(sequence.details.fields[metaStart + 1])}
                 </p>
               </div>
 
               <div className="min-w-0 border-l border-[var(--border)] pl-2">
-                <p className="text-[8px] uppercase tracking-wider text-[var(--muted)]">
+                <p className="flex items-center justify-center gap-1 text-[8px] uppercase tracking-wider">
+                  <CircleHelp size={12} strokeWidth={1.5} className="mb-0.5" />
                   {renderWord(sequence.details.fields[metaStart + 2])}
                 </p>
 
-                <p className="mt-1 break-words text-[10px] font-semibold">
+                <p className="mt-1 break-words text-[10px] font-semibold text-[var(--warning)]">
                   {renderWord(sequence.details.fields[metaStart + 3])}
                 </p>
               </div>
             </div>
 
-            <p className="mt-1 break-words text-[9px] leading-4 text-[var(--muted)]">
+            <p className="my-2 break-words text-[9px] leading-4 text-[var(--muted)]">
               {renderWord(sequence.details.fields[metaStart + 4])}
             </p>
           </div>
         </div>
       </div>
 
-      <div className="flex absolute -bottom-4 left-1/2 -translate-x-1/2 gap-4 md:gap-2">
+      <div className="flex absolute -bottom-4 left-1/2 -translate-x-1/2 gap-4 w-[calc(100%-120px)] md:gap-2">
         <button
           type="button"
           onClick={toggleDetails}
@@ -527,7 +548,7 @@ function PremiumAssessmentCard({
           aria-expanded={view === "details"}
           aria-controls={detailsId}
           title={view === "front" ? "Show details" : "Close details"}
-          className="shadow-button flex h-7.5 w-7.5 shrink-0 items-center justify-center rounded-xl text-[var(--muted)] hover:text-[var(--warning)] transition-colors disabled:cursor-wait"
+          className="shadow-button flex h-7.5 w-7.5 shrink-0 items-center justify-center rounded-xl transition-colors text-[var(--warning)] hover:!text-[var(--bg)] hover:!bg-[var(--warning)] disabled:cursor-wait"
         >
           {view === "front" ? <Info size={21} /> : <X size={21} />}
         </button>
@@ -535,10 +556,10 @@ function PremiumAssessmentCard({
         <button
           type="button"
           onClick={onStart}
-          className="shadow-button flex min-h-8 min-w-35 flex-1 items-center justify-center gap-2 rounded-xl !text-[12px] font-semibold transition-colors !bg-[var(--warning)] !text-[var(--bg)] hover:!bg-[var(--bg)] hover:!text-[var(--warning)]"
+          className="shadow-button flex min-h-8 flex-1 items-center justify-center gap-2 rounded-xl !text-[14px] font-semibold transition-colors !bg-[var(--warning)] !text-[var(--bg)] hover:!bg-[var(--bg)] hover:!text-[var(--warning)]"
         >
           Start Assessment
-          <ArrowRight size={14} className="shrink-0 mt-0.5" />
+          <ArrowRight size={16} className="shrink-0 mt-0.5" />
         </button>
       </div>
     </article>
@@ -601,7 +622,7 @@ function FreeAssessmentCard({
           relative grid min-w-0
           transition-transform duration-700
           ease-[cubic-bezier(0.22,1,0.36,1)]
-          motion-reduce:transition-none
+          motion-reduce:transition-none my-12.5
         "
         style={{
           transformStyle: "preserve-3d",
@@ -611,39 +632,30 @@ function FreeAssessmentCard({
         <div
           aria-hidden={isFlipped}
           inert={isFlipped}
-          className="neo-surface relative col-start-1 row-start-1 flex min-h-[230px] min-w-0 flex-col rounded-[28px] p-4"
+          className="glass-panel relative col-start-1 row-start-1 flex min-h-[160px] min-w-0 flex-col rounded-[28px] p-4"
           style={faceStyle}
         >
           <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2">
-            <span className="justify-self-start rounded-full bg-[var(--accent-soft)] px-2.5 py-1 text-[9px] font-semibold text-[var(--accent)]">
+            <span className="justify-self-start rounded-full bg-[var(--success-soft)] px-2.5 py-1 text-[11px] font-semibold text-[var(--success)]">
               Free
             </span>
 
-            <div className="shadow-button flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[var(--accent)]">
+            <div className="shadow-button flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[var(--success)]">
               <Icon size={25} strokeWidth={1.5} />
             </div>
 
-            <span className="active-inset min-w-0 max-w-full justify-self-end break-words rounded-full px-2.5 py-1 text-center text-[9px] font-semibold text-[var(--muted)]">
+            <span className="active-inset min-w-0 max-w-full justify-self-end break-words rounded-full px-2.5 py-1 text-center text-[9px] font-semibold tracking-[0.5px] text-[var(--success)]">
               {assessment.licenseLabel}
             </span>
           </div>
 
           <div className="flex flex-1 items-center justify-center py-6">
-            <h2 className="break-words text-center text-base font-semibold">
+            <h2 className="break-words text-center text-[15px] font-bold">
               {assessment.title}
             </h2>
           </div>
 
-          <div className="mt-auto flex items-center gap-2">
-            <button
-              type="button"
-              onClick={onStart}
-              className="shadow-button flex min-h-9 min-w-0 flex-1 items-center justify-center gap-2 rounded-xl px-3 py-2 text-[11px] font-semibold transition-colors hover:!text-[var(--accent)]"
-            >
-              Start Assessment
-              <ArrowRight size={14} className="shrink-0" />
-            </button>
-
+          <div className="flex items-center justify-center absolute -bottom-4 left-1/2 -translate-x-1/2 gap-4 md:gap-2 w-full">
             <button
               ref={frontButtonRef}
               type="button"
@@ -652,9 +664,18 @@ function FreeAssessmentCard({
               aria-expanded={isFlipped}
               aria-controls={detailsId}
               title="Show details"
-              className="shadow-button flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-[var(--muted)] transition-colors hover:!text-[var(--accent)]"
+              className="shadow-button flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-[var(--muted)] transition-colors !text-[var(--success)] hover:!text-[var(--bg)] hover:!bg-[var(--success)]"
             >
-              <RefreshCw size={15} strokeWidth={1.8} />
+              <Info size={21} strokeWidth={1.8} />
+            </button>
+
+            <button
+              type="button"
+              onClick={onStart}
+              className="shadow-button flex h-8 flex-1 items-center justify-center gap-2 rounded-xl max-w-[calc(100%-120px)] px-3 py-2 !text-[14px] !font-semibold !bg-[var(--success)] text-[var(--bg)] transition hover:!bg-[var(--bg)] hover:!text-[var(--success)]"
+            >
+              Start Assessment
+              <ArrowRight size={16} className="shrink-0 mt-0.5" />
             </button>
           </div>
         </div>
@@ -665,17 +686,17 @@ function FreeAssessmentCard({
           aria-label={`${assessment.title} details`}
           aria-hidden={!isFlipped}
           inert={!isFlipped}
-          className="neo-surface relative col-start-1 row-start-1 flex min-h-[230px] min-w-0 flex-col rounded-[28px] p-4"
+          className="glass-panel relative col-start-1 row-start-1 flex min-h-[160px] min-w-0 flex-col rounded-[28px] p-3"
           style={{
             ...faceStyle,
             transform: "rotateY(180deg)",
           }}
         >
-          <p className="break-words text-center text-[9px] font-semibold uppercase tracking-[0.15em] text-[var(--accent)]">
+          <p className="break-words text-center text-[9px] font-semibold uppercase tracking-[0.15em] text-[var(--success)]">
             {assessment.eyebrow}
           </p>
 
-          <p className="mt-3 break-words text-center text-[11px] leading-5 text-[var(--muted)]">
+          <p className="mt-1 break-words text-center text-[10px] leading-4 text-[var(--muted)]">
             {assessment.description}
           </p>
 
@@ -690,17 +711,17 @@ function FreeAssessmentCard({
             ))}
           </div>
 
-          <div className="mt-auto pt-4">
-            <div className="flex flex-wrap items-center justify-between gap-2 text-[10px] text-[var(--muted)]">
+          <div className="my-auto">
+            <div className="flex flex-wrap items-center justify-between gap-2 text-[10px] text-[var(--success)]">
               <span className="flex items-center gap-1.5">
-                <Timer size={12} className="shrink-0" />
+                <Timer size={12} className="shrink-0 text-[var(--text)]" />
                 {assessment.duration}
               </span>
 
               <span>{assessment.itemCountLabel}</span>
             </div>
 
-            <p className="mt-2 break-words text-[9px] leading-4 text-[var(--muted)]">
+            <p className="mb-2 mt-1 break-words text-[11px] leading-3 text-[var(--muted)] text-center">
               Source · {assessment.sourceLabel}
             </p>
 
@@ -709,9 +730,9 @@ function FreeAssessmentCard({
               type="button"
               onClick={flipCard}
               aria-label={`Return to ${assessment.title}`}
-              className="shadow-button mt-4 flex min-h-9 w-full items-center justify-center gap-2 rounded-xl px-3 py-2 text-[11px] font-semibold transition-colors hover:!text-[var(--accent)]"
+              className="absolute -bottom-4 left-1/2 -translate-x-1/2 shadow-button flex h-8 w-[calc(100%-120px)] items-center justify-center gap-2 rounded-xl !text-[14px] !font-semibold !bg-[var(--success)] text-[var(--bg)] transition hover:!bg-[var(--bg)] hover:!text-[var(--success)]"
             >
-              <ArrowLeft size={14} />
+              <ArrowLeft size={16} />
               Back to assessment
             </button>
           </div>
@@ -794,7 +815,7 @@ function AssessmentRunner({
               <ArrowLeft size={17} />
             </button>
 
-            <div className="active-inset flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[var(--accent)]">
+            <div className="active-inset flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[var(--success)]">
               <Icon size={21} />
             </div>
 
@@ -815,7 +836,7 @@ function AssessmentRunner({
               {assessment.instrument.questions.length}
             </span>
 
-            <span className="text-xs font-semibold text-[var(--accent)]">
+            <span className="text-xs font-semibold text-[var(--success)]">
               {progress}%
             </span>
           </div>
@@ -824,7 +845,7 @@ function AssessmentRunner({
         <div className="neo-inset mt-4 h-2 overflow-hidden rounded-full">
           <div
             className="
-              h-full rounded-full bg-[var(--accent)]
+              h-full rounded-full bg-[var(--success)]
               transition-[width] duration-500
               ease-[cubic-bezier(0.22,1,0.36,1)]
             "
@@ -835,7 +856,7 @@ function AssessmentRunner({
 
       <section className="glass-panel mx-auto w-full max-w-5xl rounded-[32px] p-5 md:p-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--success)]">
             Choose the answer that fits best
           </p>
 
@@ -873,8 +894,8 @@ function AssessmentRunner({
                   transition-all duration-300
                   ${
                     selected
-                      ? "active-inset !text-[var(--accent)]"
-                      : "shadow-button text-[var(--text)] hover:!text-[var(--accent)]"
+                      ? "active-inset !text-[var(--success)]"
+                      : "shadow-button text-[var(--text)] hover:!text-[var(--success)]"
                   }
                 `}
               >
@@ -884,8 +905,8 @@ function AssessmentRunner({
                     rounded-full text-[10px] font-semibold
                     ${
                       selected
-                        ? "bg-[var(--accent)] text-white"
-                        : "bg-[var(--accent-soft)] text-[var(--accent)]"
+                        ? "bg-[var(--success)] text-white"
+                        : "bg-[var(--success-soft)] text-[var(--success)]"
                     }
                   `}
                 >
@@ -916,7 +937,7 @@ function AssessmentRunner({
               type="button"
               onClick={onFinish}
               disabled={!canContinue}
-              className="shadow-button flex h-9 items-center gap-2 rounded-xl !bg-[var(--accent)] px-5 text-xs font-semibold !text-white transition hover:opacity-90 disabled:opacity-35"
+              className="shadow-button flex h-9 items-center gap-2 rounded-xl !bg-[var(--success)] px-5 text-xs font-semibold !text-white transition hover:opacity-90 disabled:opacity-35"
             >
               See result
               <Trophy size={14} />
@@ -926,7 +947,7 @@ function AssessmentRunner({
               type="button"
               onClick={onNext}
               disabled={!canContinue}
-              className="shadow-button flex h-9 items-center gap-2 rounded-xl px-5 text-xs font-semibold transition hover:!text-[var(--accent)] disabled:opacity-35"
+              className="shadow-button flex h-9 items-center gap-2 rounded-xl px-5 text-xs font-semibold transition hover:!text-[var(--success)] disabled:opacity-35"
             >
               Next
               <ArrowRight size={14} />
@@ -984,7 +1005,7 @@ function AssessmentResultView({
             <button
               type="button"
               onClick={onClose}
-              className="shadow-button flex h-9 items-center gap-2 rounded-xl px-4 text-xs font-semibold transition hover:!text-[var(--accent)]"
+              className="shadow-button flex h-9 items-center gap-2 rounded-xl px-4 text-xs font-semibold transition hover:!text-[var(--success)]"
             >
               All tests
               <ArrowRight size={14} />
@@ -995,7 +1016,7 @@ function AssessmentResultView({
 
       <div className="grid gap-5 xl:grid-cols-[0.85fr_1.15fr]">
         <section className="glass-panel rounded-[28px] p-5 text-center md:p-6">
-          <div className="active-inset mx-auto flex h-16 w-16 items-center justify-center rounded-[22px] text-[var(--accent)]">
+          <div className="active-inset mx-auto flex h-16 w-16 items-center justify-center rounded-[22px] text-[var(--success)]">
             <Icon size={30} />
           </div>
 
@@ -1003,7 +1024,7 @@ function AssessmentResultView({
             Your result
           </p>
 
-          <div className="mx-auto mt-2 inline-flex rounded-full bg-[var(--accent-soft)] px-3 py-1 text-[10px] font-semibold text-[var(--accent)]">
+          <div className="mx-auto mt-2 inline-flex rounded-full bg-[var(--success-soft)] px-3 py-1 text-[10px] font-semibold text-[var(--success)]">
             {result.badge}
           </div>
 
@@ -1016,7 +1037,7 @@ function AssessmentResultView({
           </p>
 
           <div className="neo-inset mt-5 rounded-2xl p-4 text-left">
-            <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-[var(--accent)]">
+            <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-[var(--success)]">
               Interpretation
             </p>
 
@@ -1051,9 +1072,12 @@ function AssessmentResultView({
             )}
           </div>
 
-          <div className="mt-6 rounded-2xl bg-[var(--accent-soft)] px-4 py-3">
+          <div className="mt-6 rounded-2xl bg-[var(--success-soft)] px-4 py-3">
             <div className="flex items-start gap-2">
-              <ShieldCheck size={15} className="mt-0.5 shrink-0 text-[var(--accent)]" />
+              <ShieldCheck
+                size={15}
+                className="mt-0.5 shrink-0 text-[var(--success)]"
+              />
 
               <div>
                 <p className="text-[10px] font-semibold">
@@ -1080,7 +1104,7 @@ function MetricBar({ metric }: { metric: AssessmentMetric }) {
       <div className="mb-1.5 flex items-center justify-between gap-3 text-[11px]">
         <span className="font-medium">{metric.label}</span>
 
-        <span className="font-semibold text-[var(--accent)]">
+        <span className="font-semibold text-[var(--success)]">
           {metric.displayValue}
         </span>
       </div>
@@ -1088,7 +1112,7 @@ function MetricBar({ metric }: { metric: AssessmentMetric }) {
       <div className="neo-inset h-2 overflow-hidden rounded-full">
         <div
           className="
-            h-full rounded-full bg-[var(--accent)]
+            h-full rounded-full bg-[var(--success)]
             transition-[width] duration-700
             ease-[cubic-bezier(0.22,1,0.36,1)]
           "
@@ -1127,7 +1151,7 @@ function AssessmentLoadingState({
             <ArrowLeft size={17} />
           </button>
 
-          <div className="active-inset flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[var(--accent)]">
+          <div className="active-inset flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[var(--success)]">
             <Icon size={21} />
           </div>
 
@@ -1142,7 +1166,7 @@ function AssessmentLoadingState({
       </section>
 
       <section className="glass-panel mx-auto flex min-h-[320px] max-w-4xl flex-col items-center justify-center rounded-[32px] p-8 text-center">
-        <div className="active-inset flex h-16 w-16 animate-pulse items-center justify-center rounded-2xl text-[var(--accent)]">
+        <div className="active-inset flex h-16 w-16 animate-pulse items-center justify-center rounded-2xl text-[var(--success)]">
           <Database size={26} />
         </div>
 
@@ -1184,7 +1208,7 @@ function AssessmentErrorState({
             <ArrowLeft size={17} />
           </button>
 
-          <div className="active-inset flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[var(--accent)]">
+          <div className="active-inset flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[var(--success)]">
             <Icon size={21} />
           </div>
 
@@ -1217,7 +1241,7 @@ function AssessmentErrorState({
           <button
             type="button"
             onClick={onRetry}
-            className="shadow-button flex h-9 items-center gap-2 rounded-xl px-4 text-xs font-semibold hover:!text-[var(--accent)]"
+            className="shadow-button flex h-9 items-center gap-2 rounded-xl px-4 text-xs font-semibold hover:!text-[var(--success)]"
           >
             <RefreshCw size={14} />
             Retry
@@ -1241,10 +1265,10 @@ function AssessmentTabButton({
   paid?: boolean;
   onClick: () => void;
 }) {
-  const accent = paid ? "text-[var(--warning)]" : "text-[var(--accent)]";
+  const success = paid ? "text-[var(--warning)]" : "text-[var(--success)]";
   const hover = paid
     ? "group-hover:!text-[var(--warning)]"
-    : "group-hover:!text-[var(--accent)]";
+    : "group-hover:!text-[var(--success)]";
 
   return (
     <button
@@ -1258,7 +1282,7 @@ function AssessmentTabButton({
       <Icon
         size={18}
         strokeWidth={1.3}
-        className={`transition-colors ${hover} ${active ? accent : ""}`}
+        className={`transition-colors ${hover} ${active ? success : ""}`}
       />
       {label}
     </button>

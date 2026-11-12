@@ -258,6 +258,7 @@ export function Sidebar({
                           <>
                             <Icon
                               size={26}
+                              strokeWidth="2.5px"
                               className={`
                                 w-7 p-1
                                 transition-all
@@ -372,6 +373,7 @@ export function Sidebar({
                     <>
                       <Icon
                         size={26}
+                        strokeWidth="2.5px"
                         className={`
                           w-7 p-1
                           transition-all
@@ -427,6 +429,7 @@ export function Sidebar({
                     <>
                       <Icon
                         size={26}
+                        strokeWidth="2.5px"
                         className={`
                           w-7 p-1
                           transition-all

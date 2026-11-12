@@ -5,6 +5,10 @@
   min-width: 0;
 }
 
+.carousel[data-tone="success"] {
+  --carousel-tone: var(--success);
+}
+
 .carousel[data-tone="warning"] {
   --carousel-tone: var(--warning);
 }

@@ -10,7 +10,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import "./carousel.css";
 
-const SLIDE_DURATION_MS = 5_000;
+const SLIDE_DURATION_MS = 5000000_000;
 
 export function Carousel({
   children,
@@ -19,7 +19,7 @@ export function Carousel({
 }: {
   children: ReactNode;
   label: string;
-  tone?: "accent" | "warning";
+  tone?: "accent" | "success" | "warning";
 }) {
   const slides = Children.toArray(children);
   const identity = JSON.stringify(
@@ -215,11 +215,6 @@ export function Carousel({
             <div
               inert={index !== active}
               aria-hidden={index !== active}
-              className={
-                index === active
-                  ? "neo-surface carousel__surface"
-                  : "carousel__surface"
-              }
             >
               {slide}
             </div>
