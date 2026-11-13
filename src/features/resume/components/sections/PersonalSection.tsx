@@ -46,7 +46,7 @@ export function PersonalSection({
       className="
         grid grid-cols-1 gap-x-3 gap-y-2.5
         w-[calc(100%_-_0.875rem)] max-w-[340px]
-        min-w-0 ml-3.5
+        min-w-0 ml-7
       "
     >
       <Controller
@@ -68,7 +68,7 @@ export function PersonalSection({
                 });
               }}
               placeholder="Your full name"
-              className="min-w-0 w-full bg-transparent !text-sm outline-none placeholder:text-[var(--muted)]"
+              className="min-w-0 w-full bg-transparent !text-sm outline-none placeholder:text-[var(--muted)] mt-1.5"
             />
           </Field>
         )}
@@ -93,7 +93,7 @@ export function PersonalSection({
                 });
               }}
               placeholder="Your professional title"
-              className="min-w-0 w-full bg-transparent !text-sm outline-none placeholder:text-[var(--muted)]"
+              className="min-w-0 w-full bg-transparent !text-sm outline-none placeholder:text-[var(--muted)] mt-1.5"
             />
           </Field>
         )}
@@ -120,7 +120,7 @@ export function PersonalSection({
               }}
               placeholder="Your email"
               autoComplete="email"
-              className="min-w-0 w-full bg-transparent !text-sm outline-none placeholder:text-[var(--muted)]"
+              className="min-w-0 w-full bg-transparent !text-sm outline-none placeholder:text-[var(--muted)] mt-1.5"
             />
           </Field>
         )}
@@ -147,7 +147,7 @@ export function PersonalSection({
               }}
               placeholder="Your phone number"
               autoComplete="tel"
-              className="min-w-0 w-full bg-transparent !text-sm outline-none placeholder:text-[var(--muted)]"
+              className="min-w-0 w-full bg-transparent !text-sm outline-none placeholder:text-[var(--muted)] mt-1.5"
             />
           </Field>
         )}
@@ -173,7 +173,7 @@ export function PersonalSection({
               }}
               placeholder="Your city"
               autoComplete="address-level2"
-              className="min-w-0 w-full bg-transparent !text-sm outline-none placeholder:text-[var(--muted)]"
+              className="min-w-0 w-full bg-transparent !text-sm outline-none placeholder:text-[var(--muted)] mt-1.5"
             />
           </Field>
         )}
@@ -199,7 +199,7 @@ export function PersonalSection({
               }}
               placeholder="Your country"
               autoComplete="country-name"
-              className="min-w-0 w-full bg-transparent !text-sm outline-none placeholder:text-[var(--muted)]"
+              className="min-w-0 w-full bg-transparent !text-sm outline-none placeholder:text-[var(--muted)] mt-1.5"
             />
           </Field>
         )}

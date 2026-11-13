@@ -229,7 +229,7 @@ export function ResumeSectionNav({
 
                     ${
                       active
-                        ? "neo-inset text-[var(--accent)]"
+                        ? "active-inset text-[var(--accent)]"
                         : "nav-hover text-[var(--muted)] hover:text-[var(--text)]"
                     }
                   `}

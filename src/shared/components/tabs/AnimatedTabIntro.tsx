@@ -51,7 +51,7 @@ export function AnimatedTabIntro({
         ${active ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
     >
       <div className="min-h-0 overflow-hidden">
-        <div className="rounded-full bg-[var(--warning-soft)] px-4 text-center text-[var(--warning)]">
+        <div className="rounded-2xl bg-[var(--warning-soft)] px-4 text-center text-[var(--warning)]">
           <h2 className="text-lg font-semibold">
             {words.map((word, index) => (
               <span key={index}>

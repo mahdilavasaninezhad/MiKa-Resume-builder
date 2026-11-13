@@ -38,9 +38,9 @@ export function FloatingField({
     <label className={`relative block min-w-0 pt-[10px] ${className}`}>
       <div
         aria-hidden="true"
-        className={`absolute -left-4.5 top-6 flex h-[11px] items-center transition-colors duration-200 ${iconColor}`}
+        className={`absolute -left-6 top-6 flex h-[11px] items-center transition-colors duration-200 ${iconColor}`}
       >
-        <Icon size={13} strokeWidth={1.9} />
+        <Icon size={16} strokeWidth={1.5} />
       </div>
 
       <div

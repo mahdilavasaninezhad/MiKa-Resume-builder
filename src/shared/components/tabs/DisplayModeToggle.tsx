@@ -29,7 +29,7 @@ export function DisplayModeToggle({
     >
       <span
         aria-hidden="true"
-        className={`pointer-events-none absolute bottom-2.5 left-2.5 top-2.5 w-[calc(50%-9px)] rounded-lg shadow-button !bg-[var(--bg)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${value === "compact" ? "translate-x-full" : "translate-x-0"}`}
+        className={`pointer-events-none absolute bottom-2 left-2.5 top-2.5 w-[calc(50%-10px)] rounded-lg shadow-button !bg-[var(--bg)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${value === "compact" ? "translate-x-full" : "translate-x-0"}`}
       />
       {modes.map(({ value: mode, label, icon: Icon }) => (
         <button
@@ -41,7 +41,7 @@ export function DisplayModeToggle({
           onClick={() => onChange(mode)}
           className={`relative grid h-9 place-items-center rounded-xl hover:text-[var(--display-tone)] focus-visible:outline-2 focus-visible:outline-offset-[-2px] ${value === mode ? "text-[var(--display-tone)]" : "text-[var(--muted)]"}`}
         >
-          <Icon size={18} aria-hidden="true" />
+          <Icon size={16} aria-hidden="true" />
         </button>
       ))}
     </div>
@@ -84,10 +84,10 @@ export function CompactDisplayItem({
     | { label: string; onClick: () => void };
 }) {
   const actionClass =
-    "absolute right-5 -bottom-2.5 shadow-button inline-flex min-h-5 shrink-0 items-center rounded-lg px-2 !text-[12px] pb-0.5 !font-semibold !bg-[var(--display-tone)] !text-[var(--bg)] hover:!bg-[var(--bg)] hover:!text-[var(--display-tone)] focus-visible:outline-2 focus-visible:outline-[var(--display-tone)]";
+    "absolute right-6 -bottom-2 shadow-button inline-flex min-h-5 shrink-0 items-center rounded-lg px-2 !text-[12px] md:pb-0.5 !font-semibold !bg-[var(--display-tone)] !text-[var(--bg)] hover:!bg-[var(--bg)] hover:!text-[var(--display-tone)] focus-visible:outline-2 focus-visible:outline-[var(--display-tone)]";
 
   return (
-    <li className="active-inset flex min-w-0 items-center justify-between gap-1.5 rounded-xl px-5 py-2 !bg-[var(--display-soft)] relative">
+    <li className="shadow-button flex min-w-0 items-center justify-between gap-1.5 rounded-xl px-5 py-2 !bg-[var(--display-soft)] relative">
       <span dir="auto" title={title} className="min-w-0 truncate text-xs font-semibold">
         {title}
       </span>

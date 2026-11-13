@@ -181,10 +181,10 @@ export function LearningPage() {
 
       {view === "compact" ? (
         <section
-          className="glass-panel grid gap-3 rounded-[28px] p-3"
+          className="grid gap-2 rounded-[28px]"
           aria-label="Learning providers"
         >
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center justify-center gap-3">
             <h2 className="text-sm font-semibold">
               {isPremium ? "Matching providers" : "Learning providers"}
             </h2>
@@ -241,7 +241,7 @@ export function LearningPage() {
         </section>
       ) : (
         <div className="grid min-w-0 items-start gap-3 xl:grid-cols-[minmax(0,1fr)_minmax(0,2.5fr)]">
-          <section className="glass-panel min-w-0 rounded-[28px] px-3 py-3 mt-2">
+          <section className="glass-panel min-w-0 rounded-[28px] px-3 py-3 mt-2 !bg-[var(--bg)]">
             <div className="flex items-center justify-center gap-2 text-center">
               <Sparkles size={20} className={accent} />
               <h2 className="font-semibold">Learning Profile</h2>
@@ -281,7 +281,7 @@ export function LearningPage() {
                   onChange={(event) => setInterests(event.target.value)}
                   placeholder="e.g. SEO"
                   maxLength={300}
-                  className="w-full min-w-0 bg-transparent !text-sm outline-none placeholder:text-[var(--muted)]"
+                  className="w-full min-w-0 bg-transparent !text-sm outline-none placeholder:text-[var(--muted)] placeholder:text-xs mt-1"
                 />
               </FloatingField>
 
@@ -296,13 +296,13 @@ export function LearningPage() {
                   onChange={(event) => setStrengths(event.target.value)}
                   placeholder="e.g. writing"
                   maxLength={300}
-                  className="w-full min-w-0 bg-transparent !text-sm outline-none placeholder:text-[var(--muted)]"
+                  className="w-full min-w-0 bg-transparent !text-sm outline-none placeholder:text-[var(--muted)] placeholder:text-xs mt-1"
                 />
               </FloatingField>
             </div>
 
             {matches.length > 0 && (
-              <ul className="my-6 flex flex-col gap-3 text-center">
+              <ul className="active-inset rounded-xl my-6 flex flex-col gap-3 text-center !bg-[var(--warning-soft)]">
                 {matches.map((match) => (
                   <li key={match.id} className="py-2 text-xs">
                     <span className="font-semibold">{match.label}</span>
@@ -473,7 +473,7 @@ function LearningCard({
 
   return (
     <article
-      className={`glass-panel relative flex min-w-0 flex-col rounded-[28px] px-3 pt-3 ${
+      className={`glass-panel relative flex min-w-0 flex-col rounded-[28px] px-3 pt-3 !bg-[var(--bg)] ${
         paid ? "mb-1 min-h-[115px]" : "mt-3 mb-14 min-h-[150px]"
       }`}
     >
@@ -510,7 +510,7 @@ function LearningCard({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${linkLabel} — ${title}`}
-        className={`shadow-button absolute -bottom-4 left-1/2 flex h-8 w-[calc(100%-120px)] -translate-x-1/2 items-center justify-center gap-2 whitespace-nowrap rounded-xl text-[14px] font-semibold transition hover:!bg-[var(--bg)] ${linkTone}`}
+        className={`shadow-button absolute -bottom-4 left-1/2 flex h-8 w-[calc(100%-120px)] -translate-x-1/2 items-center justify-center gap-2 whitespace-nowrap rounded-xl text-[14px] font-semibold transition hover:!bg-[var(--surface)] ${linkTone}`}
       >
         {linkLabel}
         <ExternalLink size={16} className="shrink-0" />

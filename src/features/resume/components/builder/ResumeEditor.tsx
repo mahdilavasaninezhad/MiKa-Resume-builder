@@ -297,6 +297,7 @@ export function ResumeSectionInfo() {
     <section
       className="
         glass-panel-header
+        active-inset
         shrink-0
         rounded-2xl
         p-3
@@ -311,6 +312,7 @@ export function ResumeSectionInfo() {
       <div
           className="
             sidebar-icon
+            !bg-[var(--surface)]
             h-7
             w-7
             flex

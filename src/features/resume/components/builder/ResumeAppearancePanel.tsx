@@ -303,6 +303,7 @@ export function ResumeAppearancePanel({
     <section
       className="
         glass-panel
+        glass-panel-header
         flex
         h-full
         min-h-0
@@ -321,7 +322,7 @@ export function ResumeAppearancePanel({
           gap-2
           rounded-lg
           p-1
-          glass-panel-header
+          active-inset
         "
       >
         <div
@@ -416,7 +417,7 @@ export function ResumeAppearancePanel({
                     ${
                       active
                         ? "active-inset !text-[var(--accent)]"
-                        : "button-hover hover:!text-[var(--text)]"
+                        : "nav-hover hover:!text-[var(--text)]"
                     }
                   `}
                 >

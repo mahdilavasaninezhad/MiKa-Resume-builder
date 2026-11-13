@@ -141,8 +141,8 @@ textarea::placeholder {
   -webkit-backdrop-filter: blur(22px);
   backdrop-filter: blur(22px);
   box-shadow:
-    3px 3px 5px var(--shadow-dark),
-    -3px -3px 2px var(--shadow-light);
+    3px 3px 4px var(--shadow-dark),
+    -1.5px -1.5px 1.5px var(--shadow-light);
 }
 
 .glass-panel-header {

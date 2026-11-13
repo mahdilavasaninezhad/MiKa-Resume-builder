@@ -157,7 +157,7 @@ export function ResumeBuilderPage() {
             ${previewMode ? "hidden xl:grid" : "grid"}
           `}
         >
-          <section className="glass-panel flex min-h-0 min-w-0 flex-col rounded-2xl">
+          <section className="glass-panel !bg-[var(--bg)] flex min-h-0 min-w-0 flex-col rounded-2xl">
             <ResumeSectionNav resume={resume} />
 
             <div className="min-h-0 flex-1 overflow-hidden">

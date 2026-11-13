@@ -434,7 +434,7 @@ function PremiumAssessmentCard({
 
   return (
     <article
-      className="glass-panel relative col-start-1 row-start-1 flex min-h-[160px] min-w-0 flex-col rounded-[28px] my-8"
+      className="glass-panel relative col-start-1 row-start-1 flex min-h-[160px] min-w-0 flex-col rounded-[28px] my-8 !bg-[var(--bg)]"
       aria-label={assessment.title}
       aria-busy={busy}
       onKeyDown={(event) => {
@@ -556,7 +556,7 @@ function PremiumAssessmentCard({
         <button
           type="button"
           onClick={onStart}
-          className="shadow-button flex min-h-8 flex-1 items-center justify-center gap-2 rounded-xl !text-[14px] font-semibold transition-colors !bg-[var(--warning)] !text-[var(--bg)] hover:!bg-[var(--bg)] hover:!text-[var(--warning)]"
+          className="shadow-button flex min-h-8 flex-1 items-center justify-center gap-2 rounded-xl !text-[14px] !font-semibold transition-colors !bg-[var(--warning)] !text-[var(--bg)] hover:!bg-[var(--surface)] hover:!text-[var(--warning)]"
         >
           Start Assessment
           <ArrowRight size={16} className="shrink-0 mt-0.5" />
@@ -632,7 +632,7 @@ function FreeAssessmentCard({
         <div
           aria-hidden={isFlipped}
           inert={isFlipped}
-          className="glass-panel relative col-start-1 row-start-1 flex min-h-[160px] min-w-0 flex-col rounded-[28px] p-4"
+          className="glass-panel relative col-start-1 row-start-1 flex min-h-[160px] min-w-0 flex-col rounded-[28px] p-4 !bg-[var(--bg)]"
           style={faceStyle}
         >
           <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2">
@@ -672,7 +672,7 @@ function FreeAssessmentCard({
             <button
               type="button"
               onClick={onStart}
-              className="shadow-button flex h-8 flex-1 items-center justify-center gap-2 rounded-xl max-w-[calc(100%-120px)] px-3 py-2 !text-[14px] !font-semibold !bg-[var(--success)] text-[var(--bg)] transition hover:!bg-[var(--bg)] hover:!text-[var(--success)]"
+              className="shadow-button flex h-8 flex-1 items-center justify-center gap-2 rounded-xl max-w-[calc(100%-120px)] px-3 py-2 !text-[14px] !font-semibold !bg-[var(--success)] text-[var(--bg)] transition hover:!bg-[var(--surface)] hover:!text-[var(--success)]"
             >
               Start Assessment
               <ArrowRight size={16} className="shrink-0 mt-0.5" />

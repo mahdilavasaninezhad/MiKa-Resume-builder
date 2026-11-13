@@ -266,7 +266,7 @@ export function ResumeControlBar({
   }
 
   return (
-    <section className="glass-panel relative shrink-0 rounded-2xl p-1">
+    <section className="glass-panel !bg-[var(--bg)] relative shrink-0 rounded-2xl p-1">
       <div className="min-h-[70px]">
         {activePanel === null ? (
           <DefaultView resume={resume} saveStatus={saveStatus} />
